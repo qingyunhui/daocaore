@@ -1,0 +1,24 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>cn.com.yuzhushui.schedule</groupId>
+    <artifactId>cn.com.yuzhushui.schedule</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>cn.com.yuzhushui.schedule.service</artifactId>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>cn.com.yuzhushui.schedule.common</groupId>
+		<artifactId>cn.com.yuzhushui.schedule.common</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  	    <groupId>qing.yun.hui.mailtool</groupId>
+		<artifactId>qing.yun.hui.mailtool</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
+  
+  <groupId>cn.com.yuzhushui.schedule.service</groupId>
+</project>
