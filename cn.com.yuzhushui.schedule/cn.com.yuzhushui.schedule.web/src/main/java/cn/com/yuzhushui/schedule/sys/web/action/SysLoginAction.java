@@ -1,4 +1,4 @@
-package cn.com.yuzhushui.schedule.sys.web;
+package cn.com.yuzhushui.schedule.sys.web.action;
 
 import java.util.HashMap;
 import java.util.List;
