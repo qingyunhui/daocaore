@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.yuzhushui.schedule.job.biz.dao.JobSnapshotHistoryDao">
+	<resultMap type="cn.com.yuzhushui.schedule.job.biz.entity.JobSnapshotHistory" id="BaseResultMap">
+        <result property="id" column="id" javaType="Integer"/>
+        <result property="jobSnapshotId" column="job_snapshot_id" javaType="Long"/>
+        <result property="jobInfoId" column="job_info_id" javaType="Integer"/>
+        <result property="name" column="name" javaType="String"/>
+        <result property="group" column="group" javaType="String"/>
+        <result property="status" column="status" javaType="String"/>
+        <result property="ip" column="ip" javaType="String"/>
+        <result property="url" column="url" javaType="String"/>
+        <result property="result" column="result" javaType="String"/>
+        <result property="timeConsume" column="time_consume" javaType="Long"/>
+        <result property="detail" column="detail" javaType="String"/>
+        <result property="createTime" column="create_time" javaType="Date"/>
+        <result property="modifyTime" column="modify_time" javaType="Date"/>
+	</resultMap>
+	
+	<sql id="full-columns" >
+        t.id,
+        t.job_snapshot_id,
+        t.job_info_id,
+        t.name,
+        t.group,
+        t.status,
+        t.ip,
+        t.url,
+        t.result,
+        t.time_consume,
+        t.detail,
+        t.create_time,
+        t.modify_time
+	</sql>
+	
+	<!-- 查询条件 -->
+	<sql id="queryCriteria">
+		 <if test="@OGNL@isNotEmpty(id)">
+            AND t.id = #{id}
+         </if>
+		 <if test="@OGNL@isNotEmpty(jobSnapshotId)">
+            AND t.job_snapshot_id = #{jobSnapshotId}
+         </if>
+		 <if test="@OGNL@isNotEmpty(jobInfoId)">
+            AND t.job_info_id = #{jobInfoId}
+         </if>
+		 <if test="@OGNL@isNotEmpty(name)">
+            AND t.name = #{name}
+         </if>
+		 <if test="@OGNL@isNotEmpty(group)">
+            AND t.group = #{group}
+         </if>
+		 <if test="@OGNL@isNotEmpty(status)">
+            AND t.status = #{status}
+         </if>
+		 <if test="@OGNL@isNotEmpty(ip)">
+            AND t.ip = #{ip}
+         </if>
+		 <if test="@OGNL@isNotEmpty(url)">
+            AND t.url = #{url}
+         </if>
+		 <if test="@OGNL@isNotEmpty(result)">
+            AND t.result = #{result}
+         </if>
+		 <if test="@OGNL@isNotEmpty(timeConsume)">
+            AND t.time_consume = #{timeConsume}
+         </if>
+		 <if test="@OGNL@isNotEmpty(detail)">
+            AND t.detail = #{detail}
+         </if>
+		 <if test="@OGNL@isNotEmpty(createTime)">
+            AND t.create_time = #{createTime}
+         </if>
+		 <if test="@OGNL@isNotEmpty(modifyTime)">
+            AND t.modify_time = #{modifyTime}
+         </if>
+	</sql>
+
+	<insert id="insert" parameterType="cn.com.yuzhushui.schedule.job.biz.entity.JobSnapshotHistory" >
+		<![CDATA[
+	        INSERT INTO job_snapshot_history (
+	            job_snapshot_id ,
+	            job_info_id ,
+	            name ,
+	            group ,
+	            status ,
+	            ip ,
+	            url ,
+	            result ,
+	            time_consume ,
+	            detail ,
+	            create_time ,
+	            modify_time 
+	        ) VALUES (
+	        	#{jobSnapshotId},
+	        	#{jobInfoId},
+	        	#{name},
+	        	#{group},
+	        	#{status},
+	        	#{ip},
+	        	#{url},
+	        	#{result},
+	        	#{timeConsume},
+	        	#{detail},
+	        	#{createTime},
+	        	#{modifyTime}
+	        )
+	    ]]>
+    	<selectKey resultType="java.lang.Integer" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+	</insert>
+	
+	<insert id="insertBatch" parameterType="java.util.List" >
+		<![CDATA[
+	        INSERT INTO job_snapshot_history (
+	            job_snapshot_id ,
+	            job_info_id ,
+	            name ,
+	            group ,
+	            status ,
+	            ip ,
+	            url ,
+	            result ,
+	            time_consume ,
+	            detail ,
+	            create_time ,
+	            modify_time 
+	        ) VALUES 
+	        <foreach collection="list" item="item" index="index" separator=",">
+	        (
+	        	#{jobSnapshotId},
+	        	#{jobInfoId},
+	        	#{name},
+	        	#{group},
+	        	#{status},
+	        	#{ip},
+	        	#{url},
+	        	#{result},
+	        	#{timeConsume},
+	        	#{detail},
+	        	#{createTime},
+	        	#{modifyTime}
+	        )
+	        </foreach>
+	    ]]>
+	</insert>
+	
+	<update id="delete" parameterType="java.lang.Integer">
+        UPDATE job_snapshot_history SET deleted=1 
+        WHERE deleted=0 AND
+        	id = #{value}
+	</update>
+	<update id="deleteBatch" parameterType="list" >
+        UPDATE job_snapshot_history SET deleted=1 
+        WHERE deleted=0 AND
+        	id IN 
+        <foreach collection="list" item = "id" open="(" separator="," close=")">
+        	#{id}
+		</foreach>
+	</update>
+	
+	<update id="update" parameterType="cn.com.yuzhushui.schedule.job.biz.entity.JobSnapshotHistory">
+        UPDATE job_snapshot_history 
+        <set>
+        	<if test="@OGNL@isNotEmpty(jobSnapshotId)">
+	            job_snapshot_id = #{jobSnapshotId},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(jobInfoId)">
+	            job_info_id = #{jobInfoId},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(name)">
+	            name = #{name},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(group)">
+	            group = #{group},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(status)">
+	            status = #{status},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(ip)">
+	            ip = #{ip},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(url)">
+	            url = #{url},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(result)">
+	            result = #{result},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(timeConsume)">
+	            time_consume = #{timeConsume},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(detail)">
+	            detail = #{detail},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(createTime)">
+	            create_time = #{createTime},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(modifyTime)">
+	            modify_time = #{modifyTime},
+	        </if>
+        </set>
+        WHERE deleted=0
+        	AND id = #{id}
+	</update>
+	
+	<select id="getById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+	   	SELECT <include refid="full-columns" />
+       	<![CDATA[
+       	FROM job_snapshot_history t
+       	WHERE t.id = #{value}
+		]]>
+    </select>
+	
+	<select id="query" parameterType="map" resultMap="BaseResultMap">
+		SELECT <include refid="full-columns" />
+	    FROM job_snapshot_history t
+		<where> <include refid="queryCriteria"/>  </where>
+		<if test="@OGNL@isNotEmpty(orderColumn) ">
+        ORDER BY t.${orderColumn} <if test="@OGNL@isNotEmpty(orderDirection) ">${orderDirection}</if>
+        </if>
+	</select>
+	
+	<select id="queryPage" parameterType="map" resultMap="BaseResultMap">
+		SELECT 
+        <include refid="full-columns" />
+            FROM job_snapshot_history t
+		<where> <include refid="queryCriteria"/>  </where>
+		<if test="@OGNL@isNotEmpty(orderColumn) ">
+        ORDER BY t.${orderColumn} <if test="@OGNL@isNotEmpty(orderDirection) ">${orderDirection}</if>
+        </if>
+        LIMIT #{start}, #{pageSize}
+	</select>
+
+	<select id="queryCount" parameterType="map" resultType="java.lang.Integer">
+		select count(id) FROM job_snapshot_history 
+        <where> <include refid="queryCriteria"/>  </where>
+	</select>
+</mapper>

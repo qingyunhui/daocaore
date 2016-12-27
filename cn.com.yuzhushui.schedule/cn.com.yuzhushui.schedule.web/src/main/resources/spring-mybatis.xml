@@ -8,7 +8,7 @@ http://www.springframework.org/schema/aop
 http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 
 	 <!-- 对JDBC配置进行解密  --> 
-	<bean id="cipherPropertyConfigurer" class="cn.com.yuzhushui.movie.apply.CipherPropertyConfigurer">  
+	<bean id="cipherPropertyConfigurer" class="cn.com.yuzhushui.schedule.apply.CipherPropertyConfigurer">  
         <property name="locations">
             <list>
             	<value>classpath:/jdbc.properties</value>
@@ -62,10 +62,10 @@ http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
-		<property name="mapperLocations" value="classpath*:mapping/movie/*.xml" />
+		<property name="mapperLocations" value="classpath*:mapping/schedule/*.xml" />
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="cn.com.yuzhushui.**.biz.dao,cn.com.yuzhushui.movie.common.base" />
+		<property name="basePackage" value="cn.com.yuzhushui.**.biz.dao,cn.com.yuzhushui.schedule.common.base" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 
@@ -96,7 +96,7 @@ http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 		</tx:attributes>
 	</tx:advice>
 	<aop:config>			<!-- 注意这里的表达式，项目中是用aop做的切面到service层做的事务控制、而base下的基础service与各类的service不在同一个包下，所以这里匹配了二个目标目录而且只能用or(||)的方式才会生效[and方式不会回滚...] -->															  								 
-		<aop:pointcut id="transactionPointcut" expression="execution(* cn.com.yuzhushui.movie.**.biz.service.impl..*.*(..)) or execution(* cn.com.yuzhushui.movie.**.base..*.*(..))"/>
+		<aop:pointcut id="transactionPointcut" expression="execution(* cn.com.yuzhushui.schedule.**.biz.service.impl..*.*(..)) or execution(* cn.com.yuzhushui.schedule.**.base..*.*(..))"/>
 		<aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice" />
 	</aop:config>
 
@@ -107,8 +107,8 @@ http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 	<bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut" scope="prototype">
 		<property name="patterns">
 			<list>	   
-				<value>cn.com.yuzhushui.movie.*.biz.service.*</value>
-				<value>cn.com.yuzhushui.movie.common.base.*</value>
+				<value>cn.com.yuzhushui.schedule.*.biz.service.*</value>
+				<value>cn.com.yuzhushui.schedule.common.base.*</value>
 			</list>
 		</property>
 	</bean>
