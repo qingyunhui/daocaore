@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.com.yuzhushui.movie.sys.biz.dao.SysUserDao">
-	<resultMap type="cn.com.yuzhushui.movie.sys.biz.entity.SysUser" id="BaseResultMap">
+<mapper namespace="cn.com.yuzhushui.schedule.sys.biz.dao.SysUserDao">
+	<resultMap type="cn.com.yuzhushui.schedule.sys.biz.entity.SysUser" id="BaseResultMap">
         <result property="userId" column="user_id" javaType="Integer"/>
         <result property="accountId" column="account_id" javaType="Integer"/>
         <result property="name" column="name" javaType="String"/>
@@ -116,7 +116,7 @@
          </if>
 	</sql>
 
-	<insert id="insert" parameterType="cn.com.yuzhushui.movie.sys.biz.entity.SysUser" >
+	<insert id="insert" parameterType="cn.com.yuzhushui.schedule.sys.biz.entity.SysUser" >
 		<![CDATA[
 	        INSERT INTO sys_user (
 	            account_id ,
@@ -232,7 +232,7 @@
 		</foreach>
 	</update>
 	
-	<update id="update" parameterType="cn.com.yuzhushui.movie.sys.biz.entity.SysUser">
+	<update id="update" parameterType="cn.com.yuzhushui.schedule.sys.biz.entity.SysUser">
         UPDATE sys_user 
         <set>
         	<if test="@OGNL@isNotEmpty(accountId)">

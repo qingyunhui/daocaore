@@ -32,6 +32,8 @@ import cn.com.yuzhushui.schedule.enums.LoginType;
 import cn.com.yuzhushui.schedule.enums.SysAccountEnum;
 import cn.com.yuzhushui.schedule.sys.biz.entity.SysAccount;
 import cn.com.yuzhushui.schedule.sys.biz.entity.SysUser;
+import cn.com.yuzhushui.schedule.sys.biz.service.SysAccountService;
+import cn.com.yuzhushui.schedule.sys.biz.service.SysUserService;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -48,9 +50,7 @@ public class SysLoginAction {
 	
 	protected Logger logger=LoggerFactory.getLogger(SysLoginAction.class);
 	
-	protected static final String ACTION_PATH = "/app/appMain";
-	
-	public static final String SHOWED_INTRODUCE = "showed_introduce";
+	protected static final String ACTION_PATH = "/sys/sysLogin";
 	
 	@Autowired
 	private ShardedJedisCached shardedJedisCached;
@@ -65,13 +65,6 @@ public class SysLoginAction {
 	@RequestMapping(value = "/myMain")
 	public ModelAndView myMain(HttpServletRequest request,HttpServletResponse response, HttpSession session) {
 		ModelAndView modelView = new ModelAndView(ACTION_PATH + "/myMain");
-		return modelView;
-	}
-	
-	/**进入个人首页（第一个页面）**/
-	@RequestMapping(value = "/index")
-	public ModelAndView index(HttpServletRequest request,HttpServletResponse response, HttpSession session) {
-		ModelAndView modelView = new ModelAndView(ACTION_PATH + "/index");
 		return modelView;
 	}
 	
@@ -173,9 +166,7 @@ public class SysLoginAction {
 			List<SysUser> users=sysUserService.query(userMap);
 			if(users.size()==1){
 				if(account.getStatus().intValue()==SysAccountEnum.STATUS.AUDIT_SUCCESS.getValue()){
-					
 					logger.error("登录成功，用户信息将记录到Cookie中且存储到Shiro中!");
-					
 					//登陆成功-把用户存储到cookie中。
 					modeView.setViewName("redirect:"+ACTION_PATH+"/myMain.htm");
 					SysUser sysUser=users.get(0);

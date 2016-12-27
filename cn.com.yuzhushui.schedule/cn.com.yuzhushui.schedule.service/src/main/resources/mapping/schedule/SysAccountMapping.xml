@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.com.yuzhushui.movie.sys.biz.dao.SysAccountDao">
-	<resultMap type="cn.com.yuzhushui.movie.sys.biz.entity.SysAccount" id="BaseResultMap">
+<mapper namespace="cn.com.yuzhushui.schedule.sys.biz.dao.SysAccountDao">
+	<resultMap type="cn.com.yuzhushui.schedule.sys.biz.entity.SysAccount" id="BaseResultMap">
         <result property="accountId" column="account_id" javaType="Integer"/>
         <result property="account" column="account" javaType="String"/>
         <result property="mobilephone" column="mobilephone" javaType="String"/>
@@ -81,7 +81,7 @@
          </if>
 	</sql>
 
-	<insert id="insert" parameterType="cn.com.yuzhushui.movie.sys.biz.entity.SysAccount" >
+	<insert id="insert" parameterType="cn.com.yuzhushui.schedule.sys.biz.entity.SysAccount" >
 		<![CDATA[
 	        INSERT INTO sys_account (
 	            account ,
@@ -169,7 +169,7 @@
 		</foreach>
 	</update>
 	
-	<update id="update" parameterType="cn.com.yuzhushui.movie.sys.biz.entity.SysAccount">
+	<update id="update" parameterType="cn.com.yuzhushui.schedule.sys.biz.entity.SysAccount">
         UPDATE sys_account 
         <set>
         	<if test="@OGNL@isNotEmpty(account)">
