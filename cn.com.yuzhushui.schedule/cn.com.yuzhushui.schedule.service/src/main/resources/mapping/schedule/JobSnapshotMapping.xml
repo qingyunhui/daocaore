@@ -3,7 +3,7 @@
 <mapper namespace="cn.com.yuzhushui.schedule.job.biz.dao.JobSnapshotDao">
 	<resultMap type="cn.com.yuzhushui.schedule.job.biz.entity.JobSnapshot" id="BaseResultMap">
         <result property="id" column="id" javaType="Integer"/>
-        <result property="jobInfoId" column="job_info_id" javaType="Long"/>
+        <result property="jobInfoId" column="job_info_id" javaType="Integer"/>
         <result property="name" column="name" javaType="String"/>
         <result property="groups" column="groups" javaType="String"/>
         <result property="status" column="status" javaType="cn.com.yuzhushui.schedule.enums.JobSnapshotEnum$STATUS"/>
