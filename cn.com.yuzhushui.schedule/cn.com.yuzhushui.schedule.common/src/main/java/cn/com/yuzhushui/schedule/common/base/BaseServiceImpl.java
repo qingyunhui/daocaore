@@ -41,14 +41,16 @@ public class BaseServiceImpl<MODEL extends BaseModel<KEY_TYPE>, KEY_TYPE> implem
 		int count = getBaseDao().insertBatch(models);
 		return count;
 	}
-	public int update(MODEL model) {
-		afterHand(model);
+	public int update(MODEL model,boolean autoFil) {
+		if(autoFil)afterHand(model);
 		int count = getBaseDao().update(model);
 		return count;
 	}
-	public int update(List<MODEL> models) {
-		for(MODEL model:models){
-			afterHand(model);
+	public int update(List<MODEL> models,boolean autoFil) {
+		if(autoFil){
+			for(MODEL model:models){
+				afterHand(model);
+			}
 		}
 		int count = getBaseDao().updateBatch(models);
 		return count;

@@ -32,16 +32,18 @@ public interface BaseService<MODEL, KEY_TYPE>{
 	/***
 	 * <p>更新</p>
 	 * @param model 待更新的对象
+	 * @param autoFil
 	 * @return int 受影响的行数
 	 * */
-	public int update(MODEL model);
+	public int update(MODEL model,boolean autoFil);
 
 	/***
 	 * <p>批量更新</p>
 	 * @param models 待更新的对象集合
+	 * @param autoFil
 	 * @return int 受影响的行数
 	 * */
-	public int update(List<MODEL> models);
+	public int update(List<MODEL> models,boolean autoFil);
 
 	/***
 	 * <p>删除</p>

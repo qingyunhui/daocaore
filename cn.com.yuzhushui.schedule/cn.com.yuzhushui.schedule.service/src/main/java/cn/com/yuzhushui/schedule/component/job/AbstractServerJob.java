@@ -169,7 +169,7 @@ public abstract class AbstractServerJob implements Job {
 		jobSnapshot.setResult("目标服务器有没有这条任务执行的记录或结果.");
 		jobSnapshot.setDetail(jobSnapshot.getDetail() + detail);
 		jobSnapshot.setTimeConsume(0L);
-		ServerJobHelper.getComponent(JobSnapshotService.class).update(jobSnapshot);
+		ServerJobHelper.getComponent(JobSnapshotService.class).update(jobSnapshot,false);
 	}
 	
 	/**
@@ -182,14 +182,14 @@ public abstract class AbstractServerJob implements Job {
 			jobSnapshot.setResult(jobResult.getResult());
 			jobSnapshot.setTimeConsume(jobResult.getTimeConsume());
 			jobSnapshot.setDetail(jobSnapshot.getDetail() + detail);
-			ServerJobHelper.getComponent(JobSnapshotService.class).update(jobSnapshot);
+			ServerJobHelper.getComponent(JobSnapshotService.class).update(jobSnapshot,false);
 		} else {
 			String detail = "任务已结束,但执行时发生异常. 异常信息[" + jobResult.getResult() + "] " + getNowTime() + "\n";
 			jobSnapshot.setStatus(JobSnapshotEnum.STATUS.ERROR);
 			jobSnapshot.setResult("任务已结束,但执行时发生异常. 异常信息[" + jobResult.getResult() + "] ");
 			jobSnapshot.setDetail(jobSnapshot.getDetail() + detail);
 			jobSnapshot.setTimeConsume(jobResult.getTimeConsume());
-			ServerJobHelper.getComponent(JobSnapshotService.class).update(jobSnapshot);
+			ServerJobHelper.getComponent(JobSnapshotService.class).update(jobSnapshot,false);
 		}
 	}
 	
@@ -199,7 +199,7 @@ public abstract class AbstractServerJob implements Job {
 	protected void handleJobExecuting() {
 		String detail = "执行中... " + getNowTime() + "\n";
 		jobSnapshot.setDetail(jobSnapshot.getDetail() + detail);
-		ServerJobHelper.getComponent(JobSnapshotService.class).update(jobSnapshot);
+		ServerJobHelper.getComponent(JobSnapshotService.class).update(jobSnapshot,false);
 	}
 	
 	/**
@@ -208,7 +208,7 @@ public abstract class AbstractServerJob implements Job {
 	protected void getExecuteResFail(String errorMessage) {
 		String detail = "获取任务执行情况失败, 错误信息:[" + errorMessage + "] " + getNowTime() + "\n";
 		jobSnapshot.setDetail(jobSnapshot.getDetail() + detail);
-		ServerJobHelper.getComponent(JobSnapshotService.class).update(jobSnapshot);
+		ServerJobHelper.getComponent(JobSnapshotService.class).update(jobSnapshot,false);
 	}
 	
 	/**
@@ -217,7 +217,7 @@ public abstract class AbstractServerJob implements Job {
 	protected JobExecutingResponse getExecuteResult() throws ConnectTimeoutException, SocketTimeoutException, Exception {
 		String detail = "获取任务执行情况. " + getNowTime() + "\n";
 		jobSnapshot.setDetail(jobSnapshot.getDetail() + detail);
-		ServerJobHelper.getComponent(JobSnapshotService.class).update(jobSnapshot);
+		ServerJobHelper.getComponent(JobSnapshotService.class).update(jobSnapshot,false);
 		JobRequest req = new JobRequest();
 		req.setJobDetailId(jobSnapshot.getId());
 		req.setMethodFlag(MethodFlag.EXECUTING);
@@ -247,7 +247,7 @@ public abstract class AbstractServerJob implements Job {
 		jobSnapshot.setDetail(jobSnapshot.getDetail() + detail);
 		jobSnapshot.setTimeConsume(0L);
 		jobSnapshot.setStatus(JobSnapshotEnum.STATUS.ERROR);
-		ServerJobHelper.getComponent(JobSnapshotService.class).update(jobSnapshot);
+		ServerJobHelper.getComponent(JobSnapshotService.class).update(jobSnapshot,false);
 	}
 	
 	/**
@@ -256,7 +256,7 @@ public abstract class AbstractServerJob implements Job {
 	protected void invokeFail(String errorMessage) {
 		String detail = "调用失败. 错误信息[" + errorMessage + "] " + getNowTime() + "\n";
 		jobSnapshot.setDetail(jobSnapshot.getDetail() + detail);
-		ServerJobHelper.getComponent(JobSnapshotService.class).update(jobSnapshot);
+		ServerJobHelper.getComponent(JobSnapshotService.class).update(jobSnapshot,false);
 	}
 	
 	/**
@@ -266,7 +266,7 @@ public abstract class AbstractServerJob implements Job {
 		String detail = "调用成功, 开始执行任务. " + getNowTime() + "\n";
 		jobSnapshot.setStatus(JobSnapshotEnum.STATUS.EXECUTING);
 		jobSnapshot.setDetail(jobSnapshot.getDetail() + detail);
-		ServerJobHelper.getComponent(JobSnapshotService.class).update(jobSnapshot);
+		ServerJobHelper.getComponent(JobSnapshotService.class).update(jobSnapshot,false);
 	}
 	
 	/**
@@ -278,7 +278,7 @@ public abstract class AbstractServerJob implements Job {
 		jobSnapshot.setUrl(url);
 		jobSnapshot.setIp(ip);
 		jobSnapshot.setDetail(jobSnapshot.getDetail() + detail);
-		ServerJobHelper.getComponent(JobSnapshotService.class).update(jobSnapshot);
+		ServerJobHelper.getComponent(JobSnapshotService.class).update(jobSnapshot,false);
 		JobRequest req = new JobRequest();
 		req.setJobDetailId(jobSnapshot.getId());
 		req.setMethodFlag(MethodFlag.INVOKE);
@@ -297,7 +297,7 @@ public abstract class AbstractServerJob implements Job {
 		String detail = "准备调用目标服务器. " + getNowTime() + "\n";
 		jobSnapshot.setStatus(JobSnapshotEnum.STATUS.INVOKING);
 		jobSnapshot.setDetail(jobSnapshot.getDetail() + detail);
-		ServerJobHelper.getComponent(JobSnapshotService.class).update(jobSnapshot);
+		ServerJobHelper.getComponent(JobSnapshotService.class).update(jobSnapshot,false);
 	}
 	
 	/**

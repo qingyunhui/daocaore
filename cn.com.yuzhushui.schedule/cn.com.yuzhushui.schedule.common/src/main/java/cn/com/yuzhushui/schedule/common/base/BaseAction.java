@@ -137,7 +137,7 @@ public abstract class BaseAction<MODEL extends BaseModel<KEY_TYPE>, FORM extends
 		Class<MODEL> modelClass = getGenericType(0);
 		MODEL model = modelClass.newInstance();
 		BeanUtils.copyProperties(form, model);
-		baseService.update(model);
+		baseService.update(model,true);
 		ModelAndView modelAndView = new ModelAndView("redirect:" + getActionPath() + "/list.htm");
 		redirectAttributes.addFlashAttribute("msg", "更新成功！");
 		return modelAndView;

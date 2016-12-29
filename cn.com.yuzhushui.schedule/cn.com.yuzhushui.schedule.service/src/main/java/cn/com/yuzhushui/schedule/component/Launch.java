@@ -15,13 +15,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import qing.yun.hui.common.utils.DateUtil;
 import cn.com.yuzhushui.schedule.enums.JobInfoEnum;
 import cn.com.yuzhushui.schedule.enums.JobSnapshotEnum;
 import cn.com.yuzhushui.schedule.job.biz.entity.JobInfo;
 import cn.com.yuzhushui.schedule.job.biz.entity.JobSnapshot;
 import cn.com.yuzhushui.schedule.job.biz.service.JobInfoService;
 import cn.com.yuzhushui.schedule.job.biz.service.JobSnapshotService;
+import qing.yun.hui.common.utils.DateUtil;
 
 /***
  ** @category 从数据库中查询所有待执行的job
@@ -82,7 +82,7 @@ public class Launch {
 					jobSnapshot.setResult(result);
 					jobSnapshot.setDetail(detail);
 					jobSnapshot.setTimeConsume(0L);
-					jobSnapshotService.update(jobSnapshot);
+					jobSnapshotService.update(jobSnapshot,false);
 					break;
 				}
 				if (JobInfoEnum.IS_ACTIVITY.ENABLED.getValue()!=jobInfo.getIsActivity().intValue()) {
@@ -94,7 +94,7 @@ public class Launch {
 					jobSnapshot.setResult(result);
 					jobSnapshot.setDetail(detail);
 					jobSnapshot.setTimeConsume(0L);
-					jobSnapshotService.update(jobSnapshot);
+					jobSnapshotService.update(jobSnapshot,false);
 					break;
 				}
 				JobDetail jobDetail = schedulePackage.createJobDetailByJobSnapshot(jobSnapshot, jobInfo);
@@ -112,7 +112,7 @@ public class Launch {
 				jobSnapshot.setResult(result);
 				jobSnapshot.setDetail(detail);
 				jobSnapshot.setTimeConsume(0L);
-				jobSnapshotService.update(jobSnapshot);
+				jobSnapshotService.update(jobSnapshot,false);
 				logger.error("Reload job snapshot fail.", e);
 			}
 		}

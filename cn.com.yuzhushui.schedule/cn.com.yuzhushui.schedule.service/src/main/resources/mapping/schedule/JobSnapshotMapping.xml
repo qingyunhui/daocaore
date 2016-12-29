@@ -138,13 +138,13 @@
 	</insert>
 	
 	<update id="delete" parameterType="java.lang.Integer">
-        UPDATE job_snapshot SET deleted=1 
-        WHERE deleted=0 AND
+        DELETE FROM job_snapshot 
+        WHERE 
         	id = #{value}
 	</update>
 	<update id="deleteBatch" parameterType="list" >
-        UPDATE job_snapshot SET deleted=1 
-        WHERE deleted=0 AND
+        DELETE FROM  job_snapshot 
+        WHERE 
         	id IN 
         <foreach collection="list" item = "id" open="(" separator="," close=")">
         	#{id}
@@ -188,8 +188,8 @@
 	            modify_time = #{modifyTime},
 	        </if>
         </set>
-        WHERE deleted=0
-        	AND id = #{id}
+        WHERE 
+        	 id = #{id}
 	</update>
 	
 	<select id="queryById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
