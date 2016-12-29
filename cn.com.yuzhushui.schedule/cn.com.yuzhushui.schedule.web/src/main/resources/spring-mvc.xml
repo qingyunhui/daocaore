@@ -31,7 +31,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
 			<bean class="cn.com.yuzhushui.schedule.common.Interceptor.SessionInterceptor">
-				<property name="noInterceptors" value="sys/sysLogin/login.htm"/><!-- 不须要拦截的URL多个URL以逗号隔开。	 -->
+				<property name="noInterceptors" value="sys/sysLogin/login.htm,sys/sysLogin/doLogin.htm"/><!-- 不须要拦截的URL多个URL以逗号隔开。	 -->
 				<property name="registers" value="" /><!-- 须要注册的URL -->
 				<property name="logins" value=""/><!-- 须要登陆的URL -->
 			</bean>

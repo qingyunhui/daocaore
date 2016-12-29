@@ -52,6 +52,8 @@ public class SysLoginAction {
 	
 	protected static final String ACTION_PATH = "/sys/sysLogin";
 	
+	protected static final String MAIN_ACTION_PATH = "/sys/sysMain";
+	
 	@Autowired
 	private ShardedJedisCached shardedJedisCached;
 	
@@ -60,13 +62,6 @@ public class SysLoginAction {
 	
 	@Autowired
 	private SysAccountService sysAccountService;
-	
-	/**进入个人首页（第一个页面）**/
-	@RequestMapping(value = "/myMain")
-	public ModelAndView myMain(HttpServletRequest request,HttpServletResponse response, HttpSession session) {
-		ModelAndView modelView = new ModelAndView(ACTION_PATH + "/myMain");
-		return modelView;
-	}
 	
 	/**进入登陆页面**/
 	@RequestMapping(value = "/login")
@@ -79,13 +74,7 @@ public class SysLoginAction {
 		String sessionInfoJson=shardedJedisCached.get(sessionId);
 		SessionInfo sessInfoInfo=JSONObject.parseObject(sessionInfoJson, SessionInfo.class);
 		if(null!=sessInfoInfo){
-			modelView.setViewName("redirect:"+ACTION_PATH+"/myMain.htm");
-			return modelView;
-		}
-		modelView.setViewName("redirect:"+ACTION_PATH+"/login.htm");
-		SysUser user=SessionUtil.getSysUser();
-		if(null!=user){
-			modelView.setViewName("redirect:"+ACTION_PATH+"/myMain.htm");
+			modelView.setViewName("redirect:"+MAIN_ACTION_PATH+"/index.htm");
 			return modelView;
 		}
 		return modelView;
@@ -109,7 +98,7 @@ public class SysLoginAction {
 		
 		SysUser user=SessionUtil.getSysUser();
 		if(null!=user){
-			modeView.setViewName("redirect:"+ACTION_PATH+"/myMain.htm");
+			modeView.setViewName("redirect:"+MAIN_ACTION_PATH+"/index.htm");
 			return modeView;
 		}
 		
@@ -168,7 +157,7 @@ public class SysLoginAction {
 				if(account.getStatus().intValue()==SysAccountEnum.STATUS.AUDIT_SUCCESS.getValue()){
 					logger.error("登录成功，用户信息将记录到Cookie中且存储到Shiro中!");
 					//登陆成功-把用户存储到cookie中。
-					modeView.setViewName("redirect:"+ACTION_PATH+"/myMain.htm");
+					modeView.setViewName("redirect:"+MAIN_ACTION_PATH+"/index.htm");
 					SysUser sysUser=users.get(0);
 					SessionInfo sessionInfo = new SessionInfo();
 					sessionInfo.setSysUser(sysUser);

@@ -3,5 +3,12 @@
 <html>
 <head>
 <body>
-	<h1>well come!</h1>
+	<h1>well come to login page!</h1>
+	
+	<form id="loginForm" method="post" action="sys/sysLogin/doLogin.htm">
+        	账号:<input type="text" id="accounts" name="accounts" value="admin" />
+        	密码:<input type="password" id="passwords" name="passwords" value="111111" />
+        	<input type="submit" value="登陆">
+    </form>
+	
 </body>

@@ -52,6 +52,19 @@
     <url-pattern>*.htm</url-pattern>
     <url-pattern>*.json</url-pattern>
   </servlet-mapping>
+  
+  <!-- job相关 -->
+  <servlet>
+	<servlet-name>JobServlet</servlet-name>
+	<servlet-class>cn.com.yuzhushui.schedule.common.servlet.JobExecutorServlet</servlet-class>
+	<load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+	<servlet-name>JobServlet</servlet-name>
+	<url-pattern>/job/*</url-pattern>
+  </servlet-mapping>
+  <!-- end -->
+  
   <!-- session有效期60分钟 -->
   <session-config>
     <session-timeout>60</session-timeout>
