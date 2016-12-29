@@ -5,8 +5,8 @@
         <result property="id" column="id" javaType="Integer"/>
         <result property="jobInfoId" column="job_info_id" javaType="Long"/>
         <result property="name" column="name" javaType="String"/>
-        <result property="group" column="group" javaType="String"/>
-        <result property="status" column="status" javaType="String"/>
+        <result property="groups" column="groups" javaType="String"/>
+        <result property="status" column="status" javaType="cn.com.yuzhushui.schedule.enums.JobSnapshotEnum$STATUS"/>
         <result property="ip" column="ip" javaType="String"/>
         <result property="url" column="url" javaType="String"/>
         <result property="result" column="result" javaType="String"/>
@@ -20,7 +20,7 @@
         t.id,
         t.job_info_id,
         t.name,
-        t.group,
+        t.groups,
         t.status,
         t.ip,
         t.url,
@@ -42,8 +42,8 @@
 		 <if test="@OGNL@isNotEmpty(name)">
             AND t.name = #{name}
          </if>
-		 <if test="@OGNL@isNotEmpty(group)">
-            AND t.group = #{group}
+		 <if test="@OGNL@isNotEmpty(groups)">
+            AND t.groups = #{groups}
          </if>
 		 <if test="@OGNL@isNotEmpty(status)">
             AND t.status = #{status}
@@ -76,7 +76,7 @@
 	        INSERT INTO job_snapshot (
 	            job_info_id ,
 	            name ,
-	            group ,
+	            groups ,
 	            status ,
 	            ip ,
 	            url ,
@@ -88,7 +88,7 @@
 	        ) VALUES (
 	        	#{jobInfoId},
 	        	#{name},
-	        	#{group},
+	        	#{groups},
 	        	#{status},
 	        	#{ip},
 	        	#{url},
@@ -109,7 +109,7 @@
 	        INSERT INTO job_snapshot (
 	            job_info_id ,
 	            name ,
-	            group ,
+	            groups ,
 	            status ,
 	            ip ,
 	            url ,
@@ -123,7 +123,7 @@
 	        (
 	        	#{jobInfoId},
 	        	#{name},
-	        	#{group},
+	        	#{groups},
 	        	#{status},
 	        	#{ip},
 	        	#{url},
@@ -160,8 +160,8 @@
         	<if test="@OGNL@isNotEmpty(name)">
 	            name = #{name},
 	        </if>
-        	<if test="@OGNL@isNotEmpty(group)">
-	            group = #{group},
+        	<if test="@OGNL@isNotEmpty(groups)">
+	            groups = #{groups},
 	        </if>
         	<if test="@OGNL@isNotEmpty(status)">
 	            status = #{status},
@@ -192,7 +192,7 @@
         	AND id = #{id}
 	</update>
 	
-	<select id="getById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+	<select id="queryById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
 	   	SELECT <include refid="full-columns" />
        	<![CDATA[
        	FROM job_snapshot t

@@ -4,13 +4,13 @@
 	<resultMap type="cn.com.yuzhushui.schedule.job.biz.entity.JobInfo" id="BaseResultMap">
         <result property="id" column="id" javaType="Integer"/>
         <result property="name" column="name" javaType="String"/>
-        <result property="group" column="group" javaType="String"/>
-        <result property="type" column="type" javaType="String"/>
-        <result property="time" column="time" javaType="String"/>
+        <result property="groups" column="groups" javaType="String"/>
+        <result property="type" column="type" javaType="cn.com.yuzhushui.schedule.enums.JobInfoEnum$TYPE"/>
+        <result property="time" column="time" javaType="Date"/>
         <result property="cron" column="cron" javaType="String"/>
         <result property="urls" column="urls" javaType="String"/>
         <result property="classPath" column="class_path" javaType="String"/>
-        <result property="invokePolicy" column="invoke_policy" javaType="String"/>
+        <result property="invokePolicy" column="invoke_policy" javaType="cn.com.yuzhushui.schedule.enums.JobInfoEnum$INVOKE_POLICY"/>
         <result property="isActivity" column="is_activity" javaType="Integer"/>
         <result property="desc" column="desc" javaType="String"/>
         <result property="createTime" column="create_time" javaType="Date"/>
@@ -21,7 +21,7 @@
 	<sql id="full-columns" >
         t.id,
         t.name,
-        t.group,
+        t.groups,
         t.type,
         t.time,
         t.cron,
@@ -43,8 +43,8 @@
 		 <if test="@OGNL@isNotEmpty(name)">
             AND t.name = #{name}
          </if>
-		 <if test="@OGNL@isNotEmpty(group)">
-            AND t.group = #{group}
+		 <if test="@OGNL@isNotEmpty(groups)">
+            AND t.groups = #{groups}
          </if>
 		 <if test="@OGNL@isNotEmpty(type)">
             AND t.type = #{type}
@@ -85,7 +85,7 @@
 		<![CDATA[
 	        INSERT INTO job_info (
 	            name ,
-	            group ,
+	            groups ,
 	            type ,
 	            time ,
 	            cron ,
@@ -99,7 +99,7 @@
 	            param 
 	        ) VALUES (
 	        	#{name},
-	        	#{group},
+	        	#{groups},
 	        	#{type},
 	        	#{time},
 	        	#{cron},
@@ -108,8 +108,8 @@
 	        	#{invokePolicy},
 	        	#{isActivity},
 	        	#{desc},
-	        	#{createTime},
-	        	#{modifyTime},
+	        	now(),
+	        	now(),
 	        	#{param}
 	        )
 	    ]]>
@@ -122,7 +122,7 @@
 		<![CDATA[
 	        INSERT INTO job_info (
 	            name ,
-	            group ,
+	            groups ,
 	            type ,
 	            time ,
 	            cron ,
@@ -138,7 +138,7 @@
 	        <foreach collection="list" item="item" index="index" separator=",">
 	        (
 	        	#{name},
-	        	#{group},
+	        	#{groups},
 	        	#{type},
 	        	#{time},
 	        	#{cron},
@@ -175,8 +175,8 @@
         	<if test="@OGNL@isNotEmpty(name)">
 	            name = #{name},
 	        </if>
-        	<if test="@OGNL@isNotEmpty(group)">
-	            group = #{group},
+        	<if test="@OGNL@isNotEmpty(groups)">
+	            groups = #{groups},
 	        </if>
         	<if test="@OGNL@isNotEmpty(type)">
 	            type = #{type},
@@ -216,7 +216,7 @@
         	AND id = #{id}
 	</update>
 	
-	<select id="getById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+	<select id="queryById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
 	   	SELECT <include refid="full-columns" />
        	<![CDATA[
        	FROM job_info t

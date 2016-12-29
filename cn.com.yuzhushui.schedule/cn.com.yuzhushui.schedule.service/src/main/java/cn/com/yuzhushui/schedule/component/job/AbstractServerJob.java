@@ -318,10 +318,10 @@ public abstract class AbstractServerJob implements Job {
 			jobSnapshot = new JobSnapshot();
 			jobSnapshot.setJobInfoId(jobInfoId);
 			jobSnapshot.setName(jobInfo.getName());
-			jobSnapshot.setGroup(jobInfo.getGroup());
+			jobSnapshot.setGroups(jobInfo.getGroups());
 			jobSnapshot.setStatus(JobSnapshotEnum.STATUS.INIT);
 			jobSnapshot.setDetail("初始化 " + getNowTime() + "\n");
-			ServerJobHelper.getComponent(JobSnapshotService.class).add(jobSnapshot);
+			ServerJobHelper.getComponent(JobSnapshotService.class).add(jobSnapshot,false);
 		}
 	}
 	

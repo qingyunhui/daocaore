@@ -31,7 +31,7 @@ public class JobInfoForm extends BaseForm<Integer> {
 	/**
 	 * @Fields group:分组,一般是模块名
 	 */
-	private String group;
+	private String groups;
 	
 	/**
 	 * @Fields type:一次性任务或者cron任务

@@ -65,7 +65,7 @@ private static final Logger LOG = LoggerFactory.getLogger(SchedulePackage.class)
 	 */
 	public JobKey getJobKeyByJobInfo(JobInfo jobInfo) {
 		String name = jobInfo.getName();
-		String group = jobInfo.getGroup();
+		String group = jobInfo.getGroups();
 		JobKey jobKey = JobKey.jobKey(name, group);
 		return jobKey;
 	}
@@ -77,7 +77,7 @@ private static final Logger LOG = LoggerFactory.getLogger(SchedulePackage.class)
 	 */
 	public TriggerKey getTriggerKeyByJobInfo(JobInfo jobInfo) {
 		String name = jobInfo.getName();
-		String group = jobInfo.getGroup();
+		String group = jobInfo.getGroups();
 
 		TriggerKey triggerKey = TriggerKey.triggerKey(name, group);
 		return triggerKey;
@@ -90,7 +90,7 @@ private static final Logger LOG = LoggerFactory.getLogger(SchedulePackage.class)
 	 */
 	public JobKey getJobKeyByJobSnapshot(JobSnapshot jobSnapshot) {
 		String name = jobSnapshot.getName() + "_reload_" + jobSnapshot.getId();
-		String group = jobSnapshot.getGroup() + "_reload_" + jobSnapshot.getId();
+		String group = jobSnapshot.getGroups() + "_reload_" + jobSnapshot.getId();
 
 		JobKey jobKey = JobKey.jobKey(name, group);
 		return jobKey;
@@ -103,7 +103,7 @@ private static final Logger LOG = LoggerFactory.getLogger(SchedulePackage.class)
 	 */
 	public TriggerKey getTriggerKeyByJobSnapshot(JobSnapshot jobSnapshot) {
 		String name = jobSnapshot.getName() + "_reload_" + jobSnapshot.getId();
-		String group = jobSnapshot.getGroup() + "_reload_" + jobSnapshot.getId();
+		String group = jobSnapshot.getGroups() + "_reload_" + jobSnapshot.getId();
 		
 		TriggerKey triggerKey = TriggerKey.triggerKey(name, group);
 		return triggerKey;

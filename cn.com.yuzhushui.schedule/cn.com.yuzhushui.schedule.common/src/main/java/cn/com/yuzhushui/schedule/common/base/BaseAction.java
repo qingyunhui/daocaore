@@ -103,7 +103,7 @@ public abstract class BaseAction<MODEL extends BaseModel<KEY_TYPE>, FORM extends
 			e.printStackTrace();
 		}
 		
-		baseService.add(model);
+		baseService.add(model,true);
 		ModelAndView modelAndView = new ModelAndView("redirect:" + getActionPath() + "/list.htm");
 		redirectAttributes.addFlashAttribute("msg", "新增成功！");
 		return modelAndView;

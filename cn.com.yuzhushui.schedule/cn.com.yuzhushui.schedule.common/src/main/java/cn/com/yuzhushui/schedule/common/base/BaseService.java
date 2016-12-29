@@ -16,16 +16,18 @@ public interface BaseService<MODEL, KEY_TYPE>{
 	/***
 	 * <p>新增</p>
 	 * @param model 待新增的对象
+	 * @param autoFil 是否自动填充用户信息..
 	 * @return int 受影响的行数
 	 * */
-	public int add(MODEL model);
+	public int add(MODEL model,boolean autoFil);
 
 	/***
 	 * <p>批量新增</p>
 	 * @param models 待新增的对象集合
+	 * @param autoFil 是否自动填充用户信息..
 	 * @return int 受影响的行数
 	 * */
-	public int add(List<MODEL> models);
+	public int add(List<MODEL> models,boolean autoFil);
 
 	/***
 	 * <p>更新</p>

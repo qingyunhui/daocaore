@@ -27,14 +27,16 @@ public class BaseServiceImpl<MODEL extends BaseModel<KEY_TYPE>, KEY_TYPE> implem
 		return baseDao;
 	}
 	
-	public int add(MODEL model) {
-		beforeHand(model);
+	public int add(MODEL model,boolean autoFil) {
+		if(autoFil)beforeHand(model);
 		int count = getBaseDao().insert(model);
 		return count;
 	}
-	public int add(List<MODEL> models) {
-		for(MODEL model:models){
-			beforeHand(model);
+	public int add(List<MODEL> models,boolean autoFil) {
+		if(autoFil){
+			for(MODEL model:models){
+				beforeHand(model);
+			}
 		}
 		int count = getBaseDao().insertBatch(models);
 		return count;

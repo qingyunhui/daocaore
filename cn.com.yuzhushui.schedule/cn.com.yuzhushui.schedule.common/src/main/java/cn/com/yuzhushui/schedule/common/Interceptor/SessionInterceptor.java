@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -37,8 +36,8 @@ public class SessionInterceptor extends HandlerInterceptorAdapter{
 	
 	private String[] logins;		 //须要登陆的url
 	
-	@Value("#{properties['loginPath']}")
-	private String loginPath;
+//	@Value("${loginPath}")
+	private String loginPath="sys/sysLoin/login.htm";
 	
 	@Autowired
 	private ShardedJedisCached shardedJedisCached;

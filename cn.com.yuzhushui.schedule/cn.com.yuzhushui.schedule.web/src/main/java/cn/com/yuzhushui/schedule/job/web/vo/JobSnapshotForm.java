@@ -36,7 +36,7 @@ public class JobSnapshotForm extends BaseForm<Integer> {
 	/**
 	 * @Fields group:分组,一般是模块名
 	 */
-	private String group;
+	private String groups;
 	
 	/**
 	 * @Fields status:init, invoking, completed , error 等
