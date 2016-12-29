@@ -5,6 +5,7 @@ import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
 import cn.com.yuzhushui.schedule.common.base.BaseModel;
+import cn.com.yuzhushui.schedule.enums.JobInfoEnum;
 
 /**
  * @author qing.yunhui 
@@ -38,12 +39,12 @@ public class JobInfo extends BaseModel<Integer>{
 	/**
 	 * @Fields type:一次性任务或者cron任务
 	 */
-	private String type;
+	private JobInfoEnum.TYPE type;
 	
 	/**
 	 * @Fields time:一次性任务执行时间
 	 */
-	private String time;
+	private Date time;
 	
 	/**
 	 * @Fields cron:cron 任务的 cron 表达式
@@ -63,7 +64,7 @@ public class JobInfo extends BaseModel<Integer>{
 	/**
 	 * @Fields invokePolicy:调用策略, 优先,随机 等.
 	 */
-	private String invokePolicy;
+	private JobInfoEnum.INVOKE_POLICY invokePolicy;
 	
 	/**
 	 * @Fields isActivity:是否启用

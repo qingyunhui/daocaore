@@ -5,6 +5,7 @@ import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
 import cn.com.yuzhushui.schedule.common.base.BaseModel;
+import cn.com.yuzhushui.schedule.enums.JobSnapshotEnum;
 
 /**
  * @author qing.yunhui 
@@ -28,7 +29,7 @@ public class JobSnapshot extends BaseModel<Integer>{
 	/**
 	 * @Fields jobInfoId:jobInfoId
 	 */
-	private Long jobInfoId;
+	private Integer jobInfoId;
 	
 	/**
 	 * @Fields name:名称
@@ -43,7 +44,7 @@ public class JobSnapshot extends BaseModel<Integer>{
 	/**
 	 * @Fields status:init, invoking, completed , error 等
 	 */
-	private String status;
+	private JobSnapshotEnum.STATUS status;
 	
 	/**
 	 * @Fields ip:目标服务器 IP 地址
