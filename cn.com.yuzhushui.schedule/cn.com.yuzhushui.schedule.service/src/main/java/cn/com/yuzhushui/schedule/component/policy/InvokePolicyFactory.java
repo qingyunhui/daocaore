@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import qing.yun.hui.common.utils.StringUtil;
-import cn.com.yuzhushui.schedule.enums.JobInfoEnum;
+import cn.com.yuzhushui.schedule.job.enums.JobInfoEnum;
 
 @Component
 public class InvokePolicyFactory {

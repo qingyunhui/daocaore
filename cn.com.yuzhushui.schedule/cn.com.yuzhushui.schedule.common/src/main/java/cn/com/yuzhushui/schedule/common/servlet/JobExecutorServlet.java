@@ -24,14 +24,14 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import qing.yun.hui.common.utils.StringUtil;
-import cn.com.yuzhushui.schedule.enums.JobStatus;
-import cn.com.yuzhushui.schedule.enums.MethodFlag;
 import cn.com.yuzhushui.schedule.job.bean.JobExecutingResponse;
 import cn.com.yuzhushui.schedule.job.bean.JobInvokeResponse;
 import cn.com.yuzhushui.schedule.job.bean.JobRequest;
 import cn.com.yuzhushui.schedule.job.bean.JobResult;
 import cn.com.yuzhushui.schedule.job.bean.JobTestResponse;
 import cn.com.yuzhushui.schedule.job.core.Job;
+import cn.com.yuzhushui.schedule.job.enums.JobStatus;
+import cn.com.yuzhushui.schedule.job.enums.MethodFlag;
 
 import com.alibaba.fastjson.JSON;
 

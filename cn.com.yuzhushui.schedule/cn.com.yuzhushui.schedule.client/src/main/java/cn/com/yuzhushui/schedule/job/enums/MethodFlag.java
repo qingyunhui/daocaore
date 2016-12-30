@@ -1,4 +1,4 @@
-package cn.com.yuzhushui.schedule.enums;
+package cn.com.yuzhushui.schedule.job.enums;
 
 /**
  * server执行的方法的标记

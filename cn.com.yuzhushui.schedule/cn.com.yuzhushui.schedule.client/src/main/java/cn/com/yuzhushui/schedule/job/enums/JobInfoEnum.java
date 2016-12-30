@@ -1,4 +1,4 @@
-package cn.com.yuzhushui.schedule.enums;
+package cn.com.yuzhushui.schedule.job.enums;
 
 import lombok.Getter;
 import qing.yun.hui.common.enums.ICommonEnum;

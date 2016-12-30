@@ -2,7 +2,7 @@ package cn.com.yuzhushui.schedule.job.bean;
 
 import java.io.Serializable;
 
-import cn.com.yuzhushui.schedule.enums.JobStatus;
+import cn.com.yuzhushui.schedule.job.enums.JobStatus;
 
 /**
  * 封装了请求执行结果等相关参数的DO

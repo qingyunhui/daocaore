@@ -9,7 +9,11 @@
   
   <!-- 依懒相关 -->
   <dependencies>
-  
+  	<dependency>
+  		<groupId>cn.com.yuzhushui.schedule.client</groupId>
+	   <artifactId>cn.com.yuzhushui.schedule.client</artifactId>
+	   <version>0.0.1-SNAPSHOT</version>
+  	</dependency>
   	<!-- springmvc -->
   	<dependency>
 	   <groupId>org.springframework</groupId>

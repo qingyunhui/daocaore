@@ -8,6 +8,7 @@
   	<module>cn.com.yuzhushui.schedule.common</module>
   	<module>cn.com.yuzhushui.schedule.service</module>
   	<module>cn.com.yuzhushui.schedule.web</module>
+  	<module>cn.com.yuzhushui.schedule.client</module>
   </modules>
   
   

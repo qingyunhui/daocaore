@@ -1,6 +1,6 @@
 package cn.com.yuzhushui.schedule.job.bean;
 
-import cn.com.yuzhushui.schedule.enums.MethodFlag;
+import cn.com.yuzhushui.schedule.job.enums.MethodFlag;
 
 /**
  * 封装了http请求中的参数信息

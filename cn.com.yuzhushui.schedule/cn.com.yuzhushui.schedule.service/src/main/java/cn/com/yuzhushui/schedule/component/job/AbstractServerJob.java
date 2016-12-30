@@ -20,10 +20,6 @@ import qing.yun.hui.common.utils.StringUtil;
 import cn.com.yuzhushui.schedule.component.ServerJobHelper;
 import cn.com.yuzhushui.schedule.component.policy.InvokePolicy;
 import cn.com.yuzhushui.schedule.component.policy.InvokePolicyFactory;
-import cn.com.yuzhushui.schedule.enums.JobInfoEnum;
-import cn.com.yuzhushui.schedule.enums.JobSnapshotEnum;
-import cn.com.yuzhushui.schedule.enums.JobStatus;
-import cn.com.yuzhushui.schedule.enums.MethodFlag;
 import cn.com.yuzhushui.schedule.job.bean.JobExecutingResponse;
 import cn.com.yuzhushui.schedule.job.bean.JobInvokeResponse;
 import cn.com.yuzhushui.schedule.job.bean.JobRequest;
@@ -32,6 +28,10 @@ import cn.com.yuzhushui.schedule.job.biz.entity.JobInfo;
 import cn.com.yuzhushui.schedule.job.biz.entity.JobSnapshot;
 import cn.com.yuzhushui.schedule.job.biz.service.JobInfoService;
 import cn.com.yuzhushui.schedule.job.biz.service.JobSnapshotService;
+import cn.com.yuzhushui.schedule.job.enums.JobInfoEnum;
+import cn.com.yuzhushui.schedule.job.enums.JobSnapshotEnum;
+import cn.com.yuzhushui.schedule.job.enums.JobStatus;
+import cn.com.yuzhushui.schedule.job.enums.MethodFlag;
 
 import com.alibaba.fastjson.JSON;
 

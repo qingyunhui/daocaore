@@ -6,7 +6,7 @@
         <result property="jobInfoId" column="job_info_id" javaType="Integer"/>
         <result property="name" column="name" javaType="String"/>
         <result property="groups" column="groups" javaType="String"/>
-        <result property="status" column="status" javaType="cn.com.yuzhushui.schedule.enums.JobSnapshotEnum$STATUS"/>
+        <result property="status" column="status" javaType="cn.com.yuzhushui.schedule.job.enums.JobSnapshotEnum$STATUS"/>
         <result property="ip" column="ip" javaType="String"/>
         <result property="url" column="url" javaType="String"/>
         <result property="result" column="result" javaType="String"/>

@@ -24,9 +24,9 @@ import org.springframework.stereotype.Component;
 import cn.com.yuzhushui.schedule.component.job.AbstractServerJob;
 import cn.com.yuzhushui.schedule.component.job.OnceServerJob;
 import cn.com.yuzhushui.schedule.component.job.RepeatServerJob;
-import cn.com.yuzhushui.schedule.enums.JobInfoEnum;
 import cn.com.yuzhushui.schedule.job.biz.entity.JobInfo;
 import cn.com.yuzhushui.schedule.job.biz.entity.JobSnapshot;
+import cn.com.yuzhushui.schedule.job.enums.JobInfoEnum;
 
 /***
  ** @category 请用一句话来描述其用途...

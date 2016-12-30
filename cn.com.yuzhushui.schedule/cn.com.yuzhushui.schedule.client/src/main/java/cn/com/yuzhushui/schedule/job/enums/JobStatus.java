@@ -1,4 +1,4 @@
-package cn.com.yuzhushui.schedule.enums;
+package cn.com.yuzhushui.schedule.job.enums;
 
 public enum JobStatus {
 	EXECUTING(0, "正在执行"), FINISHED(1, "已完成"), UNKNOW(2, "未知状态");

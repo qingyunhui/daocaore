@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
 import cn.com.yuzhushui.schedule.common.base.BaseModel;
-import cn.com.yuzhushui.schedule.enums.JobInfoEnum;
+import cn.com.yuzhushui.schedule.job.enums.JobInfoEnum;
 
 /**
  * @author qing.yunhui 

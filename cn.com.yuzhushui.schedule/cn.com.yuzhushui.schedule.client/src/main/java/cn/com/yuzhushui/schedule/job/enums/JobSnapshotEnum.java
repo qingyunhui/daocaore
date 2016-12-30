@@ -1,4 +1,4 @@
-package cn.com.yuzhushui.schedule.enums;
+package cn.com.yuzhushui.schedule.job.enums;
 /***
  ** @category 请用一句话来描述其用途...
  ** @author qing.yunhui
