@@ -20,7 +20,7 @@ public class EmailNotificationJob implements Job{
 	
 	public String execute(String parameters) {
 		if(StringUtil.isEmpty(parameters)) {
-			logger.error("===========>参数不能为null。");
+			logger.error("===========>调用EmailNotificationJob.参数不能为null。");
 			return "fail";
 		}
 		logger.info("=================>success.........");

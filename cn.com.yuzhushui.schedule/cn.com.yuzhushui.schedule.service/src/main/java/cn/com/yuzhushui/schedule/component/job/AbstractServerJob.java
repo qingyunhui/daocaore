@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import qing.yun.hui.common.utils.HttpClientUtils;
+import qing.yun.hui.common.utils.StringUtil;
 import cn.com.yuzhushui.schedule.component.ServerJobHelper;
 import cn.com.yuzhushui.schedule.component.policy.InvokePolicy;
 import cn.com.yuzhushui.schedule.component.policy.InvokePolicyFactory;
@@ -77,13 +78,13 @@ public abstract class AbstractServerJob implements Job {
 					
 					// 调用目标服务器,启动任务.
 					JobInvokeResponse invokeRes = invoke(url);
-					if (invokeRes.isInvokedSucc()) {
+					if (null!=invokeRes && invokeRes.isInvokedSucc()) {
 						// 任务调用成功
 						invokeToExecute();
 						break;
 					} else {
 						// 调用失败.
-						throw new RuntimeException(invokeRes.getErrorMsg());
+						throw new RuntimeException(null==invokeRes?"调用目标服务器失败，失败原因.{"+invokeRes+"}":invokeRes.getErrorMsg());
 					}
 				}
 				catch (Exception e) {
@@ -286,6 +287,7 @@ public abstract class AbstractServerJob implements Job {
 		req.setParam(jobInfo.getParam());
 		String reqBody = JSON.toJSONString(req);
 		String resBody = HttpClientUtils.post(url, reqBody, "application/json", "utf-8", TIME_OUT, TIME_OUT);
+		if(StringUtil.isEmpty(resBody)) return null;
 		JobInvokeResponse invokeRes = JSON.parseObject(resBody, JobInvokeResponse.class);
 		return invokeRes;
 	}
@@ -321,6 +323,7 @@ public abstract class AbstractServerJob implements Job {
 			jobSnapshot.setGroups(jobInfo.getGroups());
 			jobSnapshot.setStatus(JobSnapshotEnum.STATUS.INIT);
 			jobSnapshot.setDetail("初始化 " + getNowTime() + "\n");
+			jobSnapshot.setIp(StringUtil.getIPAddress());
 			ServerJobHelper.getComponent(JobSnapshotService.class).add(jobSnapshot,false);
 		}
 	}
@@ -336,7 +339,9 @@ public abstract class AbstractServerJob implements Job {
 	 * 从URL里提取IP或域名.
 	 */
 	private String getIpFromUrl(String url) {
-		url = url.substring(url.indexOf("//") + 2);
+		if(url.contains("//")){
+			url = url.substring(url.indexOf("//") + 2);
+		}
 		url = url.substring(0, url.indexOf("/"));
 		if (url.contains(":"))
 			return url.substring(0, url.indexOf(":"));

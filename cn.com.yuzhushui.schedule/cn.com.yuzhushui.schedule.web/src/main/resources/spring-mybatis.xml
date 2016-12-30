@@ -8,7 +8,7 @@ http://www.springframework.org/schema/aop
 http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 
 	 <!-- 对JDBC配置进行解密  --> 
-	<bean id="cipherPropertyConfigurer" class="cn.com.yuzhushui.schedule.apply.CipherPropertyConfigurer">  
+	<bean id="scheduleCipherPropertyConfigurer" class="cn.com.yuzhushui.schedule.apply.CipherPropertyConfigurer">  
         <property name="locations">
             <list>
             	<value>classpath:/jdbc.properties</value>

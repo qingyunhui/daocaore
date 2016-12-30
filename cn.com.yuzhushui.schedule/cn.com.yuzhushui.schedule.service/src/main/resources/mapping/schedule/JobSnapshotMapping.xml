@@ -95,8 +95,8 @@
 	        	#{result},
 	        	#{timeConsume},
 	        	#{detail},
-	        	#{createTime},
-	        	#{modifyTime}
+	        	now(),
+	        	now()
 	        )
 	    ]]>
     	<selectKey resultType="java.lang.Integer" keyProperty="id">
@@ -130,8 +130,8 @@
 	        	#{result},
 	        	#{timeConsume},
 	        	#{detail},
-	        	#{createTime},
-	        	#{modifyTime}
+	        	now(),
+	        	now()
 	        )
 	        </foreach>
 	    ]]>
