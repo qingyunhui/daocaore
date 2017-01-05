@@ -40,7 +40,7 @@ public abstract class AbstractServerJob implements Job {
 	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	// 连接超时或响应超时. 总体超时时间为: TIME_OUT + TIME_OUT.
-	protected static final int TIME_OUT = 1000 * 5;
+	protected static final int TIME_OUT = 1000 * 50;
 	
 	public static final String JOB_SNAPSHOT_ID = "jobSnapshotId";
 	

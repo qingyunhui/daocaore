@@ -86,8 +86,7 @@ public class Launch {
 					break;
 				}
 				if (JobInfoEnum.IS_ACTIVITY.ENABLED.getValue()!=jobInfo.getIsActivity().intValue()) {
-					// reload job 时, 对应的 job info 已经为 not activity 了, 则把这个 job
-					// 状态改为 error.
+					// reload job 时, 对应的 job info 已经为 not activity 了, 则把这个 job 状态改为 error.
 					String result = "Tms 启动时, 重新加载未完成的任务, 但这个任务信息已经被置为不激活.";
 					String detail = result + DateUtil.dateToString(new Date(), "yyyy-MM-dd HH:mm:ss") + "\n";
 					jobSnapshot.setStatus(JobSnapshotEnum.STATUS.ERROR);
