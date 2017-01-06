@@ -9,5 +9,17 @@ import cn.com.yuzhushui.schedule.job.biz.entity.JobInfo;
  * @history
  */
 public interface JobInfoService extends BaseService<JobInfo,Integer>{
+	
+	/***
+	 * <p>新增</p>
+	 * @param model 待新增的对象
+	 * @param autoFil 是否自动填充用户信息..
+	 * @return int 受影响的行数
+	 * */
+	public int addJobInfo(JobInfo jobInfo);
     
+	
+	public int updateByJobInfo(JobInfo jobInfo);
+	
+	public int deleteJobInfoById(Integer id);
 }

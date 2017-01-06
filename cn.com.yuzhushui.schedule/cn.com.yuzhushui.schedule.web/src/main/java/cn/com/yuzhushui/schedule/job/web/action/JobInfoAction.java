@@ -38,7 +38,6 @@ public class JobInfoAction extends BaseAction<JobInfo, JobInfoForm, Integer>{
 	@Autowired
 	private JobInfoService jobInfoService;
 	
-	
 	@RequestMapping(value = "list", method = { RequestMethod.POST,RequestMethod.GET })
 	public ModelAndView list() {
 		ModelAndView mv=new ModelAndView();
@@ -55,18 +54,6 @@ public class JobInfoAction extends BaseAction<JobInfo, JobInfoForm, Integer>{
 		mv.setViewName(ACTION_PATH+"/list.htm");
 		return mv;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	@Override
 	public String getActionPath() {
