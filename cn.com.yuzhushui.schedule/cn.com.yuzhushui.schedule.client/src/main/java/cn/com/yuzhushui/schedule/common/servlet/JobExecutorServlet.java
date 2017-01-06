@@ -194,7 +194,7 @@ public class JobExecutorServlet extends HttpServlet{
 	}
 
 	/**
-	 * 先校验类名对应的bean是否存在，以及是否实现了{@link Job}}接口，再放到缓存中去
+	 * 先校验类名对应的bean是否存在，以及是否实现了{@link Job}接口，再放到缓存中去
 	 * @param classFullPath
 	 * @return
 	 * @throws Exception
