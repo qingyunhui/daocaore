@@ -1,12 +1,12 @@
-<link href="${diaoyuPath}/lib/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<%-- <link href="${diaoyuPath}/lib/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-<link href="${diaoyuPath}/lib/css/AdminLTE.css" rel="stylesheet" type="text/css" />
-<link href="${diaoyuPath}/lib/css/style/validator.css" rel="stylesheet" type="text/css" />
-<link href="${diaoyuPath}/lib/css/skins/skin-blue.css" rel="stylesheet" type="text/css" /> --%>
-<link href="${diaoyuPath}/lib/plugins/jqgrid/ui.jqgrid.css" rel="stylesheet" />
-<link href="${diaoyuPath}/lib/css/body.css" rel="stylesheet" type="text/css">
-<link href="${diaoyuPath}/lib/css/baseCss.css" rel="stylesheet" type="text/css">
-<link href="${diaoyuPath}/lib/css/user-layout.css" rel="stylesheet" type="text/css">
+<%-- <link href="${daoCaoRenPath}/lib/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> --%>
+<%-- <link href="${daoCaoRenPath}/lib/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="${daoCaoRenPath}/lib/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+<link href="${daoCaoRenPath}/lib/css/style/validator.css" rel="stylesheet" type="text/css" />
+<link href="${daoCaoRenPath}/lib/css/skins/skin-blue.css" rel="stylesheet" type="text/css" /> --%>
+<%-- <link href="${daoCaoRenPath}/lib/plugins/jqgrid/ui.jqgrid.css" rel="stylesheet" />
+<link href="${daoCaoRenPath}/lib/css/body.css" rel="stylesheet" type="text/css">
+<link href="${daoCaoRenPath}/lib/css/baseCss.css" rel="stylesheet" type="text/css">
+<link href="${daoCaoRenPath}/lib/css/user-layout.css" rel="stylesheet" type="text/css"> --%>
 <style type="text/css">
 	span.required {
 		color: red;

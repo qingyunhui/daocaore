@@ -12,7 +12,7 @@
         <result property="classPath" column="class_path" javaType="String"/>
         <result property="invokePolicy" column="invoke_policy" javaType="cn.com.yuzhushui.schedule.job.enums.JobInfoEnum$INVOKE_POLICY"/>
         <result property="isActivity" column="is_activity" javaType="Integer"/>
-        <result property="desc" column="desc" javaType="String"/>
+        <result property="comments" column="comments" javaType="String"/>
         <result property="createTime" column="create_time" javaType="Date"/>
         <result property="modifyTime" column="modify_time" javaType="Date"/>
         <result property="param" column="param" javaType="String"/>
@@ -29,7 +29,7 @@
         t.class_path,
         t.invoke_policy,
         t.is_activity,
-        t.desc,
+        t.comments,
         t.create_time,
         t.modify_time,
         t.param
@@ -67,8 +67,8 @@
 		 <if test="@OGNL@isNotEmpty(isActivity)">
             AND t.is_activity = #{isActivity}
          </if>
-		 <if test="@OGNL@isNotEmpty(desc)">
-            AND t.desc = #{desc}
+		 <if test="@OGNL@isNotEmpty(comments)">
+            AND t.comments = #{comments}
          </if>
 		 <if test="@OGNL@isNotEmpty(createTime)">
             AND t.create_time = #{createTime}
@@ -93,7 +93,7 @@
 	            class_path ,
 	            invoke_policy ,
 	            is_activity ,
-	            desc ,
+	            comments ,
 	            create_time ,
 	            modify_time ,
 	            param 
@@ -107,7 +107,7 @@
 	        	#{classPath},
 	        	#{invokePolicy},
 	        	#{isActivity},
-	        	#{desc},
+	        	#{comments},
 	        	now(),
 	        	now(),
 	        	#{param}
@@ -130,7 +130,7 @@
 	            class_path ,
 	            invoke_policy ,
 	            is_activity ,
-	            desc ,
+	            comments ,
 	            create_time ,
 	            modify_time ,
 	            param 
@@ -146,7 +146,7 @@
 	        	#{classPath},
 	        	#{invokePolicy},
 	        	#{isActivity},
-	        	#{desc},
+	        	#{comments},
 	        	#{createTime},
 	        	#{modifyTime},
 	        	#{param}
@@ -199,8 +199,8 @@
         	<if test="@OGNL@isNotEmpty(isActivity)">
 	            is_activity = #{isActivity},
 	        </if>
-        	<if test="@OGNL@isNotEmpty(desc)">
-	            desc = #{desc},
+        	<if test="@OGNL@isNotEmpty(comments)">
+	            comments = #{comments},
 	        </if>
         	<if test="@OGNL@isNotEmpty(createTime)">
 	            create_time = #{createTime},

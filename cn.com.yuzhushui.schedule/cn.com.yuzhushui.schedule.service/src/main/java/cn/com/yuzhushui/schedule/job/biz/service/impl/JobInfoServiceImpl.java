@@ -1,5 +1,8 @@
 package cn.com.yuzhushui.schedule.job.biz.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.quartz.JobDetail;
 import org.quartz.JobKey;
 import org.quartz.SchedulerException;
@@ -10,14 +13,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.alibaba.fastjson.JSONObject;
-
+import qing.yun.hui.common.utils.BeanUtil;
 import cn.com.yuzhushui.schedule.common.base.BaseServiceImpl;
 import cn.com.yuzhushui.schedule.component.SchedulePackage;
 import cn.com.yuzhushui.schedule.job.biz.dao.JobInfoDao;
 import cn.com.yuzhushui.schedule.job.biz.entity.JobInfo;
 import cn.com.yuzhushui.schedule.job.biz.service.JobInfoService;
 import cn.com.yuzhushui.schedule.job.enums.JobInfoEnum;
+
+import com.alibaba.fastjson.JSONObject;
 
 /**
  * @author qing.yunhui 
@@ -35,10 +39,23 @@ public class JobInfoServiceImpl extends BaseServiceImpl<JobInfo,Integer> impleme
 	
 	@Autowired
 	private SchedulePackage schedulePackage;
+	
+	
+	public static void main(String[] args){
+	
+	}
 
 	public int addJobInfo(JobInfo jobInfo) {
 		if(null==jobInfo) return 0;
 		//Before insertion, it is judged whether or not there exists.。TODO 是否存在相同记录...
+		JobInfo object=new JobInfo();
+		object.setClassPath(jobInfo.getClassPath());
+		object.setGroups(jobInfo.getGroups());
+		List<JobInfo> jobInfoList= jobInfoDao.query(BeanUtil.pojoToMap(object));
+		if(null!=jobInfoList && jobInfoList.size()>0){
+			logger.info("===========>同一分组下不能出现同一任务，请重新输入。");
+			return 0;
+		}
 		int count=jobInfoDao.insert(jobInfo);
 		if(count>0){
 			try {

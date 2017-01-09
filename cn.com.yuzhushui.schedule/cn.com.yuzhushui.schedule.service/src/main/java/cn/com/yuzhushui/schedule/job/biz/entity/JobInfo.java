@@ -17,9 +17,6 @@ import cn.com.yuzhushui.schedule.job.enums.JobInfoEnum;
 @Setter
 public class JobInfo extends BaseModel<Integer>{
 	
-	//alias
-	public static final String TABLE_ALIAS = "JobInfo";
-	
 	//columns START
 	/**
 	 * @Fields id:id
@@ -72,9 +69,9 @@ public class JobInfo extends BaseModel<Integer>{
 	private Integer isActivity;
 	
 	/**
-	 * @Fields desc:描述信息
+	 * @Fields comments:描述信息
 	 */
-	private String desc;
+	private String comments;
 	
 	/**
 	 * @Fields createTime:createTime

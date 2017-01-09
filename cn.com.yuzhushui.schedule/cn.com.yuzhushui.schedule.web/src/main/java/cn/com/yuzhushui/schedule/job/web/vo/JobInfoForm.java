@@ -5,6 +5,7 @@ import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
 import cn.com.yuzhushui.schedule.common.base.BaseForm;
+import cn.com.yuzhushui.schedule.job.enums.JobInfoEnum;
 
 /**
  * @author qing.yunhui 
@@ -16,8 +17,6 @@ import cn.com.yuzhushui.schedule.common.base.BaseForm;
 @Setter
 public class JobInfoForm extends BaseForm<Integer> {
 
-	//columns START
-	
 	/**
 	 * @Fields id:id
 	 */
@@ -36,7 +35,7 @@ public class JobInfoForm extends BaseForm<Integer> {
 	/**
 	 * @Fields type:一次性任务或者cron任务
 	 */
-	private String type;
+	private JobInfoEnum.TYPE type;
 	
 	/**
 	 * @Fields time:一次性任务执行时间
@@ -61,7 +60,7 @@ public class JobInfoForm extends BaseForm<Integer> {
 	/**
 	 * @Fields invoke_policy:调用策略, 优先,随机 等.
 	 */
-	private String invokePolicy;
+	private JobInfoEnum.INVOKE_POLICY invokePolicy;
 	
 	/**
 	 * @Fields is_activity:是否启用
@@ -69,9 +68,9 @@ public class JobInfoForm extends BaseForm<Integer> {
 	private Integer isActivity;
 	
 	/**
-	 * @Fields desc:描述信息
+	 * @Fields comments:描述信息
 	 */
-	private String desc;
+	private String comments;
 	
 	/**
 	 * @Fields create_time:createTime
