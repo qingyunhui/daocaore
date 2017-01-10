@@ -1,0 +1,395 @@
+@CHARSET "UTF-8";
+
+/*产品展示开始*/
+#wrapper .pricey{font-size: 14px;float:right;color:#7B7B7B;margin:0 0 0px;}
+#wrapper .pricex{font-size: 28px;float:right;}
+#wrapper .pricey,#wrapper .pricex{margin-right: 15px;}
+.hei{background-color:#fdfcfc;height:380px;margin-bottom: 35px;min-width: 280px;max-width: 400px;width: 278px;border:1px solid #e6e6e6;padding-right: 0px;padding-left: 0px;margin-right: 5px;margin-left: 0px;}
+.productInfo{font-size: 12px;color:#535353;}
+.formNametTitle{font-size: 16px;color:#000000;}
+#wrapper{max-width:928px;margin: 0 auto;margin-top: 34px;}
+#wrapper .productall{margin-top:20px;}
+#wrapper .wrapper2{height: 225px;display: block;}
+.wrapper2 .state {padding-left:10px;font-size: 20px;color: #FFFFFF;width: 100%;line-height: 37px;height: 37px;background:#017FFC;z-index: 10;opacity: .6;bottom: 0;}
+.wrapper2 a img{width:100%;height:74%;}
+.title_one{display:inline;font-size: 38px;color:#439BF3;}
+.title_two{display:inline;font-size: 17px;color:#828282;}
+.imgButton{margin-top:13px;margin-left:20px}
+
+ @media(max-width:767px){
+            .form-group-xs{
+            margin-left:0px !important;
+            }
+        }
+
+.opIcon {
+	/*display: inline-block;
+	width: 20px;
+	height: 20px;
+	font-size:0;
+	overflow:hidden;
+	background: url("../img/icon/icon.png") no-repeat 20px 20px; */     
+}
+/*列表中编辑按钮*/
+.editIcon{
+	background-position:0px 0px;
+}
+/*列表中详情按钮*/
+.detailIcon{
+	background-position:-100px 0px;
+}
+/*列表中撤销按钮*/
+.cancelIcon{
+	background-position:-80px -80px;
+}
+/*列表中打印按钮*/
+.printIcon{
+	background-position:-40px -20px;
+}
+/*列表中办理按钮*/
+.acceptIcon{
+	background-position:-100px -40px;
+}
+
+/*列表中查看按钮*/
+.viewIcon{
+	background-position:-0px -20px;
+}
+.mainA{
+   position:fixed;
+   height:60px;
+   left:14px;
+   right: 14px;
+   background-color:#ecf0f5;
+   bottom:0px;
+}
+.mainB{
+   position:fixed;
+   bottom:45px;
+   background-color:#ecf0f5;
+   height:15px;
+   left:14px;
+   right: 14px;
+}
+.mainC{
+   position:fixed;
+   bottom:46px;
+   background-color:#3C8DBC;
+   -moz-border-radius: 3px 3px 0px 0px;    
+   -webkit-border-radius: 3px 3px 0px 0px ;  
+   border-radius: 3px 3px 0px 0px;
+   height:3px;
+   left:15px;
+   right: 15px;
+}
+.main {
+    text-align:center;
+    background-color:#fff;
+	color:#000;
+	position:fixed;
+	padding:10px;
+	/*width:100%;*/
+	-moz-border-radius: 0px 0px 3px 3px;    
+   -webkit-border-radius: 0px 0px 3px 3px;  
+    border-radius:0px 0px 3px 3px;
+	bottom:1px;
+	left:15px;
+	right: 15px;
+	border-left: 1px solid #e6eaef;
+	border-right: 1px solid #e6eaef;
+	border-buttom: 1px solid #e6eaef;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1)
+	/*filter:alpha(opacity=700);
+	-moz-opacity:0.7;
+	-khtml-opacity: 0.7;
+	opacity: 0。7;*/
+}
+
+ table.infoBox{
+    width:100%;
+    height:100%;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    overflow:hidden;
+    margin-bottom:10px;
+   
+    }
+    td.infoBoxleft{
+    background-color: #00c0ef;
+      border-radius: 3px 0px 0px 3px;
+    }
+    div.infoContant{
+    float:left;
+    width:85%;
+    }
+
+    div.line{
+    width:98%;
+    height:0px;
+    border-bottom:1px dashed #e9e9e9;   
+    margin:0px;
+    padding:0px;
+    margin-top:-18px;
+    margin-left:10px;
+    }
+    table.serviceLog{
+border-collapse:collapse;
+width:100%;
+margin-bottom:10px;
+border-radius: 0px 0px 3px 3px  ;
+box-shadow: 0 0px 1px rgba(0, 0, 0, 0.1)
+}
+
+table.serviceLog th{
+  background-color:#00a65a;
+  color:white;
+  height:35px;  
+  border-radius: 3px 3px 0px 0px ;
+  font-size:14px;
+  }
+table.serviceLog td{
+  background-color:#fff;
+  height:35px;
+  border-bottom:1px solid #ecf0f5;
+} 
+
+  table.comparison
+  {
+  border-collapse:collapse;
+  margin:0px 20px;
+  width:96%;
+  }
+  table.comparison th{
+    font-size:14px;
+    font-weight:600;
+    color:#00a65a;
+    padding-left:35px;
+    height:40px; 
+  }
+  table.comparison td{
+  height:35px; 
+  width:8%;
+  padding-left:25px;
+  color:#949494;
+  }
+  table.comparison tr.no1{
+  background-color:#ebecec;      
+  }
+  table.comparison tr.no2{
+  background-color:#fff;      
+  }
+  table.comparison td.title{
+  font-weight:400;
+  color:#000;
+  }
+  
+  /*查询栏*/
+  @media(max-width:770px){
+            div.textalign,div.textalign1{
+            width: 90% !important;
+			text-align:left !important;
+			margin-left:0px !important;
+			}
+            #textinput{
+            width: 90% !important;
+			margin-left:5px !important;
+            } 
+            div.boxinput{
+			width: 100% !important;
+			}
+			div.boxinput table{          
+            top:0px !important;  
+    }
+        }
+        
+	div.input {
+	        padding:0px;
+            margin: 0px;
+            margin-top:3px;			
+        }
+
+	div.textalign{
+	        padding:0px;
+            margin: 0px;
+			margin-left:-5px;
+	        width:12%;
+	        height:25px;
+	        line-height:22px;
+	        text-align:right;
+			display:inline-block;  
+			font-size:12px;
+	}
+	div.textalign1{
+	        padding:0px;
+            margin: 0px;
+            width:85px;
+            height:25px;
+	        line-height:22px;
+	        text-align:right;
+			display:inline-block;  
+			font-size:12px;
+	}
+    .textinput{
+            font-size: 12px;            
+			margin-right:0%;
+			padding-left:5px;
+            width: 100%;
+            height: 24px;
+            border: 1px solid;
+            border-color: #c6c9c9 #dbdfe6 #dbdfe6;
+        } 
+        div.boxinput{
+            display:inline-block;
+			width: 20%;
+	}
+	select.textinput{
+	      width:auto;
+	        color: #000;
+	}
+
+    div.boxinput table{
+    position:relative;
+    top:8px;
+    
+   
+    }
+.myns > div {box-shadow: 0 0 10px black, inset 0 0 6px black;}
+#shclNs{display:none;width:100px; height:100px;margin:10px auto;}
+/*产品展示结束*/
+
+
+/*勾选框开始*/
+
+
+/*勾选框结束*/
+
+
+/* message */
+div.msg-div {
+    position: fixed;
+    top: 15px;
+    right: 12px;
+    width:240px;
+    box-sizing: border-box;
+    overflow: hidden;
+    z-index: 99999;
+}
+div.msg-div-text {
+    margin-left: 250px;
+    box-sizing: border-box;
+    border: 1px solid #f4f4f4;
+    font-family: "宋体","Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    width:240px;
+    line-height: 1.42857;
+    border-radius: 0px;
+    /*background-color: #dd4b39;*/
+    /*background-color: #f39c12;*/
+    background-color: #00c0ef;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    min-height: 40px;
+    padding: 10px;
+    color: #fff;
+}
+span.red {color:red;}
+
+/* combox样式start */
+ul.fuzzy-search-ul {
+	text-align: center; 
+	margin: 0px; padding: 0px; 
+	position: absolute; 
+	left: 80px; 
+	top: 30px; 
+	width: 360px;  
+	background-color: #fff; 
+	border: 1px solid #d2d6de; 
+	z-index: 99999; 
+	list-style: none;
+	overflow: hidden;
+	display: none;
+}
+ul.fuzzy-search-ul>li {
+    border-bottom: 1px dashed #d2d6de; 
+    width: 100%; display: block; 
+    position: relative; 
+    height: 24px; 
+    line-height: 24px;
+    cursor: pointer;
+}
+.fuzzy-search-focus {
+	background-color: #3399FF;
+}
+span.keyword {
+	color: #B22222;
+	font-weight: bold;
+}
+ul.fuzzy-search-ul>li>span.left {
+	float: left;
+	width: 40%;
+	display: inline-block;
+	text-align: left;
+	padding: 0px 5px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+ul.fuzzy-search-ul>li>span.right {
+    float: right;
+    width: 60%;
+    display: inline-block;
+    text-align: right;
+    padding: 0px 5px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+/* combox样式end */
+
+input.gridText {
+	width: 100%;
+}
+textarea.gridText {
+	width: 100% !important;
+	height: 99% !important;
+}
+input.headInput {
+	width: 200px;
+	color: #000;
+}
+.green {
+	color: green;
+}
+.blue {
+    color: blue;
+}
+/* 弹框样式*/
+table.message
+  {
+  border-collapse: collapse;
+  border:1px solid #eceaea;
+  width:772px;
+  margin:0px;
+  padding:0px;
+  margin-left:-12px;
+  margin-top:-10px;
+  }
+table.message td.no1,table.message td.no2
+  {
+
+  height:40px;
+  }
+table.message td.no1
+  {
+  background-color:#fff;
+
+  }
+table.message td.no2
+  {
+  background-color:#fbfdfe;
+  border-bottom:1px solid #eceaea;
+  border-top:1px solid #eceaea;
+  }
+
+
