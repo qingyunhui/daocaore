@@ -7,7 +7,7 @@
 <title>新增</title>
 </head>
 <body>
-   <%--  <jsp:include page="/WEB-INF/jsp/common/top.jsp"></jsp:include> --%>
+    <%-- <jsp:include page="/WEB-INF/jsp/common/top.jsp"></jsp:include> --%>
     <div class="content clearfix">
     	<%-- <jsp:include page="/WEB-INF/jsp/common/nav.jsp"></jsp:include> --%>
 	    <div class="main">

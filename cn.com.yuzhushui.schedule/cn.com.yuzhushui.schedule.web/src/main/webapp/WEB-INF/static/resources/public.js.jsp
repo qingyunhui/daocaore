@@ -2,15 +2,15 @@
 	var daoCaoRenPath="${daoCaoRenPath}";
 </script>
 <script src="${daoCaoRenPath}/static/resources/js/jquery-1.10.2.min.js" type="text/javascript"></script>
-<%-- <script src="${daoCaoRenPath}/lib/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="${daoCaoRenPath}/lib/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="${daoCaoRenPath}/lib/js/app.js" type="text/javascript"></script>
-<script src="${daoCaoRenPath}/lib/plugins/jqgrid/jquery.jqGrid.min.js" type="text/javascript"></script>
-<script src="${daoCaoRenPath}/lib/js/DyApp.js"></script>
-<script src="${daoCaoRenPath}/lib/js/validate/formValidator.js"></script>
-<script src="${daoCaoRenPath}/lib/js/validate/formValidatorRegex.js"></script>
-<script src="${daoCaoRenPath}/lib/plugins/My97DatePicker/WdatePicker.js"></script>
-<script src="${daoCaoRenPath}/lib/js/DyJqgridUtil.js"></script> --%>
+<script src="${daoCaoRenPath}/static/resources/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="${daoCaoRenPath}/static/resources/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="${daoCaoRenPath}/static/resources/js/app.js" type="text/javascript"></script>
+<script src="${daoCaoRenPath}/static/resources/plugins/jqgrid/jquery.jqGrid.min.js" type="text/javascript"></script>
+<script src="${daoCaoRenPath}/static/resources/js/DyApp.js"></script>
+<script src="${daoCaoRenPath}/static/resources/js/validate/formValidator.js"></script>
+<script src="${daoCaoRenPath}/static/resources/js/validate/formValidatorRegex.js"></script>
+<script src="${daoCaoRenPath}/static/resources/plugins/My97DatePicker/WdatePicker.js"></script>
+<script src="${daoCaoRenPath}/static/resources/js/DyJqgridUtil.js"></script>
 <!-- <script type="text/javascript">
   $(function(){
 	  showMessage();
