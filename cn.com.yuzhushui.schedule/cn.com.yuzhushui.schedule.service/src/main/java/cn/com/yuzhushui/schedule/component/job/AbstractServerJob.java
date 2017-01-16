@@ -15,7 +15,6 @@ import org.quartz.JobExecutionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import qing.yun.hui.common.utils.HttpClientUtil;
 import qing.yun.hui.common.utils.HttpClientUtils;
 import qing.yun.hui.common.utils.StringUtil;
 import cn.com.yuzhushui.schedule.component.ServerJobHelper;
@@ -225,7 +224,7 @@ public abstract class AbstractServerJob implements Job {
 		req.setMethodFlag(MethodFlag.EXECUTING);
 		req.setClassFullPath(jobInfo.getClassPath());
 		String reqBody = JSON.toJSONString(req);
-		String resBody = HttpClientUtil.post(jobSnapshot.getUrl(), reqBody, "application/json", "utf-8", TIME_OUT,TIME_OUT);
+		String resBody = HttpClientUtils.post(jobSnapshot.getUrl(), reqBody, "application/json", "utf-8", TIME_OUT,TIME_OUT);
 		JobExecutingResponse exeRes = JSON.parseObject(resBody, JobExecutingResponse.class);
 		return exeRes;
 	}
