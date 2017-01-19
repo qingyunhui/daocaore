@@ -1,1 +1,6 @@
-å¯¹å¤–æä¾›çš„æ¥å£....
+×¢Òâ:cn.com.yuzhushui.websocket.webapp£¬²»ÊÇÒ»¸öspring mvcÏîÄ¿¡¢¾ÍÊÇËµÕâ¸öWebsocketÍêÈ«²»ÒÀÀÁspringMvc¾Í¿ÉÒÔÔËĞĞ¡£
+
+½öĞëÒª2¸öÎÄ¼ş¼´¿É£º
+1.cn.com.yuzhushui.websocket.webapp/src/main/java/cn/com/yuzhushui/websocket/WebSocketHandle.java
+2.cn.com.yuzhushui.websocket.webapp/src/main/webapp/index.jsp
+

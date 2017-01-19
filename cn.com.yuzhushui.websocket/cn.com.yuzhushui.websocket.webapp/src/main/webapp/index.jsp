@@ -2,27 +2,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Java后端WebSocket的Tomcat实现</title>
+    <title>聊天室</title>
     <script type="text/javascript" src="jquery-1.10.2.min.js"></script>
 </head>
 <body>
-    Welcome<br/><input id="text" type="text"/>
+    <p style="width: 260px; margin: auto;font-size: x-large;">Welcome to chat...</p>
+    <input id="text" type="text"/>
     <button id="sendBtn">发送消息</button>
     <hr/>
-    <button id="closeBtn">关闭WebSocket连接</button>
-    <button id="openBtn">打开WebSocket连接</button>
+    <button id="closeBtn">关闭连接</button>
+    <button id="openBtn">打开连接</button>
     <hr/>
     <div id="message"></div>
 </body>
 
 <script type="text/javascript">
-
     var websocket = null;
 	$(function(){
 		initWebsocket();
 		//发送消息 
 		$("#sendBtn").click(function(){
-			var message = document.getElementById('text').value;
+			var message = $("#text").val().trim();
+			if(message.length<1){
+				alert("发送内容，不能为空。");
+				return;
+			}
+			var state=websocket.readyState;
+	    	if(1!=state){
+	    		alert("连接已断开，请重新打开连接。");
+	    	}
 	        websocket.send(message);
 		});
 		//关闭websocket连接
