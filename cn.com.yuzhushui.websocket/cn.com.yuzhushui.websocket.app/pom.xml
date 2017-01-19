@@ -7,4 +7,5 @@
   </parent>
   <groupId>cn.com.yuzhushui.websocket.app</groupId>
   <artifactId>cn.com.yuzhushui.websocket.app</artifactId>
+  <packaging>war</packaging>
 </project>
