@@ -7,4 +7,13 @@
   </parent>
   <groupId>cn.com.yuzhushui.websocket.service</groupId>
   <artifactId>cn.com.yuzhushui.websocket.service</artifactId>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>cn.com.yuzhushui.websocket.client</groupId>
+  		<artifactId>cn.com.yuzhushui.websocket.client</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
+  
 </project>

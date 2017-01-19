@@ -5,11 +5,21 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <modules>
-  	<module>cn.com.yuzhushui.client</module>
-  	<module>cn.com.yuzhushui.websocket.client</module>
   	<module>cn.com.yuzhushui.websocket.common</module>
+  	<module>cn.com.yuzhushui.websocket.client</module>
   	<module>cn.com.yuzhushui.websocket.service</module>
   	<module>cn.com.yuzhushui.websocket.webapp</module>
   	<module>cn.com.yuzhushui.websocket.app</module>
   </modules>
+  <dependencies>
+      <dependency>
+        <groupId>javax</groupId>
+        <artifactId>javaee-api</artifactId>
+        <version>7.0</version>
+        <scope>provided</scope>
+      </dependency>
+  </dependencies>
+  <build>
+    <finalName>cn.com.yuzhushui.websocket</finalName>
+  </build>
 </project>
