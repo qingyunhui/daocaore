@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>qq</title>
+</head>
+<body>
+<h1>Hello</h1>
+      尊敬的供应商先生/女士:<br> 
+      您好！欢迎您加入 广东九联科技股份有限公司供应商管理系统。<br>
+  感谢您对九联的信任和支持。<br>
+  您可以通过下面的链接来验证您的邮箱<br>
+      <span class="cntext">&nbsp; <strong>链接</strong></span>：<br>
+	<a target="_blank" href="http://192.168.132.1:8082/scm/user/verify?username=${username}&validateCode=${validateCode}">
+	http://192.168.132.1:8082/scm/user/verify?username=${username}&validateCode=${validateCode}
+	</a>
+      <br>
+      相信有您的参与会使我们的合作更加愉快！祝您工作愉快，谢谢！<br>
+      该邮件由系统自动发送，切勿回复！<br>
+      <a href="http://www.unionman.com.cn" target="_blank"><img src="http://www.unionman.com.cn/images/logo.jpg" border="0"></a>
+</body>
+</html>

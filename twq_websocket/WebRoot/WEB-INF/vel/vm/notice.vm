@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>qq</title>
+</head>
+<body>
+<h1>Hello</h1>
+      尊敬的供应商先生/女士 :<br>
+      您好！欢迎您加入 广东九联科技股份有限公司供应商管理系统。<br>
+      您可以由此&nbsp;&nbsp;<a href="http://192.168.132.1:8082/scm/reg.html" target="_blank">注册</a>&nbsp;&nbsp;注册加入。<br>
+  您的邀请码是：${username}<br>
+      相信有您的参与会使我们的合作更加愉快！祝您工作愉快，谢谢！<br>
+      该邮件由系统自动发送，切勿回复！如果您如要什么帮助，请联系各自所联系的九联计划部的同事。<br>
+      联系方式：姓名：${realname} 手机号：${mphone} 座机号：${phone} <br>
+      <a href="http://www.unionman.com.cn" target="_blank"><img src="http://www.unionman.com.cn/images/logo.jpg" border="0"></a>
+</body>
+</html>

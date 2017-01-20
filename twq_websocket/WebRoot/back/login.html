@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>用户登录</title>
+  </head>
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/forget.css">
+	<script type="text/javascript" charset="UTF-8" src="js/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="w-1000 forget-page">
+		<div class="forget-form">
+			<div class="jkxy-form">
+				<form id="loginPageForm" novalidate="novalidate">
+					<input type="hidden" value="490b8a1328827aa51244f2dc0af02cfd"
+						class="verifypwd" name="verifypwd" id="verifypwd">
+					<div class="boder-r form-l">
+						<div class="form-dom">
+							<div class="form-tit">
+								<i>*</i>用户名：
+							</div>
+							<div class="form-input">
+								<input type="text" placeholder="请填写用户名" name="username"
+									id="username" class="jkxy-input required" aria-required="true"><span></span>
+								<div class="form-tip form-tip-succ"></div>
+							</div>
+						</div>
+						<div class="form-dom">
+							<div class="form-tit">
+								<i>*</i>密码：
+							</div>
+							<div class="form-input">
+								<input type="password" placeholder="输入密码" name="password"
+									id="password" class="jkxy-input required" aria-required="true"><span></span>
+								<div class="form-tip form-tip-error">&nbsp;</div>
+							</div>
+						</div>
+						<div id="verifyBox" class="form-dom">
+							<div class="form-tit">
+								<i>*</i>验证码：
+							</div>
+							<div class="form-input">
+								<input type="text" style="width: 80px;" data-type="blur"
+									class="jkxy-input" name="safecode" autocomplete="off"
+									maxlength="4" placeholder="输入验证码">&nbsp;&nbsp;<a
+									id="verifyA" href="javascript:void(0);"><img border="0"
+									align="absmiddle" style="cursor: pointer" alt="点击刷新验证码"
+									src="pcrimg" id="verifyImg" width="100"></a><span></span>
+								<div class="form-tip form-tip-error">&nbsp;</div>
+								<script type="text/javascript">      
+        $(function(){           
+            $('#verifyImg').click(function () {//生成验证码  
+             $(this).hide().attr('src', 'pcrimg?' + Math.floor(Math.random()*100) ).fadeIn(); })      
+                  });   
+        
+       </script>
+							</div>
+						</div>
+						<div class="form-dom">
+							<div class="form-tit">&nbsp;</div>
+							<div class="form-input">
+								<label class="form-autologin"><input type="checkbox"
+									checked="checked" value="1">&nbsp;自动登录</label><a
+									class="form-forgetpwd"
+									href="">忘记密码</a>
+							</div>
+						</div>
+					</div>
+					<div class="form-r">
+						<p>还没有账号？</p>
+						<p>
+							请 <a id="diaRegBtn"
+								href="reg.html" class="login-url">注册</a>&nbsp;<i
+								class="login-url-arrow"></i>
+						</p>
+					</div>
+					<div class="form-c">
+						<div class="form-dom">
+							<div class="form-tit">&nbsp;</div>
+							<div class="form-input">
+								<a id="subLoginBtn" class="greenbtn" href="javascript:void(0);">
+									登 录 </a>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+  </body>
+</html>

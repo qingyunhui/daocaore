@@ -1,0 +1,21 @@
+.forget-page
+{
+	margin-top: 60px;
+	text-align: center;
+}
+.forget-subtit
+{
+	line-height: 200%;
+	font-size: 14px;
+	color: #999;
+}
+/*注册表单外框*/
+.forget-form
+{
+	margin: 30px auto;
+	width: 660px;
+	height: 500px;
+	/*border: 1px solid #ccc;*/
+	text-align: left;
+}
+.mar-t10{margin-top: 10px;}

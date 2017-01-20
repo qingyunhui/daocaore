@@ -1,0 +1,35 @@
+
+.reg-page
+{
+	margin-top: 60px;
+	text-align: center;
+}
+.reg-join
+{
+	line-height: 200%;
+	font-size: 24px;
+	color: #35b558;
+}
+.reg-subtit
+{
+	line-height: 200%;
+	font-size: 14px;
+	color: #999;
+}
+/*注册表单外框*/
+.reg-form
+{
+	margin: 30px auto;
+	width: 660px;
+	height: 500px;
+	/*border: 1px solid #ccc;*/
+	text-align: left;
+}
+.reg-clear { clear:both;}
+.finsh-reg-page{ color:#999; margin: 60px auto;text-align: center;}
+.finsh-reg-page p { margin:20px 0; display:block;}
+.finsh-reg-page .greenbtn { padding:5px 50px;}
+.w-690 { width:690px !important;}
+.reginfo-florm-l { width:800px !important;}
+.reginfo-florm-l .jkxy-checkbox { width:200px!important;}
+.mar-t10{margin-top: 10px;}

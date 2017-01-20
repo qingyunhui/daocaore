@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>用户登录</title>
+  </head>
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/reg.css">
+	<script type="text/javascript" charset="UTF-8" src="js/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="w-1000 reg-page">
+		<h1 class="reg-join">加入九联供应商管理系统</h1>
+		<p class="reg-subtit">10秒快速注册账号，开启智能办公</p>
+		<div class="reg-form">
+			<div class="jkxy-form">
+				<form action=""
+					class="volidator-form" id="regForm" novalidate="novalidate">
+					<div class="boder-r form-l">
+						<div class="form-dom">
+							<div class="form-tit">
+								<i>*</i>用户名：
+							</div>
+							<div class="form-input">
+								<input type="text" maxlength="20" class="jkxy-input" id="name" name="name"
+									placeholder="请填写用户名" required="required"><span></span>
+								<div id="nameTip" class="form-tip form-tip-error"></div>
+							</div>
+						</div>
+						<div class="form-dom">
+							<div class="form-tit">
+								<i>*</i>E-mail：
+							</div>
+							<div class="form-input">
+								<input type="email" maxlength="50" class="jkxy-input" id="email" name="email"
+									placeholder="邮箱通过验证才能登陆" required="required"><span></span>
+								<div id="emailTip" class="form-tip form-tip-error"></div>
+							</div>
+						</div>
+						<div class="form-dom">
+							<div class="form-tit">
+								<i>*</i>密码：
+							</div>
+							<div class="form-input">
+								<input type="password" maxlength="50" class="jkxy-input required" id="password"
+									name="pwd" placeholder="密码不短于6位" aria-required="true" required="required"><span></span>
+								<div id="pwdTip" class="form-tip form-tip-error"></div>
+							</div>
+						</div>
+						<div class="form-dom">
+							<div class="form-tit">
+								<i>*</i>邀请码：
+							</div>
+							<div class="form-input">
+								<input maxlength="50" class="jkxy-input required" id="invite"
+									name="invite" placeholder="请输入邀请函里面的邀请码" aria-required="true" required="required"><span></span>
+								<div id="inviteTip" class="form-tip form-tip-error"></div>
+							</div>
+						</div>
+						<div id="verifyBox" class="form-dom">
+							<div class="form-tit">
+								<i>*</i>验证码：
+							</div>
+							<div class="form-input">
+								<input type="text" style="width: 80px;" data-type="blur"
+									class="jkxy-input" id="safecode" name="safecode" autocomplete="off"
+									maxlength="4" placeholder="输入验证码" required="required">&nbsp;&nbsp;<a
+									id="verifyA" href="javascript:void(0);"><img border="0"
+									align="absmiddle" style="cursor: pointer" alt="点击刷新验证码"
+									src="pcrimg" id="verifyImg" width="100"></a><span></span>
+								<div id="safecodeTip" class="form-tip form-tip-error"></div>
+								<script type="text/javascript">
+        $(function(){
+            $('#verifyImg').click(function () {//生成验证码 
+             $(this).hide().attr('src', 'pcrimg?' + Math.floor(Math.random()*100) ).fadeIn(); })
+                  });
+       </script>
+							</div>
+						</div>
+					</div>
+					<div class="form-r">
+						<p>已有账号？</p>
+						<p>
+							请 <a class="login-url"
+								href="login.html">登 录</a>&nbsp;<i
+								class="login-url-arrow"></i>
+						</p>
+					</div>
+					<div class="form-c">
+						<div class="form-dom">
+							<div class="form-tit">&nbsp;</div>
+							<div class="form-input">
+							    <input type="button" id="subRegBtn" value="确认注册" class="greenbtn regBt" onclick="sub()" style="cursor: pointer"/>
+							    <div id="errorTip" class="form-tip form-tip-error"></div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+function sub(){
+	var name = $('#name').val();
+	var email = $('#email').val();
+	var password = $('#password').val();
+	var safecode = $('#safecode').val();
+	if(name.length>0 && name.trim()!="" && name!=null){
+		$('#nameTip').html("");
+	}else{
+		$('#nameTip').html("用户名不能为空");
+	}
+	if(email.length>0 && email.trim()!="" && email!=null){
+		$('#emailTip').html("");
+	}else{
+		$('#emailTip').html("邮箱不能为空");
+	}
+	if(password.length>0 && password.trim()!="" && password!=null){
+		$('#pwdTip').html("");
+	}else{
+		$('#pwdTip').html("密码不能为空");
+	}
+	if(safecode.length>0 && safecode.trim()!="" && safecode!=null){
+		$('#safecodeTip').html("");
+	}else{
+		$('#safecodeTip').html("验证码不能为空");
+		return;
+	}
+	$('#subRegBtn').attr('disabled',true);
+	$('#subRegBtn').css("background-color","gray");
+	$.post('user/regu',$("#regForm").serialize(),
+			function(j){
+		        $('#errorTip').html(j.msg);
+		        if(j.success){
+		        }else{
+		        	$('#subRegBtn').attr('disabled',false);
+		        	$('#subRegBtn').css("background-color","#35b558");
+		        }
+		        
+			},'json');
+}
+</script>
+  </body>
+</html>
