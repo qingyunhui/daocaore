@@ -1,0 +1,6 @@
+注意:cn.com.yuzhushui.websocket.webapp，不是一个spring mvc项目、就是说这个Websocket完全不依懒springMvc就可以运行。
+
+仅须要2个文件即可：
+1.cn.com.yuzhushui.websocket.webapp/src/main/java/cn/com/yuzhushui/websocket/WebSocketHandle.java
+2.cn.com.yuzhushui.websocket.webapp/src/main/webapp/index.jsp
+
