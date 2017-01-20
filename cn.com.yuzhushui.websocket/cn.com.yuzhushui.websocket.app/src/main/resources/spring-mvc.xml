@@ -4,7 +4,9 @@ http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 http://www.springframework.org/schema/context 
 http://www.springframework.org/schema/context/spring-context-4.0.xsd 
 http://www.springframework.org/schema/mvc 
-http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+">
 
 	<mvc:annotation-driven />
 	
@@ -14,8 +16,9 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 	<mvc:resources mapping="/css/**" location="/css/" cache-period="31556926" />
 	<mvc:resources mapping="/fonts/**" location="/fonts/" cache-period="31556926" />
 	<!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
-	<context:component-scan base-package="cn.com.yuzhushui.websocket.common.Interceptor.SessionInterceptor" />
+	<!-- <context:component-scan base-package="cn.com.yuzhushui.websocket.common.Interceptor.SessionInterceptor" /> -->
 	<context:component-scan base-package="cn.com.yuzhushui.websocket.**.web.action" />
+	<context:component-scan base-package="cn.com.yuzhushui.websocket.socket" />
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="ignoreResourceNotFound" value="true" />
 		<property name="locations">
@@ -26,22 +29,22 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 		</property>
 	</bean>
 	
-	<mvc:interceptors>
-		<!-- URL拦截器（针对须要放行、注册、登陆的URL进行拦截。） -->
+	<!-- <mvc:interceptors>
+		URL拦截器（针对须要放行、注册、登陆的URL进行拦截。）
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
 			<bean class="cn.com.yuzhushui.websocket.common.Interceptor.SessionInterceptor">
-				<property name="noInterceptors" value="sys/sysLogin/login.htm,sys/sysLogin/doLogin.htm"/><!-- 不须要拦截的URL多个URL以逗号隔开。	 -->
-				<property name="registers" value="" /><!-- 须要注册的URL -->
-				<property name="logins" value=""/><!-- 须要登陆的URL -->
+				<property name="noInterceptors" value="sys/sysLogin/login.htm,sys/sysLogin/doLogin.htm"/>不须要拦截的URL多个URL以逗号隔开。	
+				<property name="registers" value="" />须要注册的URL
+				<property name="logins" value=""/>须要登陆的URL
 			</bean>
 		</mvc:interceptor>
-		<!-- 表单重复提交拦截器 -->
-		<!-- mvc:interceptor>
+		表单重复提交拦截器
+		mvc:interceptor>
 			<mvc:mapping path="/**" />	拦截所有的URL
 			<bean class="cn.com.yuzhushui.websocket.common.Interceptor.RepeatSubmitInterceptor"></bean>
-		</mvc:interceptor> -->
-	</mvc:interceptors>
+		</mvc:interceptor>
+	</mvc:interceptors> -->
 	
 	<!-- <mvc:interceptors>
 		<mvc:interceptor>
@@ -130,4 +133,13 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 		<property name="defaultStatusCode" value="500"></property>
 	</bean>
 	<!-- 全局异常配置 end -->
+	<!-- spring-websocket配置start
+    <bean id="websocket" class="com.web.websocket.WebsocketEndPoint" />
+    <websocket:handlers>
+        <websocket:mapping path="/websocket" handler="websocket" />
+        <websocket:handshake-interceptors>
+            <bean class="com.web.websocket.HandshakeInterceptor" />
+        </websocket:handshake-interceptors>
+    </websocket:handlers>
+    spring-websocket配置end-->
 </beans>

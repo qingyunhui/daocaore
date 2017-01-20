@@ -19,6 +19,7 @@
 		<aspectj.version>1.8.1</aspectj.version>
 		<aopalliance.version>1.0</aopalliance.version>
 		<spring.version>4.1.2.RELEASE</spring.version>
+		<springWebsocket.version>4.2.5.RELEASE</springWebsocket.version>
 		<yaml.version>1.13</yaml.version>
 		<ehcache-jcache.version>1.2</ehcache-jcache.version>
 		<javax.cache.version>1.0.0</javax.cache.version>
