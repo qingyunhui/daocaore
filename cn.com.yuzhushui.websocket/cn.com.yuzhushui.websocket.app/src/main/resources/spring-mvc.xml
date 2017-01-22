@@ -18,7 +18,7 @@ http://www.springframework.org/schema/websocket http://www.springframework.org/s
 	<!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
 	<!-- <context:component-scan base-package="cn.com.yuzhushui.websocket.common.Interceptor.SessionInterceptor" /> -->
 	<context:component-scan base-package="cn.com.yuzhushui.websocket.**.web.action" />
-	<context:component-scan base-package="cn.com.yuzhushui.websocket.socket" />
+	<context:component-scan base-package="cn.com.yuzhushui.websocket.socket.handle" />
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="ignoreResourceNotFound" value="true" />
 		<property name="locations">

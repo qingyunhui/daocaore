@@ -27,7 +27,7 @@ public class WebSocketAction {
 		
 		logger.info("toindex....");
 		
-		mv.setViewName("/index");
+		mv.setViewName("index");
 		return mv;
 	}
 

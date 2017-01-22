@@ -4,6 +4,7 @@
 <head>
     <title>聊天室 websocket</title>
     <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="../js/sockjs-0.3.min.js"></script>
 </head>
 <body>
     <p style="width: 260px; margin: auto;font-size: x-large;">Welcome to chat & websocket</p>
@@ -60,9 +61,14 @@
 		//判断当前浏览器是否支持WebSocket
 	    if ('WebSocket' in window) {
 	        websocket = new WebSocket("ws://192.168.1.77:8080/websocket/webSocketServer");
-	    }else {
+	    }else if ('MozWebSocket' in window) {
+            websocket = new MozWebSocket("ws://192.168.1.77:8080/websocket/webSocketServer");
+        } else {
+            websocket = new SockJS("http://192.168.1.77:8080/websocket/webSocketServer");
+        }
+	    /* else {
 	    	 setMessageInnerHTML("当前浏览器 Not support websocket"+websocket.readyState);
-	    }
+	    } */
 	    //连接发生错误的回调方法
 	    websocket.onerror = function () {
 	        setMessageInnerHTML("WebSocket连接发生错误");
