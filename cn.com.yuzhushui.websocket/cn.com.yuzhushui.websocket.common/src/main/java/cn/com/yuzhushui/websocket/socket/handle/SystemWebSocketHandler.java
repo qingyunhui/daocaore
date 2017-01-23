@@ -11,6 +11,8 @@ import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.WebSocketMessage;
 import org.springframework.web.socket.WebSocketSession;
 
+import com.alibaba.fastjson.JSONObject;
+
 /***
  ** @category 请用一句话来描述其用途...
  ** @author qing.yunhui
@@ -44,12 +46,13 @@ public class SystemWebSocketHandler implements WebSocketHandler {
         	int count=0;
             session.sendMessage(new TextMessage(count + ""));
         }
+        session.sendMessage(new TextMessage("这是测试消息"));
     }
 
     @Override
     public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) throws Exception {
-
-        //sendMessageToUsers();
+    	System.out.println(JSONObject.toJSONString(message.getPayload()));
+    	session.sendMessage(message);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package cn.com.yuzhushui.websocket.common.Interceptor;
+/*package cn.com.yuzhushui.websocket.common.Interceptor;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -20,12 +20,12 @@ import cn.com.yuzhushui.websocket.constant.WebsocketConstant;
 
 import com.alibaba.fastjson.JSONObject;
 
-/***
+*//***
  ** @category 拦截器
  ** @author qing.yunhui
  ** @email: 280672161@qq.com
  ** @createTime: 2016年11月24日下午11:33:33
- **/
+ **//*
 @Getter
 @Setter
 public class SessionInterceptor extends HandlerInterceptorAdapter{
@@ -83,12 +83,12 @@ public class SessionInterceptor extends HandlerInterceptorAdapter{
 		return super.preHandle(request, response, handler);
 	}
 
-	/**
+	*//**
 	 * <p>获取首页登陆url</p>
 	 *@param request
 	 *@param loginPath
 	 *@return 获取登陆路径 
-	 **/
+	 **//*
 	public String getLoginPath(HttpServletRequest request){
 		String appLoginPath=null;
 		String contextPath=request.getServletContext().getContextPath();
@@ -109,3 +109,4 @@ public class SessionInterceptor extends HandlerInterceptorAdapter{
 	}
 	
 }
+*/

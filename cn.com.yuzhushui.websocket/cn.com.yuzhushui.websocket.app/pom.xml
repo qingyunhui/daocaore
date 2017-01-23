@@ -195,7 +195,7 @@
 		</dependency>
   </dependencies>
   <build>
-		<finalName>schedule</finalName>
+		<finalName>socket</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -226,7 +226,7 @@
 				<version>6.1.10</version>
 				<configuration>
 					<scanIntervalSeconds>10</scanIntervalSeconds>
-					<contextPath>/websocket</contextPath>
+					<contextPath>/socket</contextPath>
                     <stopKey/>
                     <stopPort/>
 				</configuration>

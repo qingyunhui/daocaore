@@ -3,11 +3,9 @@
 <html>
 <head>
     <title>聊天室 websocket</title>
-    <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="../js/sockjs-0.3.min.js"></script>
 </head>
 <body>
-    <p style="width: 260px; margin: auto;font-size: x-large;">Welcome to chat & websocket</p>
+    <p style="width: 260px; margin: auto;font-size: x-large;">Welcome to chat&&websocket</p>
     <input id="text" type="text"/>
     <button id="sendBtn">发送消息</button>
     <hr/>
@@ -16,7 +14,8 @@
     <hr/>
     <div id="message"></div>
 </body>
-
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/sockjs-0.3.min.js"></script>
 <script type="text/javascript">
     var websocket = null;
 	$(function(){
@@ -60,11 +59,11 @@
 	function initWebsocket(){
 		//判断当前浏览器是否支持WebSocket
 	    if ('WebSocket' in window) {
-	        websocket = new WebSocket("ws://192.168.1.77:8080/websocket/webSocketServer");
+	        websocket = new WebSocket("ws://localhost:8080/socket/socketService/");
 	    }else if ('MozWebSocket' in window) {
-            websocket = new MozWebSocket("ws://192.168.1.77:8080/websocket/webSocketServer");
+            websocket = new MozWebSocket("ws://localhost:8080/socket/socketService/");
         } else {
-            websocket = new SockJS("http://192.168.1.77:8080/websocket/webSocketServer");
+            websocket = new SockJS("http://localhost:8080/socket/socketService/");
         }
 	    /* else {
 	    	 setMessageInnerHTML("当前浏览器 Not support websocket"+websocket.readyState);

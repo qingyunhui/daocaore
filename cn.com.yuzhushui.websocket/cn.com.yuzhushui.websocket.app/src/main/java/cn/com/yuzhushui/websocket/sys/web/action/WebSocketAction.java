@@ -17,11 +17,11 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(WebSocketAction.ACTION_PATH)
 public class WebSocketAction {
 	
-	public static final String ACTION_PATH="/webSocketServer";
+	public static final String ACTION_PATH="/";
 	
 	Logger logger=LoggerFactory.getLogger(WebSocketAction.class);
 	
-	@RequestMapping(value="toIndex", method = {RequestMethod.POST, RequestMethod.GET})
+	/*@RequestMapping(value="socketService", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView toIndex(){
 		ModelAndView mv=new ModelAndView();
 		
@@ -29,6 +29,6 @@ public class WebSocketAction {
 		
 		mv.setViewName("index");
 		return mv;
-	}
+	}*/
 
 }
