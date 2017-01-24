@@ -18,6 +18,7 @@ import org.springframework.web.socket.server.HandshakeInterceptor;
 import cn.com.yuzhushui.websocket.common.bean.Code;
 import cn.com.yuzhushui.websocket.common.bean.MsgUserInfo;
 import cn.com.yuzhushui.websocket.common.bean.SessionUser;
+import cn.com.yuzhushui.websocket.sys.biz.entity.SysUser;
 
 /***
  ** @category 请用一句话来描述其用途...
@@ -40,8 +41,8 @@ public class MyHandshakeInterceptor implements HandshakeInterceptor {
                 //使用userName区分WebSocketHandler，以便定向发送消息
                 Object temp = session.getAttribute(Code.USER_SESSION);
                 if(temp!= null){
-                    if(temp instanceof User){
-                        User user = (User)temp;
+                    if(temp instanceof SysUser){
+                    	SysUser user = (SysUser)temp;
                         map.put(SessionManager.USER_SESSION,user);  //存入数据，方便在hander中获取
                     }
                 }else{ //有session ，但是又没有user信息。就是游客

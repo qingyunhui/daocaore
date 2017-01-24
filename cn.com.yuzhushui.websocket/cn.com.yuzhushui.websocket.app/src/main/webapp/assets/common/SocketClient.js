@@ -1,11 +1,11 @@
 /**
- * Created by win on 2015/6/25.
+ * 建立一个websocket连接
+ * @parameters websocketUrl websocket的url
+ * @parameters sockJSUrl  websocket的sockJs的url
  */
 var websocket = null;
 function connection(websocketUrl, sockJSUrl) {
-    if (!websocketUrl || !sockJSUrl) {
-        alert("链接地址不能为空");
-    }
+    if (!websocketUrl || !sockJSUrl)  return;
     if ('WebSocket' in window) {
         websocket = new WebSocket("ws://" + websocketUrl);
     } else if ('MozWebSocket' in window) {
@@ -13,10 +13,12 @@ function connection(websocketUrl, sockJSUrl) {
     } else {
         websocket = new SockJS("ws://" + sockJSUrl);
     }
+    //连接成功建立的回调方法
     websocket.onopen = function (evnt) {
         $("#tou-msg").html("链接服务器成功");
         $("#photo").attr("src","assets/common/image/defeatPhoto.jpg");
     };
+    //接收到消息的回调方法
     websocket.onmessage = function (evnt) {
         console.log(evnt);
         var data = evnt.data;
@@ -27,7 +29,6 @@ function connection(websocketUrl, sockJSUrl) {
         }else if(data.msgType == 2){  //聊天室 信息
             var time = new Date(data.timeOfArrive).Format("hh:mm:ss");
             var msg = '';
-
             var class_msgTitle_left ="msgTitle_left  img-circle";
             var class_msgPanel_left ="msgPanel_left";
             var class_triangle_left ="triangle_left";
@@ -38,7 +39,6 @@ function connection(websocketUrl, sockJSUrl) {
                 class_triangle_left ="triangle_left sysTriangle";
                 class_article_left ="sysArticle";
             }
-
             if(data.msgUserInfo.userId == $("#uuUserId").val()){ //自己
              msg =
                  '<div class="msg_bianKuangWw">'+
@@ -87,29 +87,15 @@ function connection(websocketUrl, sockJSUrl) {
             shake(left);
         }
     };
+    //连接发生错误的回调方法
     websocket.onerror = function (evnt) {
         $("#tou-msg").html("出现了一个错误");
     };
+    //连接关闭的回调方法
     websocket.onclose = function (evnt) {
         $("#tou-msg").html("链接服务器失败");
         grayscale($("#photo"));
     }
-   /* var stompClient = Stomp.over(new SockJS("/hello"));
-    stompClient.connect({}, function (frame) {
-        console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/greetings', function (string) {
-            console.log(string);
-            alert(string.body);
-        });
-    });
-    $('#ceshi').bind('click', function () {
-        stompClient.subscribe("/app/pull", function (string) {
-            alert(string);
-        });
-    });
-    $('#dingyue').bind('click', function () {
-        stompClient.send("/app/hello", {}, "{x:x}");
-    });*/
 }
 
 function send(message,msgType) {
@@ -120,7 +106,6 @@ function send(message,msgType) {
             "msgBody":message
         };
         websocket.send(JSON.stringify(msgClient));
-
     } else {
         $("#msg").html($("#msg").html()  + "发送失败");
     }

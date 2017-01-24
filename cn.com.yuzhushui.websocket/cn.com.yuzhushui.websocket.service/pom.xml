@@ -10,8 +10,8 @@
   
   <dependencies>
   	<dependency>
-  		<groupId>cn.com.yuzhushui.websocket.client</groupId>
-  		<artifactId>cn.com.yuzhushui.websocket.client</artifactId>
+  		<groupId>cn.com.yuzhushui.websocket.common</groupId>
+  		<artifactId>cn.com.yuzhushui.websocket.common</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   </dependencies>

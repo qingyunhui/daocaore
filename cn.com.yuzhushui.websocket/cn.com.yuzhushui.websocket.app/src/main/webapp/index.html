@@ -61,10 +61,15 @@
                 send("x",5);
             });
             grayscale($("#photo"));  //头像变灰色
-            connection("localhost:8080/websockets/socketService", "localhost:8080/websockets/sockjs/socketService");
+            connection("112.124.117.151:80/websockets/socketService", "112.124.117.151:80/websockets/sockjs/socketService");
             $('#send').bind('click', function () {
-                var message = $("#message");
-                send(message.val(),2);
+                var messages = $("#message").val().trim();
+    			if(messages.length<1){
+    				alert("你个瓜娃子，发送信息不能为空！");
+    				return;
+    			}
+    			var message=$("#message");
+                send(message.val().trim(),2);
                 message.val("");
             });
             $("#message").keydown(function (event) {
