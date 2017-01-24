@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="/assets/lib/sockjs/sockjs.js"></script>
+    <script src="/assets/lib/stomp/lib/stomp.js"></script>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="/assets/lib/bootstrap/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <!--<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">-->
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="/assets/lib/jquery/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="/assets/lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="/assets/common/grayscale.js"></script>
+    <script src="/assets/common/SocketClient.js"></script>
+    <script src="/assets/common/specialEffects.js"></script>
+    <link rel="stylesheet" href="/assets/common/specialEffects.css">
+    <!--<link rel="stylesheet" href="/assets/lib/jquery/jquery-ui.min.css">-->
+    <link rel="stylesheet" href="/assets/lib/jquery-ui-bootstrap/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/lib/jquery-ui-bootstrap/css/custom-theme/jquery-ui-1.10.0.custom.css">
+
+
+    <!--<script src="/assets/lib/jquery/jquery-ui.min.js"></script>-->
+    <script src="/assets/lib/jquery-ui-bootstrap/assets/js/jquery-ui-1.10.0.custom.min.js"></script>
+
+
+
+    <title>webSocket测试</title>
+    <script type="text/javascript">
+        $(function () {
+
+            $('[data-toggle="popover"]').popover();  //初始化所有弹窗
+            $("#cir").draggable();  //个人圆圈头像移动
+            $('#biankuang').draggable({ //边框移动
+                handle:'#tou'
+            });
+            $('#biankuang').resizable({
+                maxWidth:600,
+                maxHeight:450
+            });
+            grayscale($("#photo"));  //头像变灰色
+//           connection("0066.wicp.net/echo", "0066.wicp.net/sockjs/echo")
+            connection("localhost:8080/websockets/socketService", "localhost:8080/websockets/sockjs/socketService")
+            $('#send').bind('click', function () {
+                var message =  $("#message");
+                send(message.val());
+                message.val("");
+            });
+            $("#message").keydown(function (event) {
+                if (event.keyCode == 13) {
+                    $("#send").click();
+                }
+            });
+        });
+    </script>
+
+</head>
+<body>
+<!-- 圆圈头像 -->
+<div class="cir" id="cir">
+    <img id="photo" src="assets/common/image/defeatPhoto.jpg" data-container="body" data-toggle="popover"
+         data-placement="left" data-content="
+            消息提示？
+    "/>
+</div>
+<!-- 聊天界面-->
+<div class="panel panel-default" style="width: 30% ;height: 450px;margin:10% auto" id="biankuang">
+    <div class="panel-body" id="tou">
+        Basic panel example
+    </div>
+    <div style="height: 100%;">
+        <div class="well" id="msg" style="height:77%;overflow-y:auto;position:inherit ;word-wrap:break-word;"></div>
+        <div class="col-lg" style="height: 23%;">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="发送信息..." id="message">
+                      <span class="input-group-btn">
+                          <button class="btn btn-default" type="button" id="send">发送</button>
+                          <button class="btn btn-default" type="button" id="ceshi">测试链接其他链接</button>
+                          <button class="btn btn-default" type="button" id="dingyue">订阅</button>
+                      </span>
+            </div>
+            <!-- /input-group -->
+        </div>
+        <!-- /.col-lg-6 -->
+    </div>
+</div>
+</body>
+
+</html>

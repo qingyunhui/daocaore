@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebSocket/SockJS Echo Sample (Adapted from Tomcat's echo sample)</title>
+  <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
+
+  <script type="text/javascript">
+    var ws = null;
+    var url = null;
+    var transports = [];
+    function connect() {
+      ws = (url.indexOf('sockjs') != -1) ?
+              new SockJS(url, undefined, {protocols_whitelist: transports}) : new WebSocket(url);
+
+      ws.onopen = function () {
+        setConnected(true);
+        log('Info: connection opened.');
+      };
+      ws.onmessage = function (event) {
+        log('Received: ' + event.data);
+      };
+      ws.onclose = function (event) {
+        setConnected(false);
+        log('Info: connection closed.');
+        log(event);
+      };
+    }
+  </script>
+</head>
+<body>
+
+</body>
+</html>
+
