@@ -2,7 +2,6 @@ package cn.com.yuzhushui.websocket.socket.handle;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
@@ -15,8 +14,8 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
  ** @email: 280672161@qq.com
  ** @createTime: 2017年1月22日下午3:47:34
  **/
+/*@EnableWebMvc*/
 @Configuration
-@EnableWebMvc
 @EnableWebSocket
 public class WebSocketConfig extends WebMvcConfigurerAdapter implements WebSocketConfigurer {
 	

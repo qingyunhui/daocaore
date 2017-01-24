@@ -43,10 +43,10 @@ public class SystemWebSocketHandler implements WebSocketHandler {
         if(userName!= null){
             //查询未读消息
 //            int count = webSocketService.getUnReadNews((String) session.getAttributes().get(Constants.WEBSOCKET_USERNAME));
-        	int count=0;
-            session.sendMessage(new TextMessage(count + ""));
+            session.sendMessage(new TextMessage(userName+"==>登陆成功。"));
+        }else{
+        	session.sendMessage(new TextMessage("欢迎光临闭闭蔽舍。"));
         }
-        session.sendMessage(new TextMessage("这是测试消息"));
     }
 
     @Override

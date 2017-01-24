@@ -40,11 +40,11 @@ $(function(){
 	   	    	setMessageInnerHTML(evnt.data);
 	   	    };
 	   	    websocket.onerror = function (evnt) {
-	   	    	setMessageInnerHTML("连接error!")
+	   	    	setMessageInnerHTML("连接error!");
 	   	    };
 	   	    websocket.onclose = function (evnt) {
-	   	    	setMessageInnerHTML("与服务器断开了链接!")
-	   	    }
+	   	    	setMessageInnerHTML("与服务器断开了链接!"+evnt);
+	   	    };
     }
     
     function initWebsocket(){

@@ -1,6 +1,7 @@
 package cn.com.yuzhushui.websocket.socket.handle;
 
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +12,8 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.server.HandshakeInterceptor;
+
+import qing.yun.hui.common.utils.StringUtil;
 
 /***
  ** @category 请用一句话来描述其用途...
@@ -26,7 +29,8 @@ public class WebSocketHandshakeInterceptor implements HandshakeInterceptor {
     
     public static final String WEBSOCKET_USERNAME = "websocket_username";
     
-    @Override
+    private Random random = new Random();
+    
     public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Map<String, Object> attributes) throws Exception {
     	logger.info("-------->WebSocketHandshakeInterceptor.beforeHandshake()");
     	if (request instanceof ServletServerHttpRequest) {
@@ -35,13 +39,18 @@ public class WebSocketHandshakeInterceptor implements HandshakeInterceptor {
             if (session != null) {
                 //使用userName区分WebSocketHandler，以便定向发送消息
                 String userName = (String) session.getAttribute(SESSION_USERNAME);
-                attributes.put(WEBSOCKET_USERNAME,userName);
+                if(!StringUtil.isEmpty(userName)){
+                	attributes.put(WEBSOCKET_USERNAME,userName);
+                }else{
+                	attributes.put(WEBSOCKET_USERNAME,"游客【"+random.nextInt(100000)+800000+"】");
+                }
+            }else{
+            	attributes.put(WEBSOCKET_USERNAME,"游客【"+random.nextInt(100000)+"】");
             }
         }
         return true;
     }
 
-    @Override
     public void afterHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Exception exception) {
     	logger.info("-------->WebSocketHandshakeInterceptor.afterHandshake()");
     }

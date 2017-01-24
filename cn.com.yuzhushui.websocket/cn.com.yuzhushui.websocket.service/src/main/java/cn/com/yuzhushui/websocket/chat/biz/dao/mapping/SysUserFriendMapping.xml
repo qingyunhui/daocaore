@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.yuzhushui.websocket.chat.biz.dao.SysUserFriendDao">
+	<resultMap type="cn.com.yuzhushui.websocket.chat.biz.entity.SysUserFriend" id="BaseResultMap">
+        <result property="id" column="id" javaType="Integer"/>
+        <result property="accountId" column="account_id" javaType="Integer"/>
+        <result property="sourceAccountId" column="source_account_id" javaType="Integer"/>
+        <result property="targetAccountId" column="target_account_id" javaType="String"/>
+        <result property="status" column="status" javaType="Integer"/>
+        <result property="ctime" column="ctime" javaType="Date"/>
+        <result property="creater" column="creater" javaType="String"/>
+        <result property="createrId" column="creater_id" javaType="Integer"/>
+        <result property="etime" column="etime" javaType="Date"/>
+        <result property="editor" column="editor" javaType="String"/>
+        <result property="editorId" column="editor_id" javaType="Integer"/>
+        <result property="comments" column="comments" javaType="String"/>
+        <result property="deleted" column="deleted" javaType="Integer"/>
+	</resultMap>
+	
+	<sql id="full-columns" >
+        t.id,
+        t.account_id,
+        t.source_account_id,
+        t.target_account_id,
+        t.status,
+        t.ctime,
+        t.creater,
+        t.creater_id,
+        t.etime,
+        t.editor,
+        t.editor_id,
+        t.comments,
+        t.deleted
+	</sql>
+	
+	<!-- 查询条件 -->
+	<sql id="queryCriteria">
+		 <if test="@OGNL@isNotEmpty(id)">
+            AND t.id = #{id}
+         </if>
+		 <if test="@OGNL@isNotEmpty(accountId)">
+            AND t.account_id = #{accountId}
+         </if>
+		 <if test="@OGNL@isNotEmpty(sourceAccountId)">
+            AND t.source_account_id = #{sourceAccountId}
+         </if>
+		 <if test="@OGNL@isNotEmpty(targetAccountId)">
+            AND t.target_account_id = #{targetAccountId}
+         </if>
+		 <if test="@OGNL@isNotEmpty(status)">
+            AND t.status = #{status}
+         </if>
+		 <if test="@OGNL@isNotEmpty(ctime)">
+            AND t.ctime = #{ctime}
+         </if>
+		 <if test="@OGNL@isNotEmpty(creater)">
+            AND t.creater = #{creater}
+         </if>
+		 <if test="@OGNL@isNotEmpty(createrId)">
+            AND t.creater_id = #{createrId}
+         </if>
+		 <if test="@OGNL@isNotEmpty(etime)">
+            AND t.etime = #{etime}
+         </if>
+		 <if test="@OGNL@isNotEmpty(editor)">
+            AND t.editor = #{editor}
+         </if>
+		 <if test="@OGNL@isNotEmpty(editorId)">
+            AND t.editor_id = #{editorId}
+         </if>
+		 <if test="@OGNL@isNotEmpty(comments)">
+            AND t.comments = #{comments}
+         </if>
+		 <if test="@OGNL@isNotEmpty(deleted)">
+            AND t.deleted = #{deleted}
+         </if>
+	</sql>
+
+	<insert id="insert" parameterType="cn.com.yuzhushui.websocket.chat.biz.entity.SysUserFriend" >
+		<![CDATA[
+	        INSERT INTO sys_user_friend (
+	            account_id ,
+	            source_account_id ,
+	            target_account_id ,
+	            status ,
+	            ctime ,
+	            creater ,
+	            creater_id ,
+	            etime ,
+	            editor ,
+	            editor_id ,
+	            comments ,
+	            deleted 
+	        ) VALUES (
+	        	#{accountId},
+	        	#{sourceAccountId},
+	        	#{targetAccountId},
+	        	#{status},
+	        	now(),
+	        	#{creater},
+	        	#{createrId},
+	        	#{etime},
+	        	#{editor},
+	        	#{editorId},
+	        	#{comments},
+	        	0
+	        )
+	    ]]>
+    	<selectKey resultType="java.lang.Integer" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+	</insert>
+	
+	<insert id="insertBatch" parameterType="java.util.List" >
+		<![CDATA[
+	        INSERT INTO sys_user_friend (
+	            account_id ,
+	            source_account_id ,
+	            target_account_id ,
+	            status ,
+	            ctime ,
+	            creater ,
+	            creater_id ,
+	            etime ,
+	            editor ,
+	            editor_id ,
+	            comments ,
+	            deleted 
+	        ) VALUES 
+	        <foreach collection="list" item="item" index="index" separator=",">
+	        (
+	        	#{accountId},
+	        	#{sourceAccountId},
+	        	#{targetAccountId},
+	        	#{status},
+	        	now(),
+	        	#{creater},
+	        	#{createrId},
+	        	#{etime},
+	        	#{editor},
+	        	#{editorId},
+	        	#{comments},
+	        	0
+	        )
+	        </foreach>
+	    ]]>
+	</insert>
+	
+	<update id="delete" parameterType="java.lang.Integer">
+        UPDATE sys_user_friend SET deleted=1 
+        WHERE deleted=0 AND
+        	id = #{value}
+	</update>
+	<update id="deleteBatch" parameterType="list" >
+        UPDATE sys_user_friend SET deleted=1 
+        WHERE deleted=0 AND
+        	id IN 
+        <foreach collection="list" item = "id" open="(" separator="," close=")">
+        	#{id}
+		</foreach>
+	</update>
+	
+	<update id="update" parameterType="cn.com.yuzhushui.websocket.chat.biz.entity.SysUserFriend">
+        UPDATE sys_user_friend 
+        <set>
+        	<if test="@OGNL@isNotEmpty(accountId)">
+	            account_id = #{accountId},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(sourceAccountId)">
+	            source_account_id = #{sourceAccountId},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(targetAccountId)">
+	            target_account_id = #{targetAccountId},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(status)">
+	            status = #{status},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(ctime)">
+	            ctime = #{ctime},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(creater)">
+	            creater = #{creater},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(createrId)">
+	            creater_id = #{createrId},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(etime)">
+	            etime = #{etime},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(editor)">
+	            editor = #{editor},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(editorId)">
+	            editor_id = #{editorId},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(comments)">
+	            comments = #{comments},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(deleted)">
+	            deleted = #{deleted},
+	        </if>
+        </set>
+        WHERE deleted=0
+        	AND id = #{id}
+	</update>
+	
+	<select id="getById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+	   	SELECT <include refid="full-columns" />
+       	<![CDATA[
+       	FROM sys_user_friend t
+       	WHERE t.id = #{value}
+		]]>
+    </select>
+	
+	<select id="query" parameterType="map" resultMap="BaseResultMap">
+		SELECT <include refid="full-columns" />
+	    FROM sys_user_friend t
+		<where> <include refid="queryCriteria"/>  </where>
+		<if test="@OGNL@isNotEmpty(orderColumn) ">
+        ORDER BY t.${orderColumn} <if test="@OGNL@isNotEmpty(orderDirection) ">${orderDirection}</if>
+        </if>
+	</select>
+	
+	<select id="queryPage" parameterType="map" resultMap="BaseResultMap">
+		SELECT 
+        <include refid="full-columns" />
+            FROM sys_user_friend t
+		<where> <include refid="queryCriteria"/>  </where>
+		<if test="@OGNL@isNotEmpty(orderColumn) ">
+        ORDER BY t.${orderColumn} <if test="@OGNL@isNotEmpty(orderDirection) ">${orderDirection}</if>
+        </if>
+        LIMIT #{start}, #{pageSize}
+	</select>
+
+	<select id="queryCount" parameterType="map" resultType="java.lang.Integer">
+		select count(id) FROM sys_user_friend 
+        <where> <include refid="queryCriteria"/>  </where>
+	</select>
+</mapper>

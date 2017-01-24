@@ -16,11 +16,11 @@
         <version>7.0</version>
         <scope>provided</scope>
       </dependency>
-      <dependency>
+      <!-- <dependency>
   		<groupId>cn.com.yuzhushui.websocket.service</groupId>
   		<artifactId>cn.com.yuzhushui.websocket.service</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
-  	  </dependency>
+  	  </dependency> -->
   </dependencies>
   
   
