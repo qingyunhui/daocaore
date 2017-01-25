@@ -18,7 +18,7 @@ import cn.com.yuzhushui.websocket.common.bean.SessionUser;
 import com.alibaba.fastjson.JSONObject;
 
 /***
- ** @category 请用一句话来描述其用途...
+ ** @category websocket处理类
  ** @author qing.yunhui
  ** @email: 280672161@qq.com
  ** @createTime: 2017年1月22日下午3:50:01
@@ -32,7 +32,7 @@ public class MyWebSocketHandler implements WebSocketHandler {
     //初次链接成功执行
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-        logger.debug("链接成功......");
+        logger.debug("===============>>>链接成功......");
         Object temp = session.getAttributes().get(SessionManager.USER_SESSION);
         if(temp!= null){
             SessionUser user = (SessionUser)temp; //用户信息

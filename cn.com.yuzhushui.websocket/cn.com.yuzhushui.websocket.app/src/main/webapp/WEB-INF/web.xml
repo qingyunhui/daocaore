@@ -91,6 +91,7 @@
     <session-timeout>60</session-timeout>
   </session-config>
   <welcome-file-list>
+  	 <welcome-file>chatroom.html</welcome-file>
      <welcome-file>index.html</welcome-file>
 	 <!-- <welcome-file>demo.html</welcome-file> -->
 	 <!-- <welcome-file>index.jsp</welcome-file> -->
