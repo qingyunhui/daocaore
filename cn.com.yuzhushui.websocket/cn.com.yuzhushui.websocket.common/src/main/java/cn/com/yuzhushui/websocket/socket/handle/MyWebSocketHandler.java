@@ -14,6 +14,7 @@ import org.springframework.web.socket.WebSocketSession;
 import cn.com.yuzhushui.websocket.common.bean.Code;
 import cn.com.yuzhushui.websocket.common.bean.MsgDeliverServiceRoom;
 import cn.com.yuzhushui.websocket.common.bean.SessionUser;
+import cn.com.yuzhushui.websocket.enums.ChatRoomRecordEnum;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -33,38 +34,38 @@ public class MyWebSocketHandler implements WebSocketHandler {
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         logger.debug("===============>>>链接成功......");
-        Object temp = session.getAttributes().get(SessionManager.USER_SESSION);
-        if(temp!= null){
-            SessionUser user = (SessionUser)temp; //用户信息
-            Integer userType = user.getMsgUserInfo().getUserType();
+        Object object = session.getAttributes().get(SessionManager.USER_SESSION);
+        if(null!=object){
+            SessionUser sessionUser = (SessionUser)object; //用户信息
+            Integer userType = sessionUser.getMsgUserInfo().getUserType();
             switch (userType) {
                 case Code.USER_TYPE_1: //是用户
 //                    userMap.put(userId, webSocketSession);
                     break;
                 case Code.USER_TYPE_2: //是游客，自动加入系统聊天室,并且发送通知信息
                     MsgDeliverServiceRoom mdsr_userInfo = new MsgDeliverServiceRoom();
-                    mdsr_userInfo.setMsgType(Code.MSG_TYPE_3);
-                    mdsr_userInfo.setMsgUserInfo(user.getMsgUserInfo());
+                    mdsr_userInfo.setMsgType(ChatRoomRecordEnum.MsgType.SERVER_PUSH.getValue());
+                    mdsr_userInfo.setMsgUserInfo(sessionUser.getMsgUserInfo());
                     session.sendMessage(new TextMessage(JSONObject.toJSONString(mdsr_userInfo)));
 
-                    sessionManager.chatroomMapPut(0l,user.getMsgUserInfo().getUserId(),session);
-                    sessionManager.put(user.getMsgUserInfo().getUserId(),user.getMsgUserInfo().getUserType(),session);
-                    user.getChatroomIds().add(0l);
+                    sessionManager.chatroomMapPut(0l,sessionUser.getMsgUserInfo().getUserId(),session);
+                    sessionManager.put(sessionUser.getMsgUserInfo().getUserId(),sessionUser.getMsgUserInfo().getUserType(),session);
+                    sessionUser.getChatroomIds().add(0l);
                     MsgDeliverServiceRoom mdsr = new MsgDeliverServiceRoom();
                     mdsr.setMsgUserInfo(Code.sysUser);
                     mdsr.setTimeOfArrive(new Date());
                     mdsr.setTargetId(0l);
-                    mdsr.setMsgBody(user.getMsgUserInfo().getNickname()  + "骑着鸵鸟进入了本聊天室.....");
-                    mdsr.setMsgType(Code.MSG_TYPE_2);
+                    mdsr.setMsgBody(sessionUser.getMsgUserInfo().getNickname()  + "骑着鸵鸟进入了本聊天室.....");
+                    mdsr.setMsgType(ChatRoomRecordEnum.MsgType.CHAT_ROOM.getValue());
                     SessionUser sys = new SessionUser();
                     sys.setMsgUserInfo(Code.sysUser);
-                    sessionManager.sendMessage(sys,JSONObject.toJSONString(mdsr),Code.MSG_ORIGIN_SERVICE);
+                    sessionManager.sendMessage(sys,JSONObject.toJSONString(mdsr),ChatRoomRecordEnum.MsgSource.SERVER.getValue());
 
-                    mdsr.setMsgType(Code.MSG_TYPE_4);
+                    mdsr.setMsgType(ChatRoomRecordEnum.MsgType.REAL_TIME_UPDATE_ONLINE.getValue());
                     mdsr.setOnlieNum(sessionManager.getRoomOnlieNum(0l));
                     mdsr.setOnlieList(sessionManager.getRoomOnlieList(0l));
                     //推送在线人数和在线列表
-                    sessionManager.sendMessage(sys,JSONObject.toJSONString(mdsr),Code.MSG_ORIGIN_SERVICE);
+                    sessionManager.sendMessage(sys,JSONObject.toJSONString(mdsr),ChatRoomRecordEnum.MsgSource.SERVER.getValue());
                     break;
                 default:
                     break;
@@ -77,7 +78,7 @@ public class MyWebSocketHandler implements WebSocketHandler {
     public void handleMessage(WebSocketSession webSocketSession, WebSocketMessage<?> webSocketMessage) throws Exception {
         Map<String, Object> attributes = webSocketSession.getAttributes();
         SessionUser user = (SessionUser) attributes.get(SessionManager.USER_SESSION);
-        sessionManager.sendMessage(user, webSocketMessage.getPayload() + "",Code.MSG_ORIGIN_CLIENT);
+        sessionManager.sendMessage(user, webSocketMessage.getPayload() + "",ChatRoomRecordEnum.MsgSource.CLIENT.getValue());
     }
 
     @Override
@@ -93,11 +94,11 @@ public class MyWebSocketHandler implements WebSocketHandler {
         mdsr.setTargetId(0l);
         SessionUser sys = new SessionUser();
         sys.setMsgUserInfo(Code.sysUser);
-        mdsr.setMsgType(Code.MSG_TYPE_4);
+        mdsr.setMsgType(ChatRoomRecordEnum.MsgType.REAL_TIME_UPDATE_ONLINE.getValue());
         mdsr.setOnlieNum(sessionManager.getRoomOnlieNum(0l));
         mdsr.setOnlieList(sessionManager.getRoomOnlieList(0l));
         //推送在线人数和在线列表
-        sessionManager.sendMessage(sys,JSONObject.toJSONString(mdsr),Code.MSG_ORIGIN_SERVICE);
+        sessionManager.sendMessage(sys,JSONObject.toJSONString(mdsr),ChatRoomRecordEnum.MsgSource.SERVER.getValue());
     }
 
     @Override
@@ -110,11 +111,11 @@ public class MyWebSocketHandler implements WebSocketHandler {
         mdsr.setTargetId(0l);
         SessionUser sys = new SessionUser();
         sys.setMsgUserInfo(Code.sysUser);
-        mdsr.setMsgType(Code.MSG_TYPE_4);
+        mdsr.setMsgType(ChatRoomRecordEnum.MsgType.REAL_TIME_UPDATE_ONLINE.getValue());
         mdsr.setOnlieNum(sessionManager.getRoomOnlieNum(0l));
         mdsr.setOnlieList(sessionManager.getRoomOnlieList(0l));
         //推送在线人数和在线列表
-        sessionManager.sendMessage(sys,JSONObject.toJSONString(mdsr),Code.MSG_ORIGIN_SERVICE);
+        sessionManager.sendMessage(sys,JSONObject.toJSONString(mdsr),ChatRoomRecordEnum.MsgSource.SERVER.getValue());
     }
 
     @Override

@@ -20,6 +20,7 @@ import cn.com.yuzhushui.websocket.common.bean.MsgDeliverServicePToP;
 import cn.com.yuzhushui.websocket.common.bean.MsgDeliverServiceRoom;
 import cn.com.yuzhushui.websocket.common.bean.MsgUserInfo;
 import cn.com.yuzhushui.websocket.common.bean.SessionUser;
+import cn.com.yuzhushui.websocket.enums.ChatRoomRecordEnum;
 import cn.com.yuzhushui.websocket.sys.biz.entity.SysUser;
 
 import com.alibaba.fastjson.JSON;
@@ -134,31 +135,29 @@ public class SessionManager {
         MsgDeliverService mds = null;
         JSONObject jsonObject = JSON.parseObject(msgJson);
         Integer msgType = jsonObject.getInteger("msgType");
-        if(Code.MSG_ORIGIN_CLIENT == msgOrigin){ //来自客户端
-            if(Code.MSG_TYPE_1 == msgType.intValue()){
+        if(ChatRoomRecordEnum.MsgSource.CLIENT.getValue() == msgOrigin){ //来自客户端
+            if(ChatRoomRecordEnum.MsgType.POINT_TO_POINT.getValue() == msgType.intValue()){
                 mdc = JSON.parseObject(msgJson, MsgDeliverClientPToP.class);
             }else{
                 mdc = JSON.parseObject(msgJson, MsgDeliverClientRoom.class);
             }
-        }else if(Code.MSG_ORIGIN_SERVICE == msgOrigin){
-            if(Code.MSG_TYPE_1 == msgType.intValue()){
+        }else if(ChatRoomRecordEnum.MsgSource.SERVER.getValue() == msgOrigin){
+            if(ChatRoomRecordEnum.MsgType.POINT_TO_POINT.getValue() == msgType.intValue()){
                 mds = JSON.parseObject(msgJson, MsgDeliverServicePToP.class);
             }else{
                 mds = JSON.parseObject(msgJson, MsgDeliverServiceRoom.class);
             }
         }
-
-
         switch (msgType) {
-            case Code.MSG_TYPE_1:
+            case ChatRoomRecordEnum.MsgType.POINT_TO_POINT.getValue():
                 break;
-            case Code.MSG_TYPE_2:  //聊天室消息
-                if(Code.MSG_ORIGIN_CLIENT == msgOrigin){ //来自客户端
+            case ChatRoomRecordEnum.MsgType.CHAT_ROOM.getValue():  //聊天室消息
+                if(ChatRoomRecordEnum.MsgSource.CLIENT.getValue() == msgOrigin){ //来自客户端
                     MsgDeliverClientRoom mdcr = (MsgDeliverClientRoom)mdc;
                     if(chatroomMap.containsKey(mdcr.getTargetId())){
                         HashMap<Long, WebSocketSession> room = chatroomMap.get(mdcr.getTargetId());
                         MsgDeliverServiceRoom mdsr = new MsgDeliverServiceRoom();
-                        mdsr.setMsgType(Code.MSG_TYPE_2);
+                        mdsr.setMsgType(ChatRoomRecordEnum.MsgType.CHAT_ROOM.getValue());
                         mdsr.setMsgBody(mdcr.getMsgBody());
                         mdsr.setTargetId(mdcr.getTargetId());
                         mdsr.setMsgUserInfo(user.getMsgUserInfo());
@@ -172,7 +171,7 @@ public class SessionManager {
                             }
                         }
                     }
-                }else if(Code.MSG_ORIGIN_SERVICE == msgOrigin){
+                }else if(ChatRoomRecordEnum.MsgSource.SERVER.getValue() == msgOrigin){
                     MsgDeliverServiceRoom mdsr = (MsgDeliverServiceRoom)mds;
                     if(chatroomMap.containsKey(mdsr.getTargetId())){
                         HashMap<Long, WebSocketSession> room = chatroomMap.get(mdsr.getTargetId());
@@ -187,7 +186,7 @@ public class SessionManager {
                     }
                 }
                 break;
-            case Code.MSG_TYPE_4:  //聊天室消息
+            case ChatRoomRecordEnum.MsgType.REAL_TIME_UPDATE_ONLINE.getValue():  //聊天室消息
                 MsgDeliverServiceRoom mdsr = (MsgDeliverServiceRoom)mds;
                 HashMap<Long, WebSocketSession> map = chatroomMap.get(mdsr.getTargetId());
                 if(map == null){

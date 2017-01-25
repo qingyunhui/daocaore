@@ -14,9 +14,9 @@ import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.server.HandshakeInterceptor;
 
-import cn.com.yuzhushui.websocket.common.bean.Code;
 import cn.com.yuzhushui.websocket.common.bean.MsgUserInfo;
 import cn.com.yuzhushui.websocket.common.bean.SessionUser;
+import cn.com.yuzhushui.websocket.enums.SysUserEnum;
 import cn.com.yuzhushui.websocket.sys.biz.entity.SysUser;
 
 /***
@@ -39,35 +39,23 @@ public class MyHandshakeInterceptor implements HandshakeInterceptor {
     	if (request instanceof ServletServerHttpRequest) {
             ServletServerHttpRequest servletRequest = (ServletServerHttpRequest) request;
             HttpSession session = servletRequest.getServletRequest().getSession(true);
-            if (session != null) {
-                //使用userName区分WebSocketHandler，以便定向发送消息
-                Object temp = session.getAttribute(Code.USER_SESSION);
-                if(temp!= null){
-                    if(temp instanceof SysUser){
-                    	SysUser user = (SysUser)temp;
-                        map.put(SessionManager.USER_SESSION,user);  //存入数据，方便在hander中获取
-                    }
+            if (null!=session) {
+                Object object = session.getAttribute(SessionManager.USER_SESSION);
+                if(null!=object && object instanceof SysUser){
+                	SessionUser sessionUser = (SessionUser)object;
+                    map.put(SessionManager.USER_SESSION,sessionUser);  //存入数据，方便在handler中获取
                 }else{ 
                 	//有session ，但是又没有user信息。就是游客
                     SessionUser user = new SessionUser();
                     MsgUserInfo msgUserInfo = new MsgUserInfo();
                     msgUserInfo.setUserId(new Date().getTime());
                     msgUserInfo.setNickname("游客" + random.nextInt(100000));
-                    msgUserInfo.setUserType(Code.USER_TYPE_2);
+                    msgUserInfo.setUserType(SysUserEnum.UserType.TOURISTS.getValue());
                     msgUserInfo.setIcons("assets/common/image/1.jpg");
                     user.setMsgUserInfo(msgUserInfo);
                     map.put(SessionManager.USER_SESSION,user);
                     session.setAttribute(SessionManager.USER_SESSION,user);
                 }
-            }else{
-                SessionUser user = new SessionUser();
-                MsgUserInfo msgUserInfo = new MsgUserInfo();
-                msgUserInfo.setUserId(new Date().getTime());
-                msgUserInfo.setNickname("游客" + random.nextInt(100000));
-                msgUserInfo.setUserType(Code.USER_TYPE_2);
-                msgUserInfo.setIcons("assets/common/image/1.jpg");
-                user.setMsgUserInfo(msgUserInfo);
-                map.put(SessionManager.USER_SESSION,user);
             }
         }
     	logger.info("========================>初次，握手结束。");
