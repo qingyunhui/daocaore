@@ -149,9 +149,9 @@ public class SessionManager {
             }
         }
         switch (msgType) {
-            case ChatRoomRecordEnum.MsgType.POINT_TO_POINT.getValue():
+            case 1://ChatRoomRecordEnum.MsgType.POINT_TO_POINT.getValue():                                                                                                                                      
                 break;
-            case ChatRoomRecordEnum.MsgType.CHAT_ROOM.getValue():  //聊天室消息
+            case 2://ChatRoomRecordEnum.MsgType.CHAT_ROOM.getValue():  //聊天室消息
                 if(ChatRoomRecordEnum.MsgSource.CLIENT.getValue() == msgOrigin){ //来自客户端
                     MsgDeliverClientRoom mdcr = (MsgDeliverClientRoom)mdc;
                     if(chatroomMap.containsKey(mdcr.getTargetId())){
@@ -186,7 +186,7 @@ public class SessionManager {
                     }
                 }
                 break;
-            case ChatRoomRecordEnum.MsgType.REAL_TIME_UPDATE_ONLINE.getValue():  //聊天室消息
+            case 4://ChatRoomRecordEnum.MsgType.REAL_TIME_UPDATE_ONLINE.getValue():  //聊天室消息
                 MsgDeliverServiceRoom mdsr = (MsgDeliverServiceRoom)mds;
                 HashMap<Long, WebSocketSession> map = chatroomMap.get(mdsr.getTargetId());
                 if(map == null){
@@ -201,7 +201,7 @@ public class SessionManager {
                     }
                 }
                 break;
-            case Code.MSG_TYPE_5:  //聊天室消息
+            case 5://ChatRoomRecordEnum.MsgType.SPECIAL_EFFECTS_EVENT.getValue():  //聊天室消息
                 MsgDeliverClientRoom mdcr = (MsgDeliverClientRoom)mdc;
                 HashMap<Long, WebSocketSession> map5 = chatroomMap.get(mdcr.getTargetId());
                 if(map5 == null){
