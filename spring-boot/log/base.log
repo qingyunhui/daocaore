@@ -1,29 +1,3 @@
-2017-03-16 13:35:45,443 INFO (StartupInfoLogger.java:48)- Starting Application on WIN-MSOD3QO6LHT with PID 10740 (E:\daocaore\spring-boot\target\classes started by Administrator in E:\daocaore\spring-boot)
-2017-03-16 13:35:45,446 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.1.RELEASE, Spring v4.3.6.RELEASE
-2017-03-16 13:35:45,447 INFO (SpringApplication.java:637)- No active profile set, falling back to default profiles: default
-2017-03-16 13:35:49,500 INFO (StartupInfoLogger.java:57)- Started Application in 4.279 seconds (JVM running for 4.742)
-2017-03-16 13:42:39,887 INFO (StartupInfoLogger.java:48)- Starting Application on WIN-MSOD3QO6LHT with PID 12436 (E:\daocaore\spring-boot\target\classes started by Administrator in E:\daocaore\spring-boot)
-2017-03-16 13:42:39,889 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.1.RELEASE, Spring v4.3.6.RELEASE
-2017-03-16 13:42:39,890 INFO (SpringApplication.java:637)- No active profile set, falling back to default profiles: default
-2017-03-16 13:42:44,131 INFO (StartupInfoLogger.java:57)- Started Application in 4.472 seconds (JVM running for 4.866)
-2017-03-16 13:46:55,568 DEBUG (BaseJdbcLogger.java:181)- ==>  Preparing: SELECT user_id, `name`, pwd, salt FROM users 
-2017-03-16 13:46:55,585 DEBUG (BaseJdbcLogger.java:181)- ==> Parameters: 
-2017-03-16 13:46:55,597 DEBUG (BaseJdbcLogger.java:181)- ====>  Preparing: SELECT photo_id AS photoId, photo_url AS photoURL, user_id AS userId FROM `photo` WHERE user_id =1 
-2017-03-16 13:46:55,598 DEBUG (BaseJdbcLogger.java:181)- ====> Parameters: 
-2017-03-16 13:46:55,609 DEBUG (BaseJdbcLogger.java:181)- <====      Total: 2
-2017-03-16 13:46:55,610 DEBUG (BaseJdbcLogger.java:181)- ====>  Preparing: SELECT photo_id AS photoId, photo_url AS photoURL, user_id AS userId FROM `photo` WHERE user_id =2 
-2017-03-16 13:46:55,610 DEBUG (BaseJdbcLogger.java:181)- ====> Parameters: 
-2017-03-16 13:46:55,611 DEBUG (BaseJdbcLogger.java:181)- <====      Total: 1
-2017-03-16 13:46:55,611 DEBUG (BaseJdbcLogger.java:181)- <==      Total: 2
-2017-03-16 13:50:06,584 INFO (StartupInfoLogger.java:48)- Starting Application on WIN-MSOD3QO6LHT with PID 13532 (E:\daocaore\spring-boot\target\classes started by Administrator in E:\daocaore\spring-boot)
-2017-03-16 13:50:06,586 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.1.RELEASE, Spring v4.3.6.RELEASE
-2017-03-16 13:50:06,587 INFO (SpringApplication.java:637)- No active profile set, falling back to default profiles: default
-2017-03-16 13:50:10,575 INFO (StartupInfoLogger.java:57)- Started Application in 4.22 seconds (JVM running for 4.616)
-2017-03-16 13:56:29,075 INFO (StartupInfoLogger.java:48)- Starting Application on WIN-MSOD3QO6LHT with PID 12964 (E:\daocaore\spring-boot\target\classes started by Administrator in E:\daocaore\spring-boot)
-2017-03-16 13:56:29,077 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.1.RELEASE, Spring v4.3.6.RELEASE
-2017-03-16 13:56:29,077 INFO (SpringApplication.java:637)- No active profile set, falling back to default profiles: default
-2017-03-16 13:56:33,292 INFO (StartupInfoLogger.java:57)- Started Application in 4.453 seconds (JVM running for 4.873)
-2017-03-16 13:57:48,623 INFO (StartupInfoLogger.java:48)- Starting Application on WIN-MSOD3QO6LHT with PID 2400 (E:\daocaore\spring-boot\target\classes started by Administrator in E:\daocaore\spring-boot)
-2017-03-16 13:57:48,625 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.1.RELEASE, Spring v4.3.6.RELEASE
-2017-03-16 13:57:48,625 INFO (SpringApplication.java:637)- No active profile set, falling back to default profiles: default
-2017-03-16 13:57:52,657 INFO (StartupInfoLogger.java:57)- Started Application in 4.259 seconds (JVM running for 4.653)
+2017-04-01 10:37:51,043 INFO (StartupInfoLogger.java:48)- Starting Application on WIN-MSOD3QO6LHT with PID 10332 (E:\daocaore\spring-boot\target\classes started by Administrator in E:\daocaore\spring-boot)
+2017-04-01 10:37:51,056 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.1.RELEASE, Spring v4.3.6.RELEASE
+2017-04-01 10:37:51,057 INFO (SpringApplication.java:637)- No active profile set, falling back to default profiles: default
