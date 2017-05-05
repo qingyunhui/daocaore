@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd" version="2.0">
+	<description>自定义枚举标签库</description>
+	<tlib-version>1.0</tlib-version>
+	<short-name>tld</short-name>
+	<uri>/tldFunction</uri>
+	<function>
+		<name>getEnumValues</name>
+		<function-class>qing.yun.hui.common.utils.EnumUtil</function-class>
+		<function-signature>java.lang.Object[] getEnumValues(java.lang.String)</function-signature>
+		<example>${tld:getEnumValues('')}</example>
+	</function>
+	<function>
+		<name>getEnumToJSON</name>
+		<function-class>qing.yun.hui.common.utils.EnumUtil</function-class>
+		<function-signature>java.lang.String getEnumToJSON(java.lang.String)</function-signature>
+		<example>${tld:getEnumToJSON('')}</example>
+	</function>
+	<function>
+		<name>getNameByCode</name>
+		<function-class>qing.yun.hui.common.utils.EnumUtil</function-class>
+		<function-signature>java.lang.String  getNameByCode(java.lang.String,java.lang.Object)</function-signature>
+		<example>${tld:getNameByCode(x,y)}</example>
+	</function>
+	<function>
+		<name>getNameByValue</name>
+		<function-class>qing.yun.hui.common.utils.EnumUtil</function-class>
+		<function-signature>java.lang.String getNameByValue(java.lang.String,java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>getCodeByValue</name>
+		<function-class>qing.yun.hui.common.utils.EnumUtil</function-class>
+		<function-signature>java.lang.String  getCodeByValue(java.lang.String,java.lang.String)</function-signature>
+		<example>${tld:getCodeByValue(x,y)}</example>
+	</function>
+	<function>
+		<name>getNameByDate</name>
+		<function-class>qing.yun.hui.common.utils.HandleTime</function-class>
+		<function-signature>java.lang.String getNameByDate(java.lang.Object)</function-signature>
+	</function>
+</taglib>
