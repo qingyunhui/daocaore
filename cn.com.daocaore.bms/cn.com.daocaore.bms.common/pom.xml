@@ -14,6 +14,76 @@
 	   <artifactId>cn.com.daocaore.bms.client</artifactId>
 	   <version>0.0.1-SNAPSHOT</version>
   	</dependency>
+  	
+  	<!-- springmvc -->
+  	<dependency>
+	   <groupId>org.springframework</groupId>
+	   <artifactId>spring-web</artifactId>
+	   <version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-webmvc</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+  	<!-- spring mvc end -->
+  
+ 	<!-- mybatis分页插件 -->
+	<dependency>
+		<groupId>com.github.pagehelper</groupId>
+		<artifactId>pagehelper</artifactId>
+		<version>4.0.3</version>
+	</dependency>
+  	
+  	<dependency>
+		<groupId>org.mybatis</groupId>
+		<artifactId>mybatis</artifactId>
+		<version>3.2.7</version>
+	</dependency>
+  	
+  	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>javax.servlet-api</artifactId>
+		<version>3.0.1</version>
+		<scope>provided</scope>
+	</dependency>
+  	
+  	<dependency>
+  		<groupId>cn.com.yuzhushui.movie.client</groupId>
+		<artifactId>cn.com.yuzhushui.movie.client</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+	<dependency>
+	    <groupId>commons-codec</groupId>
+	    <artifactId>commons-codec</artifactId>
+	    <version>1.3</version>
+	</dependency>
+	
+	<!-- redis -->
+  	<dependency>
+	    <groupId>redis.clients</groupId>
+	    <artifactId>jedis</artifactId>
+	    <version>${redis.version}</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.springframework.data</groupId>
+	    <artifactId>spring-data-redis</artifactId>
+	    <version>${spring-data-redis.version}</version>
+	</dependency>
+	
+	<!-- shiro -->
+	<dependency>
+		 <groupId>org.apache.shiro</groupId>
+	     <artifactId>shiro-core</artifactId>
+	     <version>${shiro.version}</version>
+	</dependency>
+	<!-- shiro end -->
+	
   </dependencies>
   
 </project>
