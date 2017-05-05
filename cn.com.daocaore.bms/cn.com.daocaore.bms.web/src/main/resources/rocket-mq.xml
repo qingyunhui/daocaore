@@ -6,7 +6,7 @@
 	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd"
 	default-lazy-init="true" default-autowire="byName">
 
-	<bean id="defaultProducerFactory" class="qing.yun.hui.rocketmq.producer.DefaultProducer" init-method="init" destroy-method="destroy">
+	<!-- <bean id="defaultProducerFactory" class="qing.yun.hui.rocketmq.producer.DefaultProducer" init-method="init" destroy-method="destroy">
 		<constructor-arg name="namesrvAddr" value="${rocketmq.namesrvAddr}" />
 		<constructor-arg name="producerGroup" value="${rocketmq.producerGroup}" />
 		<constructor-arg name="instanceName" value="${rocketmq.instanceName}" />
@@ -15,6 +15,6 @@
 	<bean id="sendInfoMessage" class="cn.com.rocketmq.producer.message.SendInfoMessage">
 		<constructor-arg index="0" value="consumer" />
 		<constructor-arg index="1" value="producer" />
-	</bean>
+	</bean> -->
 	
 </beans>

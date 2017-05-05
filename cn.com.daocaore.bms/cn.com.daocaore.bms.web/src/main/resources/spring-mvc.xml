@@ -19,7 +19,7 @@ http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
 	<mvc:resources mapping="/css/**" location="/css/" cache-period="31556926" />
 	<mvc:resources mapping="/fonts/**" location="/fonts/" cache-period="31556926" />
 	<!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
-	<context:component-scan base-package="cn.com" />
+	<context:component-scan base-package="cn.com.daocaore.bms" />
 	<aop:aspectj-autoproxy proxy-target-class="true" />  
 	
 	<!-- 配置JSP视图 -->

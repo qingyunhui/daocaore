@@ -6,7 +6,7 @@
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd"
 	>
 	
-	<context:component-scan base-package="cn.com" />
+	<context:component-scan base-package="cn.com.daocaore.bms" />
 	<aop:aspectj-autoproxy />
 	
 	<!-- 定义环境变量 --> <!--记得改路径-->
