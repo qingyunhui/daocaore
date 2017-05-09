@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
- <header class="main-header">
+<script src="${path}js/jQuery/jquery-2.2.3.min.js"></script>
+<script src="${path}plugs/bootstrap/js/bootstrap.min.js"></script>
+<script src="${path}plugs/dist/js/app.min.js"></script>
+<header class="main-header">
  
    <a href="index2.html" class="logo">
      <span class="logo-mini"><b>A</b>LT</span>
@@ -159,4 +162,4 @@
        </ul>
      </div>
    </nav>
- </header>
+</header>
