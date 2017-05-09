@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import qing.yun.hui.common.annotations.ActionAnno;
 import qing.yun.hui.common.utils.CookieUtil;
 import qing.yun.hui.common.utils.StringUtil;
 import cn.com.daocaore.bms.common.bean.SessionInfo;
@@ -62,6 +61,12 @@ public class LoginAction {
 	@RequestMapping(value = "/index")
 	public ModelAndView index(HttpServletRequest request,HttpServletResponse response, HttpSession session) {
 		ModelAndView modelView = new ModelAndView(ACTION_PATH + "/index");
+		return modelView;
+	}
+	
+	@RequestMapping(value = "/chart")
+	public ModelAndView chart(HttpServletRequest request,HttpServletResponse response, HttpSession session) {
+		ModelAndView modelView = new ModelAndView(ACTION_PATH + "/chart");
 		return modelView;
 	}
 

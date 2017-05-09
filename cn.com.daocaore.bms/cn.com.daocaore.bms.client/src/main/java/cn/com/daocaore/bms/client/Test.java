@@ -1,10 +1,10 @@
-package cn.com.daocaore.bms.client;
-/***
+/*package cn.com.daocaore.bms.client;
+*//***
  ** @category 请用一句话来描述其用途...
  ** @author qing.yunhui
  ** @email: 280672161@qq.com
  ** @createTime: 2017年4月28日下午4:55:47
- **/
+ **//*
 import java.io.*;
 import com.sun.image.codec.jpeg.*;
 import java.awt.*;
@@ -66,4 +66,4 @@ public class Test{
 }
 
 //图片的为位置控制：    修改代码中的: g.drawImage(img,5,330,null);  5(x) 和 330(y)
-//内容和字显示的位置：      g.drawString("默哀555555。。。。。。。",10,30);
+//内容和字显示的位置：      g.drawString("默哀555555。。。。。。。",10,30);*/

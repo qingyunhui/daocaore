@@ -24,19 +24,18 @@ http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
 	
 	
 	<!-- 定义拦权限拦截器 -->
-	<mvc:interceptors>
+	<!-- <mvc:interceptors>
 		<mvc:interceptor>
-			<!-- mvc:mapping 拦截器路径配置 -->
+			mvc:mapping 拦截器路径配置
 			<mvc:mapping path="/**"/>
-			<!-- mvc:exclude-mapping 拦截器不需要拦截的路径 -->
+			mvc:exclude-mapping 拦截器不需要拦截的路径
 			<bean class="cn.com.daocaore.bms.common.interceptor.SessionInterceptor">
-				<property name="noInterceptors" value=""/><!-- 不须要拦截的URL多个URL以逗号隔开。	 -->
-				<property name="registers" value="" /><!-- 须要注册的URL -->
-				<property name="logins" value=""/><!-- 须要登陆的URL -->
-				<constructor-arg />
+				<property name="noInterceptors" value=""/>不须要拦截的URL多个URL以逗号隔开。	
+				<property name="registers" value="" />须要注册的URL
+				<property name="logins" value=""/>须要登陆的URL
 			</bean>
 		</mvc:interceptor>
-	</mvc:interceptors>
+	</mvc:interceptors> -->
 	
 	
 	<!-- 配置JSP视图 -->

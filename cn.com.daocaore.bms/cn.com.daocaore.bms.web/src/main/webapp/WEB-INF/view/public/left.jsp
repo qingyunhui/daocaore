@@ -45,12 +45,11 @@
         </span>
       </a>
       <ul class="treeview-menu">
-        <li><a href="#">Link in level 2</a></li>
+        <li><a href="javascript:void(0);" onclick="javascript:jump('${path}sys/chart.htm','我是中国人');">单击这里</a></li>
         <li><a href="#">Link in level 2</a></li>
       </ul>
     </li>
   </ul>
   <!-- /.sidebar-menu -->
 </section>
-<!-- /.sidebar -->
 </aside>

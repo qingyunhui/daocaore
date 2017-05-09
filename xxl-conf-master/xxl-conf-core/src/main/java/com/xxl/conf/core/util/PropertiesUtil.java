@@ -102,7 +102,8 @@ public class PropertiesUtil {
 	}
 
 	public static void main(String[] args) {
-		Properties prop = loadProperties("config.properties");
+		String path="F:/test/config.properties";
+		Properties prop = loadProperties(path);
 		System.out.println(getString(prop, "login.username"));
 	}
 
