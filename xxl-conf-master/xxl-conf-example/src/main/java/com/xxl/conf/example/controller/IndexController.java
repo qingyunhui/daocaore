@@ -32,10 +32,14 @@ public class IndexController {
          * 说明: API方式获取, 只需要执行diamante "XxlConfClient.get("key", null)" 即可, 在业务中使用比较方便 ,而且接受XXL-CONF实时推送更新。 同时因为底层有配置缓存,并不存在性能问题;
          *
          */
+        
+        String address=XxlConfClient.get("default.address.key01", null);
+        
 		String paramByClient = XxlConfClient.get("default.key02", null);
 
 		String result = "XML:<hr>default.key01=" + paramByXml;
 		result += "<br><br><br>API:<hr>default.key02=" + paramByClient;
+		result+="<br/><br>API:<hr>address.key01="+address;
 		return result;
 	}
 }
