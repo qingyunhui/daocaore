@@ -17,6 +17,20 @@
 	  <%@ include file="/WEB-INF/view/public/left.jsp"%>
 	  <!-- Content Wrapper. Contains page content -->
 	  <div class="content-wrapper">
+	  	
+	  	<!-- Content Header (Page header) -->
+	    <section class="content-header">
+	      <h1 id="h1Lable">
+	        Simple Tables
+	        <!-- <small>preview of simple tables</small> -->
+	      </h1>
+	      <ol class="breadcrumb">
+	        <li><a href="javascript:void(0);"><i class="fa fa-dashboard"></i>Home</a></li>
+	        <li><a href="javascript:void(0);" id="lableOne">Tables</a></li>
+	        <li class="active" id="lableTowe">Simple</li>
+	      </ol>
+	    </section>
+	  	
 	    <!-- Main content -->
 	    <section class="content">
 	      <!-- Your Page Content Here -->
@@ -29,8 +43,10 @@
 	</div>
 </body>
 <script type="text/javascript">
-  function jump(url,text){
-	$('#current-page').html(text);
+  function jump(url,text1,text2){
+	$('#h1Lable').html(text1);
+	$('#lableOne').html(text1);
+	$('#lableTowe').html(text2);
 	$('#ifr').attr('src',url);
   }
 </script>

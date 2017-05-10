@@ -69,5 +69,28 @@ public class LoginAction {
 		ModelAndView modelView = new ModelAndView(ACTION_PATH + "/chart");
 		return modelView;
 	}
+	
+	@RequestMapping(value = "/simpleTable")
+	public ModelAndView simpleTable(HttpServletRequest request,HttpServletResponse response, HttpSession session) {
+		ModelAndView modelView = new ModelAndView(ACTION_PATH + "/simpleTable");
+		return modelView;
+	}
+	
+	@RequestMapping(value = "/dataTable")
+	public ModelAndView dataTable(HttpServletRequest request,HttpServletResponse response, HttpSession session) {
+		ModelAndView modelView = new ModelAndView(ACTION_PATH + "/dataTable");
+		return modelView;
+	}
 
+	@RequestMapping(value = "/morris")
+	public ModelAndView morris(HttpServletRequest request,HttpServletResponse response, HttpSession session) {
+		ModelAndView modelView = new ModelAndView(ACTION_PATH + "/morris");
+		return modelView;
+	}
+	
+	@RequestMapping(value = "/float")
+	public ModelAndView floats(HttpServletRequest request,HttpServletResponse response, HttpSession session) {
+		ModelAndView modelView = new ModelAndView(ACTION_PATH + "/float");
+		return modelView;
+	}
 }

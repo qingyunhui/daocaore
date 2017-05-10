@@ -37,16 +37,29 @@
       </a>
     </li>
     <li class="treeview">
-      <a href="#">
-      	<i class="fa fa-link"></i> 
-      	<span>Multilevel</span>
+      <a href="javascript:void(0);">
+        <i class="fa fa-table"></i> <span>Tables</span>
         <span class="pull-right-container">
           <i class="fa fa-angle-left pull-right"></i>
         </span>
       </a>
       <ul class="treeview-menu">
-        <li><a href="javascript:void(0);" onclick="javascript:jump('${path}sys/chart.htm','我是中国人');">单击这里</a></li>
-        <li><a href="#">Link in level 2</a></li>
+        <li><a href="javascript:void(0);" onclick="javascript:jump('${path}sys/simpleTable.htm','Tables','simpleTable');"><i class="fa fa-circle-o"></i> Simple tables</a></li>
+        <li><a href="javascript:void(0);" onclick="javascript:jump('${path}sys/dataTable.htm','Tables','dataTable');"><i class="fa fa-circle-o"></i> Data tables</a></li>
+      </ul>
+    </li>
+    <li class="treeview">
+      <a href="javascript:void(0);">
+      	<i class="fa fa-link"></i> 
+      	<span>Charts</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li><a href="javascript:void(0);" onclick="javascript:jump('${path}sys/chart.htm','Charts','ChartsJS');">ChartsJS</a></li>
+        <li><a href="javascript:void(0);" onclick="javascript:jump('${path}sys/morris.htm','Charts','morris');">morris</a></li>
+        <li><a href="javascript:void(0);" onclick="javascript:jump('${path}sys/float.htm','Charts','float');">float</a></li>
       </ul>
     </li>
   </ul>

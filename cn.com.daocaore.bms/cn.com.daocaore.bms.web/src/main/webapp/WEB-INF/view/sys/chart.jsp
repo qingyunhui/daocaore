@@ -1,4 +1,8 @@
 <%@ include file="/WEB-INF/view/public/library.jsp"%>
+<link rel="stylesheet" href="${path}plugs/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+<link rel="stylesheet" href="${path}plugs/dist/css/AdminLTE.min.css">
 <link rel="stylesheet" href="${path}plugs/dist/css/skins/_all-skins.min.css">
 <div class="row">
   <div class="col-md-6">
@@ -82,30 +86,19 @@
       <!-- /.box-body -->
     </div>
     <!-- /.box -->
-
   </div>
   <!-- /.col (RIGHT) -->
 </div>
+<script src="${path}js/jQuery/jquery-2.2.3.min.js"></script>
+<script src="${path}plugs/bootstrap/js/bootstrap.min.js"></script>
 <script src="${path}plugs/chartjs/Chart.min.js"></script>
 <script src="${path}plugs/fastclick/fastclick.js"></script>
-<script src="${path}js/jQuery/jquery-2.2.3.min.js"></script>
+<script src="${path}plugs/dist/js/app.min.js"></script>
 <script src="${path}plugs/dist/js/demo.js"></script>
 <script>
 $(function () {
-    /* ChartJS
-     * -------
-     * Here we will create a few charts using ChartJS
-     */
-
-    //--------------
-    //- AREA CHART -
-    //--------------
-
-    // Get context with jQuery - using jQuery's .get() method.
     var areaChartCanvas = $("#areaChart").get(0).getContext("2d");
-    // This will get the first returned node in the jQuery collection.
     var areaChart = new Chart(areaChartCanvas);
-
     var areaChartData = {
       labels: ["January", "February", "March", "April", "May", "June", "July"],
       datasets: [
@@ -164,7 +157,6 @@ $(function () {
       //Boolean - Whether to fill the dataset with a color
       datasetFill: true,
       //String - A legend template
-      legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><%= for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%=if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
       //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
       maintainAspectRatio: true,
       //Boolean - whether to make the chart responsive to window resizing
@@ -247,9 +239,8 @@ $(function () {
       //Boolean - whether to make the chart responsive to window resizing
       responsive: true,
       // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-      maintainAspectRatio: true,
+      maintainAspectRatio: true
       //String - A legend template
-      legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
     };
     //Create pie or douhnut chart
     // You can switch between pie and douhnut using the method below.
@@ -286,7 +277,6 @@ $(function () {
       //Number - Spacing between data sets within X values
       barDatasetSpacing: 1,
       //String - A legend template
-      legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><%= for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%=if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
       //Boolean - whether to make the chart responsive
       responsive: true,
       maintainAspectRatio: true
