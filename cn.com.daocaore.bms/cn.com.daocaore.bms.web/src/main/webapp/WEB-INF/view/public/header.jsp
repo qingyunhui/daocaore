@@ -6,15 +6,15 @@
 <script src="${path}plugs/dist/js/app.min.js"></script>
 <header class="main-header">
  
-   <a href="index2.html" class="logo">
-     <span class="logo-mini"><b>A</b>LT</span>
-     <span class="logo-lg"><b>Admin</b>LTE</span>
+   <a href="javascript:void(0);" class="logo">
+     <span class="logo-mini"><b>S</b>YS</span>
+     <span class="logo-lg"><b>管理系统</b>SYSTEM</span>
    </a>
 
    <!-- Header Navbar -->
    <nav class="navbar navbar-static-top" role="navigation">
      <!-- Sidebar toggle button-->
-     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+     <a href="javascript:void(0);" class="sidebar-toggle" data-toggle="offcanvas" role="button">
        <span class="sr-only">Toggle navigation</span>
      </a>
      <!-- Navbar Right Menu -->
@@ -23,7 +23,7 @@
          <!-- Messages: style can be found in dropdown.less-->
          <li class="dropdown messages-menu">
            <!-- Menu toggle button -->
-           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+           <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
              <i class="fa fa-envelope-o"></i>
              <span class="label label-success">4</span>
            </a>
@@ -33,7 +33,7 @@
                <!-- inner menu: contains the messages -->
                <ul class="menu">
                  <li><!-- start message -->
-                   <a href="#">
+                   <a href="javascript:void(0);">
                      <div class="pull-left">
                        <!-- User Image -->
                        <img src="${path}plugs/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
@@ -51,7 +51,7 @@
                </ul>
                <!-- /.menu -->
              </li>
-             <li class="footer"><a href="#">See All Messages</a></li>
+             <li class="footer"><a href="javascript:void(0);">See All Messages</a></li>
            </ul>
          </li>
          <!-- /.messages-menu -->
@@ -59,7 +59,7 @@
          <!-- Notifications Menu -->
          <li class="dropdown notifications-menu">
            <!-- Menu toggle button -->
-           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+           <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
              <i class="fa fa-bell-o"></i>
              <span class="label label-warning">10</span>
            </a>
@@ -69,20 +69,20 @@
                <!-- Inner Menu: contains the notifications -->
                <ul class="menu">
                  <li><!-- start notification -->
-                   <a href="#">
+                   <a href="javascript:void(0);">
                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
                    </a>
                  </li>
                  <!-- end notification -->
                </ul>
              </li>
-             <li class="footer"><a href="#">View all</a></li>
+             <li class="footer"><a href="javascript:void(0);">View all</a></li>
            </ul>
          </li>
          <!-- Tasks Menu -->
          <li class="dropdown tasks-menu">
            <!-- Menu Toggle Button -->
-           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+           <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
              <i class="fa fa-flag-o"></i>
              <span class="label label-danger">9</span>
            </a>
@@ -92,7 +92,7 @@
                <!-- Inner menu: contains the tasks -->
                <ul class="menu">
                  <li><!-- Task item -->
-                   <a href="#">
+                   <a href="javascript:void(0);">
                      <!-- Task title and progress text -->
                      <h3>
                        Design some buttons
@@ -111,14 +111,14 @@
                </ul>
              </li>
              <li class="footer">
-               <a href="#">View all tasks</a>
+               <a href="javascript:void(0);">View all tasks</a>
              </li>
            </ul>
          </li>
          <!-- User Account Menu -->
          <li class="dropdown user user-menu">
            <!-- Menu Toggle Button -->
-           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+           <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
              <!-- The user image in the navbar-->
              <img src="${path}plugs/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
              <!-- hidden-xs hides the username on small devices so only the image appears. -->
@@ -137,13 +137,13 @@
              <li class="user-body">
                <div class="row">
                  <div class="col-xs-4 text-center">
-                   <a href="#">Followers</a>
+                   <a href="javascript:void(0);">Followers</a>
                  </div>
                  <div class="col-xs-4 text-center">
-                   <a href="#">Sales</a>
+                   <a href="javascript:void(0);">Sales</a>
                  </div>
                  <div class="col-xs-4 text-center">
-                   <a href="#">Friends</a>
+                   <a href="javascript:void(0);">Friends</a>
                  </div>
                </div>
                <!-- /.row -->
@@ -151,10 +151,10 @@
              <!-- Menu Footer-->
              <li class="user-footer">
                <div class="pull-left">
-                 <a href="#" class="btn btn-default btn-flat">Profile</a>
+                 <a href="javascript:void(0);" class="btn btn-default btn-flat">Profile</a>
                </div>
                <div class="pull-right">
-                 <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                 <a href="javascript:void(0);" class="btn btn-default btn-flat">Sign out</a>
                </div>
              </li>
            </ul>

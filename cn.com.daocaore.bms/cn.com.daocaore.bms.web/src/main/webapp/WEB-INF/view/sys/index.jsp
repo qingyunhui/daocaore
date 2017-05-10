@@ -21,13 +21,12 @@
 	  	<!-- Content Header (Page header) -->
 	    <section class="content-header">
 	      <h1 id="h1Lable">
-	        Simple Tables
 	        <!-- <small>preview of simple tables</small> -->
 	      </h1>
 	      <ol class="breadcrumb">
 	        <li><a href="javascript:void(0);"><i class="fa fa-dashboard"></i>Home</a></li>
-	        <li><a href="javascript:void(0);" id="lableOne">Tables</a></li>
-	        <li class="active" id="lableTowe">Simple</li>
+	        <li><a href="javascript:void(0);" id="lableOne">a</a></li>
+	        <li class="active" id="lableTowe">b</li>
 	      </ol>
 	    </section>
 	  	

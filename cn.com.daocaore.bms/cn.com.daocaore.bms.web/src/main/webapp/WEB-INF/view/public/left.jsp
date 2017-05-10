@@ -10,12 +10,12 @@
     <div class="pull-left info">
       <p>Alexander Pierce</p>
       <!-- Status -->
-      <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+      <a href="javascript:void(0);"><i class="fa fa-circle text-success"></i> Online</a>
     </div>
   </div>
 
   <!-- search form (Optional) -->
-  <form action="#" method="get" class="sidebar-form">
+  <form action="javascript:void(0);" method="get" class="sidebar-form">
     <div class="input-group">
       <input type="text" name="q" class="form-control" placeholder="Search...">
           <span class="input-group-btn">
@@ -31,7 +31,7 @@
     <li class="header">HEADER</li>
     <!-- Optionally, you can add icons to the links -->
     <li class="active">
-      <a href="#">
+      <a href="javascript:void(0);" class="active">
         <i class="fa fa-link"></i> 
         <span>Link</span>
       </a>
