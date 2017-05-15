@@ -46,6 +46,7 @@
       <ul class="treeview-menu">
         <li><a href="javascript:void(0);" onclick="javascript:jump('${path}sys/simpleTable.htm','Tables','simpleTable');"><i class="fa fa-circle-o"></i> Simple tables</a></li>
         <li><a href="javascript:void(0);" onclick="javascript:jump('${path}sys/dataTable.htm','Tables','dataTable');"><i class="fa fa-circle-o"></i> Data tables</a></li>
+        <li><a href="javascript:void(0);" onclick="javascript:jump('${path}sys/warning/list.htm','预警监控','监控列表');"><i class="fa fa-circle-o"></i> 预警监控列表</a></li>
       </ul>
     </li>
     <li class="treeview">
