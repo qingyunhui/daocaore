@@ -69,27 +69,10 @@
 			                        <th>VALUE</th>
 			                        <th>VALUE(zk)</th>
 			                        <th>描述</th>
-			                        <th>操作</th>
+			                        <th>操作222</th>
 		                      	</tr>
 							</thead>
-		                    <tbody>
-		                    	<#if fileterData?exists>
-		                    		<#list fileterData as item>
-		                    			<tr>
-					                        <td>${item.nodeKey}</td>
-					                        <td <#if item.znodeValue != item.znodeValueReal>style="color:red;font: italic bold"</#if> >${item.znodeValue}</td>
-					                        <td <#if item.znodeValue != item.znodeValueReal>style="color:red;font: italic bold"</#if> >${item.znodeValueReal}</td>
-					                        <td>${item.znodeDesc}</td>
-					                        <td>
-					                        	<div class="input-group">
-						                      		<button class="btn btn-primary btn-xs update" type="button" nodeKey="${item.nodeKey}" znodeValue="${item.znodeValue}" znodeDesc="${item.znodeDesc}" >更新</button>&nbsp;
-						                      		<button class="btn btn-danger btn-xs delete" type="button" nodeKey="${item.nodeKey}">删除</button>
-					                        	</div>
-					                        </td>
-				                      	</tr>
-		                    		</#list>
-		                    	</#if>
-		                    </tbody>
+		                    
 	                  	</table>
 					</div><!-- /.box-body -->
 				</div><!-- /.box -->

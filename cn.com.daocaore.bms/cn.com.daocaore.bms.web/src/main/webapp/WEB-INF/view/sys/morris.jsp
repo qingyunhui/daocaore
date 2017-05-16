@@ -10,7 +10,8 @@
   <h4>Warning!</h4>
   <p><b>Morris.js</b> charts are no longer maintained by its author. We would recommend using any of the other charts that come with the template.</p>
 </div>
-<div class="row">
+
+
   <div class="col-md-6">
     <!-- AREA CHART -->
     <div class="box box-primary">
