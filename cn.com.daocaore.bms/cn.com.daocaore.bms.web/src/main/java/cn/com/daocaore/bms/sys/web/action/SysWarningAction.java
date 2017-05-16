@@ -16,6 +16,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 
 import cn.com.daocaore.bms.common.base.BaseQuery;
+import cn.com.daocaore.bms.common.constant.Constant;
 import cn.com.daocaore.bms.sys.biz.entity.SysWarning;
 import cn.com.daocaore.bms.sys.biz.service.SysWarningService;
 
@@ -36,15 +37,15 @@ public class SysWarningAction {
 	private SysWarningService sysWarningService ;
 	
 	@RequestMapping(value = "/list")
-	public ModelAndView list(HttpServletRequest request,HttpServletResponse response, HttpSession session) {
+	public ModelAndView list(SysWarning sysWarning) {
 		ModelAndView modelView = new ModelAndView(ACTION_PATH + "/list");
+		modelView.addObject(Constant.ENTITY, sysWarning);
 		return modelView;
 	}
 	
 	@RequestMapping(value = "/doList")
 	@ResponseBody
 	public PageInfo<SysWarning> doList(HttpServletRequest request,HttpServletResponse response, HttpSession session) {
-	
 		PageInfo<SysWarning> pageInfo= sysWarningService.queryPage(new BaseQuery());
 		logger.info("pageInfo",new Object[]{JSONObject.toJSONString(pageInfo)});
 		return pageInfo;

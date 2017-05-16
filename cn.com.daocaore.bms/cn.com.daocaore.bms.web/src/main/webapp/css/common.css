@@ -1,0 +1,5 @@
+@CHARSET "UTF-8";
+.truncates{display: inline-block;*display: inline;*zoom: 1;width: 10em;height: 20px;line-height: 20px;overflow: hidden;-ms-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;}
+.formSearch{margin-bottom: 10px;margin-top: 10px;padding-right: 10px;padding-left: 10px;}
+tbody tr td p{margin: 2px 2px 2px;}
+.table tbody tr td{vertical-align: middle;}
