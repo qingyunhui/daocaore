@@ -65,6 +65,9 @@
   <div class="modal-dialog">
 	<div class="modal-content">
 		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+            </button>
         	<h4 class="modal-title" >更新数据</h4>
      	</div>
      	<div class="modal-body">
@@ -134,11 +137,9 @@ $(function () {
 			{ data: 'status',render:function(data, type, row){
 				return ${tld:getEnumMapToJSON("cn.com.daocaore.bms.enums.SysWarningEnum$Status")}[data];
 			}},
-			{
-				data:'gmtCreate',render:function(data,type,row){
-					return formatDate(data,'yyyy-MM-dd HH:mm:ss');
-				}
-			},
+			{data:'gmtCreate',render:function(data,type,row){
+				return formatDate(data,'yyyy-MM-dd HH:mm:ss');
+		    }},
 			{ data: '操作' ,render: function ( data, type, row ) {
 					 return function(){
 						var html = '<p id="'+ row.id +'" '+
