@@ -265,11 +265,11 @@
 		<if test="@OGNL@isNotEmpty(orderColumn) ">
         ORDER BY t.${orderColumn} <if test="@OGNL@isNotEmpty(orderDirection) ">${orderDirection}</if>
         </if>
-        LIMIT #{start}, #{pageSize}
+        LIMIT #{startRow}, #{pageSize}
 	</select>
 
 	<select id="queryCount" parameterType="map" resultType="java.lang.Integer">
-		select count(id) FROM sys_warning 
+		select count(id) FROM sys_warning t
         <where> <include refid="queryCriteria"/>  </where>
 	</select>
 </mapper>

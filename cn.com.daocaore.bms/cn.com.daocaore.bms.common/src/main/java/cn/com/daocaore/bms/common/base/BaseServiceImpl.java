@@ -3,9 +3,13 @@ package cn.com.daocaore.bms.common.base;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import qing.yun.hui.common.utils.BeanUtil;
+import cn.com.daocaore.bms.common.bean.DataTableInfo;
 import cn.com.daocaore.bms.common.util.SessionUtil;
 
 import com.github.pagehelper.PageHelper;
@@ -91,5 +95,21 @@ public class BaseServiceImpl<MODEL extends BaseModel<KEY_TYPE>, KEY_TYPE> implem
 		for (PluginAfterService plugin : pluginAfterService) {
 			plugin.process(model);
 		}
+	}
+
+	@Override
+	public DataTableInfo<MODEL> queryPages(HttpServletRequest request,MODEL model) {
+		DataTableInfo<MODEL> dataTableInfo=new DataTableInfo<MODEL>(request);
+		PageHelper.startPage(dataTableInfo.getStartRow(), dataTableInfo.getPageSize());
+		
+		Map<String,Object> map=BeanUtil.pojoToMap(model);
+		map.put("startRow", dataTableInfo.getStartRow());
+		map.put("pageSize", dataTableInfo.getPageSize());
+		PageInfo<MODEL> pageInfo=new PageInfo<MODEL>(getBaseDao().queryPage(map));
+		int count=getBaseDao().queryCount(map);
+		dataTableInfo.setData(pageInfo.getList());
+		dataTableInfo.setRecordsTotal(count);
+		dataTableInfo.setRecordsFiltered(count);
+		return dataTableInfo;
 	}
 }

@@ -1,10 +1,11 @@
 package cn.com.daocaore.bms.sys.biz.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import cn.com.daocaore.bms.common.base.BaseModel;
 import lombok.Getter;
 import lombok.Setter;
+import cn.com.daocaore.bms.common.base.BaseModel;
 
 /**
  * @author qing.yunhui 
@@ -12,9 +13,10 @@ import lombok.Setter;
  * @create 2017-03-23 13:55:30
  * @history
  */
+@SuppressWarnings("serial")
 @Getter
 @Setter
-public class SysWarning extends BaseModel<Integer>{
+public class SysWarning extends BaseModel<Integer> implements Serializable{
 	
 	/**
 	 * @Fields id:主键id

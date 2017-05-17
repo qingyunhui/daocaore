@@ -12,13 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.alibaba.fastjson.JSONObject;
-import com.github.pagehelper.PageInfo;
-
 import cn.com.daocaore.bms.common.base.BaseQuery;
+import cn.com.daocaore.bms.common.bean.DataTableInfo;
 import cn.com.daocaore.bms.common.constant.Constant;
 import cn.com.daocaore.bms.sys.biz.entity.SysWarning;
 import cn.com.daocaore.bms.sys.biz.service.SysWarningService;
+
+import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageInfo;
 
 /***
  ** @category 请用一句话来描述其用途...
@@ -49,6 +50,13 @@ public class SysWarningAction {
 		PageInfo<SysWarning> pageInfo= sysWarningService.queryPage(new BaseQuery());
 		logger.info("pageInfo",new Object[]{JSONObject.toJSONString(pageInfo)});
 		return pageInfo;
+	}
+	
+	@RequestMapping(value = "/doDataTablePage")
+	@ResponseBody
+	public DataTableInfo<SysWarning> doDataTablePage(HttpServletRequest request,SysWarning sysWarning) {
+		DataTableInfo<SysWarning> dataTableInfo= sysWarningService.queryPages(request,sysWarning);
+		return dataTableInfo;
 	}
 
 }

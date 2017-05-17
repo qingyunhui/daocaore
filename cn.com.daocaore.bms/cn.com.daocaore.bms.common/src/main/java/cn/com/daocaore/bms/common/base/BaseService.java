@@ -3,6 +3,10 @@ package cn.com.daocaore.bms.common.base;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import cn.com.daocaore.bms.common.bean.DataTableInfo;
+
 import com.github.pagehelper.PageInfo;
 
 /***
@@ -75,5 +79,13 @@ public interface BaseService<MODEL, KEY_TYPE>{
 	 * @return PageInfo<MODEL> 
 	 * */
 	public PageInfo<MODEL> queryPage(BaseQuery query);
+	
+	/***
+	 * <p>根据给定条件查询且分页</p>
+	 * @param request 
+	 * @param model 
+	 * @return DataTableInfo<MODEL> 
+	 * */
+	public DataTableInfo<MODEL> queryPages(HttpServletRequest request,MODEL model);
 	
 }

@@ -12,6 +12,12 @@
 		<example>${tld:getEnumValues('')}</example>
 	</function>
 	<function>
+		<name>getEnumMapToJSON</name>
+		<function-class>qing.yun.hui.common.utils.EnumUtil</function-class>
+		<function-signature>java.lang.String getEnumMapToJSON(java.lang.String)</function-signature>
+		<example>${tld:getEnumMapToJSON('')}</example>
+	</function>
+	<function>
 		<name>getEnumToJSON</name>
 		<function-class>qing.yun.hui.common.utils.EnumUtil</function-class>
 		<function-signature>java.lang.String getEnumToJSON(java.lang.String)</function-signature>
