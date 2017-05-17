@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.com.daocaore.bms.common.base.BaseQuery;
+import cn.com.daocaore.bms.common.base.ResponseData;
 import cn.com.daocaore.bms.common.bean.DataTableInfo;
 import cn.com.daocaore.bms.common.constant.Constant;
 import cn.com.daocaore.bms.sys.biz.entity.SysWarning;
@@ -59,4 +60,22 @@ public class SysWarningAction {
 		return dataTableInfo;
 	}
 
+	@RequestMapping(value = "/doDelete")
+	@ResponseBody
+	public ResponseData doDelete(Integer id) {
+		int count=sysWarningService.delete(id);
+		ResponseData rd=new ResponseData(count>0?"处理成功!":"处理失败!");
+		rd.put("code", 200);
+		return rd;
+	}
+	
+	@RequestMapping(value = "/doUpdate")
+	@ResponseBody
+	public ResponseData doUpdate(SysWarning sysWarning) {
+		int count=sysWarningService.update(sysWarning);
+		ResponseData rd=new ResponseData(count>0?"处理成功!":"处理失败!");
+//		rd.put("code", 200);
+		return rd;
+	}
+	
 }

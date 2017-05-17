@@ -18,6 +18,7 @@
         <result property="operator" column="operator" javaType="String"/>
         <result property="gmtCreate" column="gmt_create" javaType="Date"/>
         <result property="gmtModify" column="gmt_modify" javaType="Date"/>
+        <result property="deleted" column="deleted" javaType="Integer"/>
 	</resultMap>
 	
 	<sql id="full-columns" >
@@ -36,11 +37,13 @@
         t.devices,
         t.operator,
         t.gmt_create,
-        t.gmt_modify
+        t.gmt_modify,
+        t.deleted
 	</sql>
 	
 	<!-- 查询条件 -->
 	<sql id="queryCriteria">
+		   t.deleted = #{deleted}
 		 <if test="@OGNL@isNotEmpty(id)">
             AND t.id = #{id}
          </if>
@@ -108,7 +111,8 @@
 	            devices ,
 	            operator ,
 	            gmt_create ,
-	            gmt_modify 
+	            gmt_modify ,
+	            deleted
 	        ) VALUES (
 	        	#{warningDate},
 	        	#{action},
@@ -124,7 +128,8 @@
 	        	#{devices},
 	        	#{operator},
 	        	now(),
-	        	now()
+	        	now(),
+	        	0
 	        )
 	    ]]>
     	<selectKey resultType="java.lang.Integer" keyProperty="id">
@@ -149,7 +154,8 @@
 	            devices ,
 	            operator ,
 	            gmt_create ,
-	            gmt_modify 
+	            gmt_modify ,
+	            deleted
 	        ) VALUES 
 	        <foreach collection="list" item="item" index="index" separator=",">
 	        (
@@ -167,13 +173,14 @@
 	        	#{devices},
 	        	#{operator},
 	        	#{gmtCreate},
-	        	#{gmtModify}
+	        	#{gmtModify},
+	        	0
 	        )
 	        </foreach>
 	    ]]>
 	</insert>
 	
-	<update id="delete" parameterType="java.lang.Long">
+	<update id="delete" parameterType="java.lang.Integer">
         UPDATE sys_warning SET deleted=1 
         WHERE deleted=0 AND
         	id = #{value}
@@ -244,13 +251,13 @@
 	   	SELECT <include refid="full-columns" />
        	<![CDATA[
        	FROM sys_warning t
-       	WHERE t.id = #{value}
+       	WHERE t.id = #{value} and deleted=0
 		]]>
     </select>
 	
 	<select id="query" parameterType="map" resultMap="BaseResultMap">
 		SELECT <include refid="full-columns" />
-	    FROM sys_warning t
+	    FROM sys_warning t 
 		<where> <include refid="queryCriteria"/>  </where>
 		<if test="@OGNL@isNotEmpty(orderColumn) ">
         ORDER BY t.${orderColumn} <if test="@OGNL@isNotEmpty(orderDirection) ">${orderDirection}</if>

@@ -94,6 +94,8 @@ public class SysWarning extends BaseModel<Integer> implements Serializable{
 	 */
 	private Date gmtModify;
 	
+	private int deleted;
+	
 	//columns END
 
 }

@@ -13,46 +13,29 @@ import lombok.Data;
  **/
 @Data
 public class ResponseData {
-
-	private ResponseStatus status = null;
-	private String msg = null;
-	private Map<String, Object> data = null;
 	
-	public ResponseData() {
-		this("请求成功");
-	}
+	private int code;
+	private String msg ;
 	
-	public ResponseData(String msg) {
-		this(ResponseStatus.SUCCESS,msg);
-	}
-	public ResponseData(ResponseStatus status, String msg) {
-		this(status,msg,new HashMap<String, Object>());
-	}
-	public ResponseData(ResponseStatus status, String msg,Map<String, Object> data) {
-		super();
-		this.status = status;
-		this.msg = msg;
-		this.data = data;
+	private static final int DEFAULT_CODE=200;
+	
+	private Map<String,Object> datas;
+	
+	public ResponseData(){}
+	
+	public ResponseData(String msg){
+		this(DEFAULT_CODE,msg);
 	}
 	
-	
-	public void put(String key, Object value) {
-		data.put(key, value);
+	public ResponseData(int code,String msg){
+		this.code=code;
+		this.msg=msg;
 	}
 	
-	/**
-	 * 链式操作
-	 * @param key
-	 * @param value
-	 * @return
-	 */
-	public ResponseData addData(String key, Object value) {
-		data.put(key, value);
-		return this;
+	public void put(String key,Object value){
+		if(null==datas) datas=new HashMap<String, Object>();
+		datas.put(key, value);
 	}
 	
-	public ResponseStatus getResponseStatus() {
-		return status;
-	}
 
 }

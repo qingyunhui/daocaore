@@ -8,8 +8,8 @@
 			processing : true,
 			serverSide: true,
 			searching: false,
-			ordering: true,
-			bSort: true,
+			ordering: false,
+			bSort: false,
 			language : {
 				sProcessing : "处理中...",
 				sLengthMenu : "每页 _MENU_ 条记录",
@@ -75,6 +75,61 @@ function handleFormTOArray(dataTableObj,handleForm){
     });
     return dataArray;
 }
+
+/**
+ * @param v 日期对象
+ * @param expr 格式化
+ * */
+function formatDate(v,expr){
+    v=new Date(v);
+	if(!expr){
+        expr = 'yyyy-MM-dd HH:mm:ss'
+    }
+    if(expr=='yyyy-MM-dd HH:mm:ss'){
+        var y = v.getFullYear();
+        var m = v.getMonth() + 1;
+        var d = v.getDate();
+        var h = v.getHours();
+        var i = v.getMinutes();
+        var s = v.getSeconds();
+        var ms = v.getMilliseconds();
+        return y + '-' + (m<10?'0'+m:m) + '-' + (d<10?'0'+d:d) + ' ' + (h<10?'0'+h:h) + ':' + (i<10?'0'+i:i) + ':' + (s<10?'0'+s:s);
+    } else if(expr == 'yyyy-MM-dd'){
+        var y = v.getFullYear();
+        var m = v.getMonth() + 1;
+        var d = v.getDate();
+        return y + '-' + (m<10?'0'+m:m) + '-' + (d<10?'0'+d:d);
+    } else if(expr == 'HH:mm:ss'){
+        var h = v.getHours();
+        var i = v.getMinutes();
+        var s = v.getSeconds();
+        return (h<10?'0'+h:h) + ':' + (i<10?'0'+i:i) + ':' + (s<10?'0'+s:s);
+    } else if(expr == 'yy-MM-dd'){
+        var y = v.getYear();
+        var m = v.getMonth() + 1;
+        var d = v.getDate();
+        return y + '-' + (m<10?'0'+m:m) + '-' + (d<10?'0'+d:d);
+    } else if(expr == 'yy-MM-dd HH:mm:ss'){
+        var y = v.getYear();
+        var m = v.getMonth() + 1;
+        var d = v.getDate();
+        var h = v.getHours();
+        var i = v.getMinutes();
+        var s = v.getSeconds();
+        return y + '-' + (m<10?'0'+m:m) + '-' + (d<10?'0'+d:d) + ' ' + (h<10?'0'+h:h) + ':' + (i<10?'0'+i:i) + ':' + (s<10?'0'+s:s);
+    } else if(expr == 'yyyy-MM-dd HH:mm:ss:ms'){
+        var y = v.getFullYear();
+        var m = v.getMonth() + 1;
+        var d = v.getDate();
+        var h = v.getHours();
+        var i = v.getMinutes();
+        var s = v.getSeconds();
+        var ms = v.getMilliseconds();
+        return y + '-' + (m<10?'0'+m:m) + '-' + (d<10?'0'+d:d) + ' ' + (h<10?'0'+h:h) + ':' + (i<10?'0'+i:i) + ':' + (s<10?'0'+s:s) + ':' + (ms<10?'0'+ms:ms);
+    }
+	return '';
+}
+
 
 
 
