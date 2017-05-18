@@ -14,10 +14,10 @@
 <script src="${path}plugs/dropzone/dropzone.js"></script>
 <p> 请拖拽文件至该区域 </p>
 
-<form method="post" enctype="multipart/form-data">
-
+<form method="post" enctype="multipart/form-data" id="myForm">
+	<div class="dropzone" id="dropz"></div>
+	<button type="button" id="subBtn">提交</button>
 </form>
-<div class="dropzone" id="dropz"></div>
 <script type="text/javascript">
 	$(function(){
 		$("#dropz").dropzone({
@@ -34,12 +34,27 @@
 	        dictFallbackMessage:"浏览器不受支持",
 	        dictFileTooBig:"文件大小不能超过{{maxFilesize}}MB",
 	        addRemoveLinks:true,//在每个预览文件下面添加一个remove[删除]
-	       // autoProcessQueue: false,//当设置 false必须这样 myDropzone.processQueue() 的调用来上传队列中的上传文件.
+	        autoProcessQueue: false,//当设置 false必须这样 myDropzone.processQueue() 的调用来上传队列中的上传文件.
 	        dictRemoveFile:"移除文件",//如果addRemoveLinks为 true，这段文本用来设置删除文件显示文本
 	        dictDefaultMessage:"您还未添加任何文件哦.",//没有任何文件被添加的时候的提示文本。 
 	        dictCancelUpload: "取消上传",//取消上传链接的文本。
 	        dictCancelUploadConfirmation:"确定取消上传?",//取消上传确认信息的文本。
 	        init:function(){
+	            var dropZone = this;
+	        	var submitButton = document.querySelector("#subBtn");
+	            //为上传按钮添加点击事件
+	            submitButton.addEventListener("click", function () {
+	            	var files=dropZone.files;
+	            	var data=$("#myForm").serializeArray();
+	            	$.post("${path}sys/fileHandle/doFileUpload.json", data, function(result) {
+						
+	            		console.log("result",result);
+	            		
+					},'json');	
+	            	
+	            }); 
+	            
+	            
 	            this.on("addedfile", function(file) { 
 	            	//上传文件时触发的事件
 	            	console.log(file);
