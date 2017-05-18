@@ -63,6 +63,19 @@
         <li><a href="javascript:void(0);" onclick="javascript:jump('${path}sys/float.htm','Charts','float');">float</a></li>
       </ul>
     </li>
+    <li class="treeview">
+      <a href="javascript:void(0);">
+      	<i class="fa fa-link"></i> 
+      	<span>文件处理</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+      	<li><a href="javascript:void(0);" onclick="javascript:jump('${path}sys/fileHandle/demo.htm','文件处理','demo');">Demo</a></li>
+        <li><a href="javascript:void(0);" onclick="javascript:jump('${path}sys/fileHandle/fileUpload.htm','文件处理','文件上传');">文件上传</a></li>
+      </ul>
+    </li>
   </ul>
   <!-- /.sidebar-menu -->
 </section>

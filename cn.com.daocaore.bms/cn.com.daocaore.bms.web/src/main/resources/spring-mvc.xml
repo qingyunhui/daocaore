@@ -79,7 +79,7 @@ http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="defaultEncoding" value="UTF-8" />
 		<!-- 指定一次上传所有文件的容量之和的总大小不能超过10MB -->
-		<property name="maxUploadSize" value="10485760" />
+		<property name="maxUploadSize" value="20485760" />
 		<!--resolveLazily属性启用是为了推迟文件解析，以便在上传中捕获文件大小异常-->  
         <property name="resolveLazily" value="true"/> 
 	</bean>

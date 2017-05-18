@@ -86,37 +86,3 @@ var callConfirm = {
         });
     }
 };
-// 提示-科技主题
-var callAlertTec = {
-    html:function(){
-        var html =
-            '<div class="modal fade" id="callAlertTec" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
-            '<div class="modal-dialog">' +
-            '<div class="modal-content-tec">' +
-            '<div class="modal-body"><div class="alert" style="color:#fff;"></div></div>' +
-            '<div class="modal-footer">' +
-            '<div class="text-center" >' +
-            '<button type="button" class="btn btn-info ok" data-dismiss="modal" >确认</button>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '</div>';
-        return html;
-    },
-    show:function(msg, callback){
-        // dom init
-        if ($('#callAlertTec').length == 0){
-            $('body').append(callAlertTec.html());
-        }
-        // 弹框初始
-        $('#callAlertTec .alert').html(msg);
-        $('#callAlertTec').modal('show');
-        $('#callAlertTec .ok').click(function(){
-            $('#callAlertTec').modal('hide');
-            if(typeof callback == 'function') {
-                callback();
-            }
-        });
-    }
-};
