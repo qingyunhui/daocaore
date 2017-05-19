@@ -1,5 +1,6 @@
 package cn.com.daocaore.bms.sys.web.action;
 
+import java.io.File;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -14,8 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.alibaba.fastjson.JSONObject;
 
 import cn.com.daocaore.bms.common.base.ResponseData;
 
@@ -43,14 +42,22 @@ public class FileHandleAction {
 	public ResponseData doFileUpload(HttpServletRequest request) {
 		ResponseData rd=new ResponseData();
 		try {
-			MultipartHttpServletRequest mulitRequest= (MultipartHttpServletRequest) request;
+			
+			String contentType=request.getContentType();
+			
+			logger.info("contentType",new Object[]{contentType});
+			
+ 			MultipartHttpServletRequest mulitRequest= (MultipartHttpServletRequest) request;
 			Map<String, MultipartFile> multipartMap= mulitRequest.getFileMap();
 			Iterator<Entry<String, MultipartFile>> iterator= multipartMap.entrySet().iterator();
 			while(iterator.hasNext()){
 				Entry<String, MultipartFile> entry= iterator.next();
 				String key=entry.getKey();
 				MultipartFile multipartFile= entry.getValue();
-				logger.info("key,multipartFile",new Object[]{key,JSONObject.toJSONString(multipartFile)});
+				String fileName=multipartFile.getOriginalFilename();
+				logger.info("{key},{fileName}",new Object[]{key,fileName});
+				File source = new File("F:/test/test2/"+fileName);   
+			    multipartFile.transferTo(source);   
 			}
 			//@1.非空判断
 			/*if(null==file || file.length==0){
@@ -64,6 +71,7 @@ public class FileHandleAction {
 			//@3.落地（0.判断文件是否存在，1.获取落地服务器地址，2.落地文件夹（命名），3.落地成功后同时 insert 一条记录到数据库 ）
 			rd.setMsg("落地成功.");
 		} catch (Exception e) {
+			e.printStackTrace();
 			rd.setMsg(e.getMessage());
 		}
 		return rd;

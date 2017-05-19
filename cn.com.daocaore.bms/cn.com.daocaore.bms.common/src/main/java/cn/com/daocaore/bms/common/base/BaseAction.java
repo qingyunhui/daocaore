@@ -165,7 +165,7 @@ public abstract class BaseAction<MODEL extends BaseModel<KEY_TYPE>, FORM extends
 		int deleteNum = baseService.delete(Arrays.asList(ids));
 		ResponseData rd = new ResponseData();
 		rd.setMsg("成功删除【" + deleteNum + "】条数据！");
-		rd.addData("ids", ids);
+//		rd.addData("ids", ids);
 		return rd;
 	}
 	
