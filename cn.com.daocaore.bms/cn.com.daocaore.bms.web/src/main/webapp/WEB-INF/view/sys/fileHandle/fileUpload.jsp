@@ -20,30 +20,10 @@
 <script type="text/javascript">
 	$(function(){
 		
-		//begin  回显
 		
-		//var dropzone = Dropzone.forElement(".dropzone");
-		
-		
-		/*
-		
-		serverFile :后台返回已上传的文件列表
-		
-		dropzone.emit("addedfile", serverFile);
- 		//缩略图设置
-  		dropzone.emit("complete", serverFile);
-  		dropzone.files.push(serverFile);
-  		
-  		或者 
-  		dropzone.options.addedfile.call(dropzone, serverFile);
-  		dropzone.options.thumbnail.call(dropzone, serverFile, "uploads/"+value.name);
-  		
-  		*/
-		
-		
-		//end    回显
-		
-		Dropzone.autoDiscover = false;
+		//Dropzone.options.myAwesomeDropzone = false; //阻止 Dropzone 自动寻找这个元素:
+		Dropzone.autoDiscover = false;//禁止对所有元素的自动查找:
+			
 		$(".dropzone").dropzone({
 	        url: "${path}sys/fileHandle/doFileUpload.json?v="+new Date(), //必须填写
 	        method:"post",  //也可用put
@@ -112,5 +92,34 @@
 	            	console.log("success");
 	            });
 	        }});
+		
+		//begin  回显
+		
+		var dataMap=${dataMap};
+		
+		var dropzone = Dropzone.forElement(".dropzone");
+    	$.each(dataMap,function(i,item){
+    		var serverFile = {name:item.fileName,size:item.fileSize};
+			dropzone.emit("addedfile", serverFile);
+	 		//缩略图设置
+	  		dropzone.emit("complete", serverFile);//上传完成后..
+	  		dropzone.files.push(serverFile);
+	  		
+    	});
+		
+		
+		
+		
+		//serverFile :后台返回已上传的文件列表
+		
+  		
+  		/* dropzone.options.addedfile.call(dropzone, serverFile);
+  		dropzone.options.thumbnail.call(dropzone, serverFile, "uploads/"+value.name); */
+  		
+  		
+		
+		
+		//end    回显
+		
 	});
 </script>

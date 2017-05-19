@@ -1,7 +1,9 @@
 package cn.com.daocaore.bms.sys.web.action;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -17,6 +19,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.com.daocaore.bms.common.base.ResponseData;
+import cn.com.daocaore.bms.common.bean.TestFile;
+
+import com.alibaba.fastjson.JSONObject;
 
 /***
  ** @category 文件处理控制器...
@@ -34,6 +39,23 @@ public class FileHandleAction {
 	@RequestMapping(value = "/fileUpload")
 	public ModelAndView fileUpload() {
 		ModelAndView modelView = new ModelAndView(ACTION_PATH + "/fileUpload");
+		//回显 begin
+		List<TestFile> fileList=new ArrayList<TestFile>();
+		String path="F:/test/test2";
+		File file=new File(path);
+		if(file.isDirectory()){
+			File[] files=file.listFiles();
+			for(File tmp:files){
+				TestFile tf=new TestFile();
+				tf.setFileName(tmp.getName());
+				tf.setFileSize(tmp.length());
+				tf.setFilePath(tmp.getPath());
+				fileList.add(tf);
+			}
+		}
+		modelView.addObject("fileList", fileList);
+		modelView.addObject("dataMap", JSONObject.toJSONString(fileList));
+		//回显 end
 		return modelView;
 	}
 	
