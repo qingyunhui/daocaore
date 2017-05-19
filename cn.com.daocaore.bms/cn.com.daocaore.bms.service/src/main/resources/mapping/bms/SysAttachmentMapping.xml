@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.daocaore.bms.sys.biz.dao.SysAttachmentDao">
+	<resultMap type="cn.com.daocaore.bms.sys.biz.entity.SysAttachment" id="BaseResultMap">
+        <result property="id" column="id" javaType="String"/>
+        <result property="targetTable" column="target_table" javaType="String"/>
+        <result property="targetField" column="target_field" javaType="String"/>
+        <result property="targetId" column="target_id" javaType="String"/>
+        <result property="attachmentType" column="attachment_type" javaType="String"/>
+        <result property="handleType" column="handle_type" javaType="Integer"/>
+        <result property="classify" column="classify" javaType="Integer"/>
+        <result property="isSystem" column="is_system" javaType="Integer"/>
+        <result property="url" column="url" javaType="String"/>
+        <result property="sourceFilePath" column="source_file_path" javaType="String"/>
+        <result property="comments" column="comments" javaType="String"/>
+        <result property="physicalPath" column="physical_path" javaType="String"/>
+        <result property="originName" column="origin_name" javaType="String"/>
+        <result property="suffix" column="suffix" javaType="String"/>
+        <result property="size" column="size" javaType="Long"/>
+        <!-- <result property="data" column="data" javaType="byte[]"/> -->
+        <result property="ctime" column="ctime" javaType="Date"/>
+        <result property="creater" column="creater" javaType="String"/>
+        <result property="createrId" column="creater_id" javaType="Integer"/>
+        <result property="etime" column="etime" javaType="Date"/>
+        <result property="editor" column="editor" javaType="String"/>
+        <result property="editorId" column="editor_id" javaType="Integer"/>
+        <result property="deleted" column="deleted" javaType="Integer"/>
+	</resultMap>
+	
+	<sql id="full-columns" >
+        t.id,
+        t.target_table,
+        t.target_field,
+        t.target_id,
+        t.attachment_type,
+        t.handle_type,
+        t.classify,
+        t.is_system,
+        t.url,
+        t.source_file_path,
+        t.comments,
+        t.physical_path,
+        t.origin_name,
+        t.suffix,
+        t.size,
+        t.data,
+        t.ctime,
+        t.creater,
+        t.creater_id,
+        t.etime,
+        t.editor,
+        t.editor_id,
+        t.deleted
+	</sql>
+	
+	<!-- 查询条件 -->
+	<sql id="queryCriteria">
+		 <if test="@OGNL@isNotEmpty(id)">
+            AND t.id = #{id}
+         </if>
+		 <if test="@OGNL@isNotEmpty(targetTable)">
+            AND t.target_table = #{targetTable}
+         </if>
+		 <if test="@OGNL@isNotEmpty(targetField)">
+            AND t.target_field = #{targetField}
+         </if>
+		 <if test="@OGNL@isNotEmpty(targetId)">
+            AND t.target_id = #{targetId}
+         </if>
+		 <if test="@OGNL@isNotEmpty(attachmentType)">
+            AND t.attachment_type = #{attachmentType}
+         </if>
+         <if test="@OGNL@isNotEmpty(handleType)">
+            AND t.handle_type = #{handleType}
+         </if>
+		 <if test="@OGNL@isNotEmpty(classify)">
+            AND t.classify = #{classify}
+         </if>
+         <if test="@OGNL@isNotEmpty(isSystem)">
+            AND t.is_system = #{isSystem}
+         </if>
+		 <if test="@OGNL@isNotEmpty(url)">
+            AND t.url = #{url}
+         </if>
+         <if test="@OGNL@isNotEmpty(sourceFilePath)">
+            AND t.source_file_path = #{sourceFilePath}
+         </if>
+		 <if test="@OGNL@isNotEmpty(comments)">
+            AND t.comments = #{comments}
+         </if>
+		 <if test="@OGNL@isNotEmpty(physicalPath)">
+            AND t.physical_path = #{physicalPath}
+         </if>
+		 <if test="@OGNL@isNotEmpty(originName)">
+            AND t.origin_name = #{originName}
+         </if>
+		 <if test="@OGNL@isNotEmpty(suffix)">
+            AND t.suffix = #{suffix}
+         </if>
+		 <if test="@OGNL@isNotEmpty(size)">
+            AND t.size = #{size}
+         </if>
+		 <if test="@OGNL@isNotEmpty(ctime)">
+            AND t.ctime = #{ctime}
+         </if>
+		 <if test="@OGNL@isNotEmpty(creater)">
+            AND t.creater = #{creater}
+         </if>
+		 <if test="@OGNL@isNotEmpty(createrId)">
+            AND t.creater_id = #{createrId}
+         </if>
+		 <if test="@OGNL@isNotEmpty(etime)">
+            AND t.etime = #{etime}
+         </if>
+		 <if test="@OGNL@isNotEmpty(editor)">
+            AND t.editor = #{editor}
+         </if>
+		 <if test="@OGNL@isNotEmpty(editorId)">
+            AND t.editor_id = #{editorId}
+         </if>
+		 <if test="@OGNL@isNotEmpty(deleted)">
+            AND t.deleted = #{deleted}
+         </if>
+	</sql>
+
+	<insert id="insert" parameterType="cn.com.daocaore.bms.sys.biz.entity.SysAttachment" >
+		<![CDATA[
+	        INSERT INTO sys_attachment (
+	        	id,
+	            target_table ,
+	            target_field ,
+	            target_id ,
+	            attachment_type ,
+	            handle_type ,
+	            classify ,
+	            is_system ,
+	            url ,
+	            source_file_path ,
+	            comments ,
+	            physical_path ,
+	            origin_name ,
+	            suffix ,
+	            size ,
+	            data ,
+	            ctime ,
+	            creater ,
+	            creater_id ,
+	            etime ,
+	            editor ,
+	            editor_id ,
+	            deleted 
+	        ) VALUES (
+	        	#{id},
+	        	#{targetTable},
+	        	#{targetField},
+	        	#{targetId},
+	        	#{attachmentType},
+	        	#{handleType},
+	        	#{classify},
+	        	#{isSystem},
+	        	#{url},
+	        	#{sourceFilePath},
+	        	#{comments},
+	        	#{physicalPath},
+	        	#{originName},
+	        	#{suffix},
+	        	#{size},
+	        	#{data},
+	        	now(),
+	        	#{creater},
+	        	#{createrId},
+	        	#{etime},
+	        	#{editor},
+	        	#{editorId},
+	        	0
+	        )
+	    ]]>
+    	<selectKey resultType="java.lang.String" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+	</insert>
+	
+	<insert id="insertBatch" parameterType="java.util.List" >
+		<![CDATA[
+	        INSERT INTO sys_attachment (
+	        	id,
+	            target_table ,
+	            target_field ,
+	            target_id ,
+	            attachment_type ,
+	            handle_type ,
+	            classify ,
+	            is_system ,
+	            url ,
+	            source_file_path ,
+	            comments ,
+	            physical_path ,
+	            origin_name ,
+	            suffix ,
+	            size ,
+	            data ,
+	            ctime ,
+	            creater ,
+	            creater_id ,
+	            etime ,
+	            editor ,
+	            editor_id ,
+	            deleted 
+	        ) VALUES 
+	        <foreach collection="list" item="item" index="index" separator=",">
+	        (
+	        	#{id},
+	        	#{targetTable},
+	        	#{targetField},
+	        	#{targetId},
+	        	#{attachmentType},
+	        	#{handleType},
+	        	#{classify},
+	        	#{isSystem},
+	        	#{url},
+	        	#{sourceFilePath},
+	        	#{comments},
+	        	#{physicalPath},
+	        	#{originName},
+	        	#{suffix},
+	        	#{size},
+	        	#{data},
+	        	now(),
+	        	#{creater},
+	        	#{createrId},
+	        	#{etime},
+	        	#{editor},
+	        	#{editorId},
+	        	0
+	        )
+	        </foreach>
+	    ]]>
+	</insert>
+	
+	<update id="delete" parameterType="java.lang.String">
+        UPDATE sys_attachment SET deleted=1 
+        WHERE deleted=0 AND
+        	id = #{value}
+	</update>
+	<update id="deleteBatch" parameterType="list" >
+        UPDATE sys_attachment SET deleted=1 
+        WHERE deleted=0 AND
+        	id IN 
+        <foreach collection="list" item = "id" open="(" separator="," close=")">
+        	#{id}
+		</foreach>
+	</update>
+	
+	<update id="update" parameterType="cn.com.daocaore.bms.sys.biz.entity.SysAttachment">
+        UPDATE sys_attachment 
+        <set>
+        	<if test="@OGNL@isNotEmpty(targetTable)">
+	            target_table = #{targetTable},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(targetField)">
+	            target_field = #{targetField},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(targetId)">
+	            target_id = #{targetId},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(attachmentType)">
+	            attachment_type = #{attachmentType},
+	        </if>
+	        <if test="@OGNL@isNotEmpty(handleType)">
+	            handle_type = #{handleType},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(classify)">
+	            classify = #{classify},
+	        </if>
+	        <if test="@OGNL@isNotEmpty(isSystem)">
+            	is_system = #{isSystem},
+         	</if>
+        	<if test="@OGNL@isNotEmpty(url)">
+	            url = #{url},
+	        </if>
+	        <if test="@OGNL@isNotEmpty(sourceFilePath)">
+	            source_file_path = #{sourceFilePath},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(comments)">
+	            comments = #{comments},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(physicalPath)">
+	            physical_path = #{physicalPath},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(originName)">
+	            origin_name = #{originName},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(suffix)">
+	            suffix = #{suffix},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(size)">
+	            size = #{size},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(data)">
+	            data = #{data},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(ctime)">
+	            ctime = #{ctime},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(creater)">
+	            creater = #{creater},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(createrId)">
+	            creater_id = #{createrId},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(etime)">
+	            etime = #{etime},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(editor)">
+	            editor = #{editor},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(editorId)">
+	            editor_id = #{editorId},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(deleted)">
+	            deleted = #{deleted},
+	        </if>
+        </set>
+        WHERE deleted=0
+        	AND id = #{id}
+	</update>
+	
+	<select id="getById" parameterType="java.lang.String" resultMap="BaseResultMap">
+	   	SELECT <include refid="full-columns" />
+       	<![CDATA[
+       	FROM sys_attachment t
+       	WHERE t.id = #{value}
+		]]>
+    </select>
+	
+	<select id="query" parameterType="map" resultMap="BaseResultMap">
+		SELECT <include refid="full-columns" />
+	    FROM sys_attachment t
+		<where> <include refid="queryCriteria"/>  </where>
+		<if test="@OGNL@isNotEmpty(orderColumn) ">
+        ORDER BY t.${orderColumn} <if test="@OGNL@isNotEmpty(orderDirection) ">${orderDirection}</if>
+        </if>
+	</select>
+	
+	<select id="queryPage" parameterType="map" resultMap="BaseResultMap">
+		SELECT 
+        <include refid="full-columns" />
+            FROM sys_attachment t
+		<where> <include refid="queryCriteria"/>  </where>
+		<if test="@OGNL@isNotEmpty(orderColumn) ">
+        ORDER BY t.${orderColumn} <if test="@OGNL@isNotEmpty(orderDirection) ">${orderDirection}</if>
+        </if>
+        LIMIT #{start}, #{pageSize}
+	</select>
+
+	<select id="queryCount" parameterType="map" resultType="java.lang.Integer">
+		select count(id) FROM sys_attachment 
+        <where> <include refid="queryCriteria"/>  </where>
+	</select>
+</mapper>

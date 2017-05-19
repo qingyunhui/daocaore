@@ -28,7 +28,7 @@
 	        url: "${path}sys/fileHandle/doFileUpload.json?v="+new Date(), //必须填写
 	        method:"post",  //也可用put
 	        paramName:"file", //默认为file
-	        maxFiles:2,//一次性上传的文件数量上限
+	        maxFiles:10,//一次性上传的文件数量上限
 	        maxFilesize: 2, //MB
 	        acceptedFiles: ".jpg,.gif,.png,.rar,.zip", //上传的类型
 	        parallelUploads: 3,
@@ -46,14 +46,6 @@
 	        dictCancelUploadConfirmation:"确定取消上传?",//取消上传确认信息的文本。
 	        init:function(){
 	            var dropZone = this;
-	        	$("#subBtn").submit(function(){
-	        		var files=dropZone.files;
-	        		if(files.length==0){
-	        			console.log("请上传文件.");
-	        			return false;
-	        		}
-	        		
-	        	});
 	        	var submitButton = document.querySelector("#subBtn");
 	             //为上传按钮添加点击事件
 	            submitButton.addEventListener("click", function () {
@@ -63,8 +55,6 @@
 	        			return false;
 	        		}
 					dropZone.processQueue();
-					/* $.post("${path}sys/fileHandle/doFileUpload.json", files, function(result) {
-					});	  */
 	            }); 
 	            
 	            
@@ -77,8 +67,11 @@
 	            	console.log(file);
 	            });
 	            this.on("removedfile",function(file){
-	                //删除文件时触发的方法
+	                //删除文件时触发的方法  TODO 这里删除后，须要同时删除对应服务器上的文件...
 	            	console.log(file);
+	            	
+	                
+	                
 	            });
 	            this.on("maxfilesreached",function(file){
 	            	//当文件数量达到最大时发生（上传数量等于限制上传数量时，才会触发.）
@@ -99,12 +92,17 @@
 		
 		var dropzone = Dropzone.forElement(".dropzone");
     	$.each(dataMap,function(i,item){
-    		var serverFile = {name:item.fileName,size:item.fileSize};
+    		var serverFile = {name:item.fileName,size:item.fileSize};//accepted:true第三个参数
 			dropzone.emit("addedfile", serverFile);
 	 		//缩略图设置
+	 		dropzone.emit("thumbnail", serverFile, "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1495185501937&di=6faa7f8ef79dd9a1a0e0cad19ef1ecae&imgtype=0&src=http%3A%2F%2Fpic62.nipic.com%2Ffile%2F20150319%2F12632424_132215178296_2.jpg");
 	  		dropzone.emit("complete", serverFile);//上传完成后..
 	  		dropzone.files.push(serverFile);
 	  		
+	  		/* var mockFile = { name: "123.jpg", accepted:true };
+	  		myDropzone.emit("addedfile", mockFile);
+	  		myDropzone.emit("thumbnail", mockFile, "http://edms.kitesky.com/upload/image/20170422/52edf3c2aabf171315d968d9af814d0c.jpg");
+	  		myDropzone.emit("complete", mockFile); */
     	});
 		
 		

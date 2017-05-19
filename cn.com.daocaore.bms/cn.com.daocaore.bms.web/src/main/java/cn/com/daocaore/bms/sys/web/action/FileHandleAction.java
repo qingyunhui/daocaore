@@ -19,7 +19,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.com.daocaore.bms.common.base.ResponseData;
-import cn.com.daocaore.bms.common.bean.TestFile;
+import cn.com.daocaore.bms.common.bean.FileStruct;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -40,16 +40,16 @@ public class FileHandleAction {
 	public ModelAndView fileUpload() {
 		ModelAndView modelView = new ModelAndView(ACTION_PATH + "/fileUpload");
 		//回显 begin
-		List<TestFile> fileList=new ArrayList<TestFile>();
+		List<FileStruct> fileList=new ArrayList<FileStruct>();
 		String path="F:/test/test2";
 		File file=new File(path);
 		if(file.isDirectory()){
 			File[] files=file.listFiles();
 			for(File tmp:files){
-				TestFile tf=new TestFile();
+				FileStruct tf=new FileStruct();
 				tf.setFileName(tmp.getName());
 				tf.setFileSize(tmp.length());
-				tf.setFilePath(tmp.getPath());
+				tf.setUrl(tmp.getPath());
 				fileList.add(tf);
 			}
 		}
@@ -70,6 +70,10 @@ public class FileHandleAction {
 			logger.info("contentType",new Object[]{contentType});
 			
  			MultipartHttpServletRequest mulitRequest= (MultipartHttpServletRequest) request;
+ 			
+// 			List<MultipartFile> multipartFileList= mulitRequest.getFiles("file");
+// 			logger.info(multipartFileList.size()+"条.");
+ 			
 			Map<String, MultipartFile> multipartMap= mulitRequest.getFileMap();
 			Iterator<Entry<String, MultipartFile>> iterator= multipartMap.entrySet().iterator();
 			while(iterator.hasNext()){

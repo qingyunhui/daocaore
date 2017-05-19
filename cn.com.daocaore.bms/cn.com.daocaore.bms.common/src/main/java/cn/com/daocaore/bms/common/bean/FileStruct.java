@@ -11,12 +11,13 @@ import lombok.Setter;
  **/
 @Getter
 @Setter
-public class TestFile {
+public class FileStruct {
 
 	private long fileSize;
 	
 	private String fileName;
 	
-	private String filePath;
+	private String url;
+	
 	
 }
