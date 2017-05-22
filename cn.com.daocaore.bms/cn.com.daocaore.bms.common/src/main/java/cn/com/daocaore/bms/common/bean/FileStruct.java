@@ -12,6 +12,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class FileStruct {
+	
+	private String id;
 
 	private long fileSize;
 	

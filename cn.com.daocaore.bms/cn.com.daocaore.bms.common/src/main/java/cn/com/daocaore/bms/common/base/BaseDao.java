@@ -61,7 +61,7 @@ public interface BaseDao<MODEL extends BaseModel<KEY_TYPE>,KEY_TYPE> {
 	 * @param id
 	 * @return Model 
 	 * */
-	MODEL queryById(KEY_TYPE id);
+	MODEL getById(KEY_TYPE id);
 	
 	int queryCount(Map<String,Object>map);
 	

@@ -66,7 +66,7 @@ public class BaseServiceImpl<MODEL extends BaseModel<KEY_TYPE>, KEY_TYPE> implem
 	}
 	
 	public MODEL query(KEY_TYPE id) {
-		return getBaseDao().queryById(id);
+		return getBaseDao().getById(id);
 	}
 	
 	public List<MODEL> query(Map<String, Object> map) {

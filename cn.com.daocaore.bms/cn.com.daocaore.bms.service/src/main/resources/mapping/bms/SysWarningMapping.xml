@@ -43,7 +43,6 @@
 	
 	<!-- 查询条件 -->
 	<sql id="queryCriteria">
-		   t.deleted = #{deleted}
 		 <if test="@OGNL@isNotEmpty(id)">
             AND t.id = #{id}
          </if>
@@ -91,6 +90,9 @@
          </if>
 		 <if test="@OGNL@isNotEmpty(gmtModify)">
             AND t.gmt_modify = #{gmtModify}
+         </if>
+         <if test="@OGNL@isNotEmpty(deleted)">
+            AND t.deleted = #{deleted}
          </if>
 	</sql>
 

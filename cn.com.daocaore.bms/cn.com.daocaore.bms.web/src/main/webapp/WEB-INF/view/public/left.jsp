@@ -73,6 +73,9 @@
       </a>
       <ul class="treeview-menu">
       	<li><a href="javascript:void(0);" onclick="javascript:jump('${path}sys/fileHandle/demo.htm','文件处理','demo');">Demo</a></li>
+      	<li><a href="javascript:void(0);" onclick="javascript:jump('${path}sys/fileHandle/demo2.htm','文件处理2','demo2');">Demo2</a></li>
+      	<li><a href="javascript:void(0);" onclick="javascript:jump('${path}sys/fileHandle/demo3.htm','文件处理3','demo3');">Demo3</a></li>
+      	<li><a href="javascript:void(0);" onclick="javascript:jump('${path}sys/fileHandle/demo4.htm','文件处理4','demo4');">Demo4</a></li>
         <li><a href="javascript:void(0);" onclick="javascript:jump('${path}sys/fileHandle/fileUpload.htm','文件处理','文件上传');">文件上传</a></li>
       </ul>
     </li>

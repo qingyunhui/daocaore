@@ -14,12 +14,15 @@ import qing.yun.hui.common.utils.StringUtil;
 @Setter
 public class ExtrasStruct {
 	
+	private String id;
+	
 	//分类
 	private String classify;
 	
 	//文件处理类型
-	private int handleType;
+	private Integer handleType;
 	
+	//是否系统内置
 	private Integer isSystem; 
 	
 	//目标表
@@ -30,6 +33,8 @@ public class ExtrasStruct {
 	
 	//目标id
 	private String targetId;
+	
+	private int deleted;
 	
 	/**
 	 * 初始化Extras
