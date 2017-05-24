@@ -52,52 +52,65 @@ public class FileAction {
 	@RequestMapping(value = "/upload")
 	@ResponseBody
 	public ResponseData doFileUpload(HttpServletRequest request) {
-		ResponseData rd=new ResponseData();
-		try {
+			ResponseData rd=new ResponseData();
  			MultipartHttpServletRequest mulitRequest= (MultipartHttpServletRequest) request;
 			Map<String, MultipartFile> multipartMap= mulitRequest.getFileMap();
 			Iterator<Entry<String, MultipartFile>> iterator= multipartMap.entrySet().iterator();
-			String physicalPath="F:/test/test2/";
+			String physicalPath="mnt/movie/";
+			String osName=System.getProperty("os.name");
+			if(osName.toLowerCase().startsWith("win")){  
+//				String winPath=request.getSession().getServletContext().getRealPath(File.separator); //E:\test\cn.com.daocaore.bms.web
+				String userDir=System.getProperty("user.dir");
+		    	String winPath=userDir.substring(0,userDir.indexOf(File.separator)+1);
+				physicalPath=winPath+physicalPath;
+			}
 			while(iterator.hasNext()){
-				Entry<String, MultipartFile> entry= iterator.next();
-				String key=entry.getKey();
-				logger.info("key",key);
-				MultipartFile multipartFile= entry.getValue();
-				String fileName=multipartFile.getOriginalFilename();
-				if(multipartFile.isEmpty()){
-					 logger.error("上传的文件不能为空!");
-					 return rd;
+				try {
+					Entry<String, MultipartFile> entry= iterator.next();
+					String key=entry.getKey();
+					logger.info("key",key);
+					MultipartFile multipartFile= entry.getValue();
+					String fileName=multipartFile.getOriginalFilename();
+					if(multipartFile.isEmpty()){
+						logger.error("上传的文件不能为空!");
+						return rd;
+					}
+					String originFileName = multipartFile.getOriginalFilename();
+					String suffix = FileType.getSuffixByFilename(originFileName);
+					//@1.判断单个文件上传大小是否大于系统设定的大小 TODO 
+					long maxSize=1024*1024;
+					if (multipartFile.getSize() > maxSize) {
+						logger.error("单个文件上传大小不能大于.{}.",new Object[]{maxSize});
+						return rd;
+					}
+					String id = UUID.randomUUID().toString();
+					SysAttachment sysAttachment = new SysAttachment();
+					sysAttachment.setId(id);
+					sysAttachment.setOriginName(originFileName);
+					physicalPath=physicalPath+fileName;
+					sysAttachment.setPhysicalPath(physicalPath);//文件落地所在的绝对路径
+					sysAttachment.setSourceFilePath(physicalPath);//源文件所在路径 ，暂时与physicalPath 保持一致.
+					sysAttachment.setSize(multipartFile.getSize());
+					sysAttachment.setSuffix(suffix);
+					sysAttachment.setAttachmentType(multipartFile.getContentType());
+					sysAttachment.setUrl("download.json?id="+id);
+					sysAttachmentService.add(sysAttachment);
+					File source = new File(physicalPath);  
+					if(!source.exists()){
+						
+						
+						source.mkdirs();
+					}
+					multipartFile.transferTo(source);   
+				} catch (Exception e) {
+					logger.error("upload file is error. {}.",new Object[]{JSONObject.toJSONString(e)});
+					rd.setMsg(e.getMessage());
+					e.printStackTrace();
+					continue;
 				}
-				String originFileName = multipartFile.getOriginalFilename();
-				String suffix = FileType.getSuffixByFilename(originFileName);
-				//@1.判断单个文件上传大小是否大于系统设定的大小 TODO 
-				long maxSize=1024*1024;
-				if (multipartFile.getSize() > maxSize) {
-					logger.error("单个文件上传大小不能大于.{}.",new Object[]{maxSize});
-					 return rd;
-				}
-				String id = UUID.randomUUID().toString();
-				SysAttachment sysAttachment = new SysAttachment();
-            	sysAttachment.setId(id);
-				sysAttachment.setOriginName(originFileName);
-				physicalPath=physicalPath+fileName;
-				sysAttachment.setPhysicalPath(physicalPath);//文件落地所在的绝对路径
-				sysAttachment.setSourceFilePath(physicalPath);//源文件所在路径 ，暂时与physicalPath 保持一致.
-				sysAttachment.setSize(multipartFile.getSize());
-				sysAttachment.setSuffix(suffix);
-				sysAttachment.setAttachmentType(multipartFile.getContentType());
-				sysAttachment.setUrl("download.json?id="+id);
-				sysAttachmentService.add(sysAttachment);
-				File source = new File(physicalPath);   
-			    multipartFile.transferTo(source);   
 			}
 			//@3.落地（0.判断文件是否存在，1.获取落地服务器地址，2.落地文件夹（命名），3.落地成功后同时 insert 一条记录到数据库 ）
 			rd.setMsg("落地成功.");
-		} catch (Exception e) {
-			logger.error("upload file is error. {}.",new Object[]{JSONObject.toJSONString(e)});
-			rd.setMsg(e.getMessage());
-			e.printStackTrace();
-		}
 		return rd;
 	}
 	
@@ -111,7 +124,7 @@ public class FileAction {
 		if(null==extras) {
 			logger.info("----啥都没有..");
 			try {
-				response.sendRedirect("images/notexist.png");
+				response.sendRedirect("image/notexist.png");
 				return;
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -123,11 +136,11 @@ public class FileAction {
 			List<SysAttachment> sysAttachments= sysAttachmentService.query(map);
 			if(null==sysAttachments || sysAttachments.size()==0) {
 				try {
-					response.sendRedirect("images/notexist.png");
+					response.sendRedirect("image/notexist.png");
+					return;
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				return;
 			}
 			FileInputStream fis = null;
 			try {
@@ -154,7 +167,8 @@ public class FileAction {
 						out.write(b);
 						out.flush();
 					} else {
-						response.sendRedirect("images/notexist.png");
+						response.sendRedirect("image/notexist.png");
+						continue;
 					}
 				}
 			} catch (Exception e) {

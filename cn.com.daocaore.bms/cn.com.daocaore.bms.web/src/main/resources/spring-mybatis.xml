@@ -11,7 +11,10 @@ http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 	<bean id="cipherPropertyConfigurer" class="cn.com.daocaore.bms.apply.CipherPropertyConfigurer">  
         <property name="locations">
             <list>
-            	<value>classpath:/jdbc.properties</value>
+            	<value>classpath:jdbc.properties</value>
+				<value>classpath:rocketmq.properties</value>
+				<value>classpath:bms.properties</value>
+				<value>classpath:redis.properties</value>
             </list>
         </property>
     </bean>

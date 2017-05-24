@@ -108,7 +108,7 @@
 			dropzone.emit("addedfile", serverFile);
 	 		//缩略图设置
 	 		dropzone.emit("thumbnail", serverFile, '${path}'+item.url);
-	  		dropzone.emit("complete", serverFile,'${path}'+item.url);//上传完成后..
+	  		//dropzone.emit("complete", serverFile,'${path}'+item.url);//上传完成后..
 	  		dropzone.files.push(serverFile);
 	  		
 	  		/* var mockFile = { name: "123.jpg", accepted:true };

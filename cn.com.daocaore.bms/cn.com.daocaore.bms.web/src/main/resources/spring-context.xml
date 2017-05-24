@@ -10,19 +10,8 @@
 	<aop:aspectj-autoproxy />
 	
 	<!-- 定义环境变量 --> <!--记得改路径-->
-	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="ignoreResourceNotFound" value="true" />
-		<property name="locations">
-			<list>
-				<value>classpath:jdbc.properties</value>
-				<value>classpath:rocketmq.properties</value>
-				<value>classpath:bms.properties</value>
-				<value>classpath:redis.properties</value>
-			</list>
-		</property>
-	</bean>
-	<import resource="classpath:/spring.xml" />
 	<import resource="classpath:/spring-mybatis.xml" />
 	<import resource="classpath:/spring-cache.xml" />
+	<import resource="classpath:/spring.xml" />
 	<import resource="classpath:/rocket-mq.xml" />
 </beans>
