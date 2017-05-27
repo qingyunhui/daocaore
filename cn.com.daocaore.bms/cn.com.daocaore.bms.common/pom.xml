@@ -7,8 +7,32 @@
   </parent>
   <groupId>cn.com.daocaore.bms.common</groupId>
   <artifactId>cn.com.daocaore.bms.common</artifactId>
-  
+  <properties>
+  	<zookeeper.version>3.4.9</zookeeper.version>
+	<zkclient.version>0.1</zkclient.version>
+	<xxlconf.version>1.3.0</xxlconf.version>
+  </properties>
   <dependencies>
+  
+  	<!-- zookeeper -->
+  	<dependency>
+		<groupId>org.apache.zookeeper</groupId>
+		<artifactId>zookeeper</artifactId>
+		<version>${zookeeper.version}</version>
+	</dependency>
+
+	<dependency>
+		<groupId>com.github.sgroschupf</groupId>
+		<artifactId>zkclient</artifactId>
+		<version>${zkclient.version}</version>
+	</dependency>
+  	
+  	<!-- xxl-conf -->
+  	<dependency>
+		<groupId>com.xuxueli</groupId>
+		<artifactId>xxl-conf-core</artifactId>
+		<version>${xxlconf.version}</version>
+	</dependency>
   	<dependency>
   	   <groupId>cn.com.daocaore.bms.client</groupId>
 	   <artifactId>cn.com.daocaore.bms.client</artifactId>

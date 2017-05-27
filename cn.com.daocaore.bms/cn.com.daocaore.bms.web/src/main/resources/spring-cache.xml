@@ -69,11 +69,11 @@
 
 	<!-- 适合集群、可以连接主从rebdis服务 -->
 	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
-        <property name="maxTotal" 		value="${redis.maxTotal}"/>
-        <property name="maxIdle" 	    value="${redis.maxIdle}"/>
-        <property name="maxWaitMillis"  value="${redis.maxWaitMillis}"/>
-        <property name="testOnBorrow"   value="${redis.testOnBorrow}"/>
-        <property name="testOnReturn"   value="${redis.testOnReturn}"/>
+        <property name="maxTotal" 		value="${public.redis.maxtotal}"/>
+        <property name="maxIdle" 	    value="${public.redis.maxidle}"/>
+        <property name="maxWaitMillis"  value="${public.redis.maxwaitmillis}"/>
+        <property name="testOnBorrow"   value="${public.redis.testonborrow}"/>
+        <property name="testOnReturn"   value="${public.redis.testonreturn}"/>
     </bean>
     
     <bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool">
@@ -81,10 +81,10 @@
         <constructor-arg index="1">
             <list>
                 <bean class="redis.clients.jedis.JedisShardInfo">
-                    <constructor-arg name="host" index="0" value="${redis.ip}"/>
-                    <constructor-arg name="port" index="1" value="${redis.port}"/>
-                    <constructor-arg name="timeout" index="2" value="${redis.timeout}"/>
-                    <property name="password" value="${redis.password}" />
+                    <constructor-arg name="host" index="0" value="${public.redis.ip}"/>
+                    <constructor-arg name="port" index="1" value="${public.redis.port}"/>
+                    <constructor-arg name="timeout" index="2" value="${public.redis.timeout}"/>
+                    <property name="password" value="${public.redis.password}" />
                 </bean>
             </list>
         </constructor-arg>

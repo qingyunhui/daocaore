@@ -8,6 +8,8 @@
 	
 	<context:component-scan base-package="cn.com.daocaore.bms" />
 	<aop:aspectj-autoproxy />
+	<!-- <bean id="xxlConfPropertyPlaceholderConfigurer" class="com.xxl.conf.core.spring.XxlConfPropertyPlaceholderConfigurer" /> -->
+	<bean id="xxlConfPropertyPlaceholderConfigurer" class="cn.com.daocaore.bms.apply.XxlconfPropertyConfigurer" />
 	
 	<!-- 定义环境变量 --> <!--记得改路径-->
 	<import resource="classpath:/spring-mybatis.xml" />

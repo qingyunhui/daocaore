@@ -8,7 +8,7 @@ http://www.springframework.org/schema/aop
 http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 
 	 <!-- 对JDBC配置进行解密  --> 
-	<bean id="cipherPropertyConfigurer" class="cn.com.daocaore.bms.apply.CipherPropertyConfigurer">  
+	<!-- <bean id="cipherPropertyConfigurer" class="cn.com.daocaore.bms.apply.CipherPropertyConfigurer">  
         <property name="locations">
             <list>
             	<value>classpath:jdbc.properties</value>
@@ -17,12 +17,12 @@ http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 				<value>classpath:redis.properties</value>
             </list>
         </property>
-    </bean>
+    </bean> -->
 	<!-- 配置数据源 -->
 	<bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-	<property name="url" value="${jdbc_url}" />
-		<property name="username" value="${jdbc_username}" />
-		<property name="password" value="${jdbc_password}" />
+	<property name="url" value="${bms.jdbc.url}" />
+		<property name="username" value="${bms.jdbc.username}" />
+		<property name="password" value="${bms.jdbc.password}" />
 
 		<!-- 初始化连接大小 -->
 		<property name="initialSize" value="0" />
@@ -35,9 +35,9 @@ http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 		<!-- 获取连接最大等待时间 -->
 		<property name="maxWait" value="60000" />
 
-		<property name="validationQuery" value="SELECT 1" />
-		<property name="testOnBorrow" value="false" />
-		<property name="testOnReturn" value="false" />
+		<property name="validationQuery" value="${public.validation.query}" />
+		<property name="testOnBorrow" value="${public.redis.testonborrow}" />
+		<property name="testOnReturn" value="${public.redis.testonreturn}" />
 		<property name="testWhileIdle" value="true" />
 
 		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->

@@ -2,6 +2,7 @@
 <html>
 <head>
   	<title>任务调度中心</title>
+  	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   	<#import "/common/common.macro.ftl" as netCommon>
 	<@netCommon.commonStyle />
 	<!-- DataTables -->
@@ -71,7 +72,7 @@
                     <h4 class="modal-title" >新增分组</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal form" role="form" >
+                    <form class="form-horizontal form" role="form" method="post" >
                         <div class="form-group">
                             <label for="lastname" class="col-sm-2 control-label">GroupName<font color="red">*</font></label>
                             <div class="col-sm-10"><input type="text" class="form-control" name="groupName" placeholder="请输入“GroupName”" maxlength="64" ></div>
@@ -101,7 +102,7 @@
                     <h4 class="modal-title" >编辑分组</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal form" role="form" >
+                    <form class="form-horizontal form" role="form" method="post" >
                         <div class="form-group">
                             <label for="lastname" class="col-sm-2 control-label">GroupName<font color="red">*</font></label>
                             <div class="col-sm-10"><input type="text" class="form-control" name="groupName" placeholder="请输入“GroupName”" maxlength="64" readonly></div>
