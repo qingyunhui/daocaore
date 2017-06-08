@@ -28,6 +28,8 @@ public class TestAction {
 	public ModelAndView hello(HttpServletRequest request,HttpServletResponse response, HttpSession session) {
 		logger.info("*********** bms.success ***********");
 		ModelAndView modelView = new ModelAndView(ACTION_PATH + "/hello");
+		
+		
 		return modelView;
 	}
 	
