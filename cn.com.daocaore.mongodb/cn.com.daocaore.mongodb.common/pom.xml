@@ -104,6 +104,19 @@
 	</dependency>
 	<!-- shiro end -->
 	
+	<!-- mongodb -->
+	<dependency>
+		<groupId>org.mongodb</groupId>
+		<artifactId>mongo-java-driver</artifactId>
+		<version>${mongodb.java.driver.version}</version>
+	</dependency>
+
+    <dependency>
+	    <groupId>org.springframework.data</groupId>
+	    <artifactId>spring-data-mongodb</artifactId>
+	    <version>${spring.data.mongodb.version}</version>
+	</dependency>
+	
   </dependencies>
   
 </project>
