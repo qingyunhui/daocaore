@@ -1,10 +1,15 @@
 package cn.com.daocaore.mongodb.sys.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
+import qing.yun.hui.common.utils.BeanUtil;
 import cn.com.daocaore.mongodb.sys.dao.SysUserDao;
 import cn.com.daocaore.mongodb.sys.entity.SysUser;
 
@@ -28,8 +33,20 @@ public class SysUserService {
 		sysUserDao.saveOrUpdate(sysUser);
 	}
 	
+	public void update(SysUser sysUser){
+		sysUserDao.updateById(sysUser);
+	}
+	
+	public void saveBatch(List<SysUser> sysUserList){
+		sysUserDao.saveBatch(sysUserList);
+	}
+	
 	public List<SysUser> queryByName(String name){
 		return sysUserDao.list(name);
+	}
+	
+	public void deleteByAccountId(Integer id){
+		sysUserDao.deleteByAccountId(id);
 	}
 	
 }

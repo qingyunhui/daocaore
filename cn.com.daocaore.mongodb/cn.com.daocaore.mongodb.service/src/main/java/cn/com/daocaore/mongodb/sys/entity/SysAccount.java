@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import cn.com.daocaore.mongodb.common.BaseModel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +21,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Document(collection="sys_account")
-public class SysAccount implements Serializable{
+public class SysAccount extends BaseModel<String> implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
@@ -28,8 +29,8 @@ public class SysAccount implements Serializable{
 	 * @Fields accountId:account_id
 	 */
 	@Id
-	@Field(value="account_id")
-	private Integer accountId;
+//	@Field(value="account_id")
+	private String accountId;
 	
 	/**
 	 * @Fields account:账号
@@ -102,5 +103,10 @@ public class SysAccount implements Serializable{
 	
 	@Transient	//添加Transient 注解的字段，是不会将其添加到数据库中的...	
 	private String test;
+
+	@Override
+	public String getId() {
+		return accountId;
+	}
 
 }

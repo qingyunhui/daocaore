@@ -4,7 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+import cn.com.daocaore.mongodb.common.BaseModel;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author qing.yunhui 
@@ -12,24 +18,27 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * @create 2016-11-23 00:05:04
  * @history
  */
-/*@Getter
-@Setter*/
+@SuppressWarnings("serial")
+@Getter
+@Setter
 @Document(collection="sys_user")
-public class SysUser implements Serializable{
+public class SysUser extends BaseModel<String> implements Serializable{
 	
-	private static final long serialVersionUID = 1L;
-
 	//columns START
 	/**
 	 * @Fields userId:id
 	 */
 	@Id
+//	@Field(value="user_id")		
 	private String userId;
+	
+	//@Id 标识的字段会作为主键，并且其类型必须是String，如果一个字段在标注@Id后，又指定了数据表字段@Field那么始终会以mongoDB默认的_id为准，所以在加上@Id后，就没有必要添加@Field了..
 	
 	/**
 	 * @Fields accountId:account_id
 	 */
-	private String accountId;
+	@Field(value="account_id")
+	private Integer accountId;
 	
 	/**
 	 * @Fields name:姓名
@@ -39,12 +48,12 @@ public class SysUser implements Serializable{
 	/**
 	 * @Fields sex:性别(0.男、1.女、2.其它)
 	 */
-	private String sex;
+	private Integer sex;
 	
 	/**
 	 * @Fields age:年龄
 	 */
-	private String age;
+	private Integer age;
 	
 	/**
 	 * @Fields telephone:联系电话
@@ -59,12 +68,12 @@ public class SysUser implements Serializable{
 	/**
 	 * @Fields job:职务(1.IT、2.农业、3.其它)
 	 */
-	private String job;
+	private Integer job;
 	
 	/**
 	 * @Fields qq:QQ
 	 */
-	private String qq;
+	private Integer qq;
 	
 	/**
 	 * @Fields wechat:微信
@@ -84,6 +93,7 @@ public class SysUser implements Serializable{
 	/**
 	 * @Fields officeAddr:办公地址
 	 */
+	@Field(value="office_addr")
 	private String officeAddr;
 	
 	/**
@@ -99,7 +109,8 @@ public class SysUser implements Serializable{
 	/**
 	 * @Fields createrId:创建人ID
 	 */
-	private String createrId;
+	@Field(value="creater_id")
+	private Integer createrId;
 	
 	/**
 	 * @Fields etime:修改时间
@@ -114,7 +125,8 @@ public class SysUser implements Serializable{
 	/**
 	 * @Fields editorId:修改人_id
 	 */
-	private String editorId;
+	@Field(value="editor_id")
+	private Integer editorId;
 	
 	/**
 	 * @Fields comments:备注
@@ -124,181 +136,16 @@ public class SysUser implements Serializable{
 	/**
 	 * @Fields deleted:删除标识
 	 */
-	private String deleted;
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getTelephone() {
-		return telephone;
-	}
-
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
-	}
-
-	public String getMobilephone() {
-		return mobilephone;
-	}
-
-	public void setMobilephone(String mobilephone) {
-		this.mobilephone = mobilephone;
-	}
-
-	public String getWechat() {
-		return wechat;
-	}
-
-	public void setWechat(String wechat) {
-		this.wechat = wechat;
-	}
-
-	public String getMicroblog() {
-		return microblog;
-	}
-
-	public void setMicroblog(String microblog) {
-		this.microblog = microblog;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getOfficeAddr() {
-		return officeAddr;
-	}
-
-	public void setOfficeAddr(String officeAddr) {
-		this.officeAddr = officeAddr;
-	}
-
-	public Date getCtime() {
-		return ctime;
-	}
-
-	public void setCtime(Date ctime) {
-		this.ctime = ctime;
-	}
-
-	public String getCreater() {
-		return creater;
-	}
-
-	public void setCreater(String creater) {
-		this.creater = creater;
-	}
-
-
-	public Date getEtime() {
-		return etime;
-	}
-
-	public void setEtime(Date etime) {
-		this.etime = etime;
-	}
-
-	public String getEditor() {
-		return editor;
-	}
-
-	public void setEditor(String editor) {
-		this.editor = editor;
-	}
-
-
-	public String getComments() {
-		return comments;
-	}
-
-	public void setComments(String comments) {
-		this.comments = comments;
-	}
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
-	public String getAccountId() {
-		return accountId;
-	}
-
-	public void setAccountId(String accountId) {
-		this.accountId = accountId;
-	}
-
-	public String getSex() {
-		return sex;
-	}
-
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
-
-	public String getAge() {
-		return age;
-	}
-
-	public void setAge(String age) {
-		this.age = age;
-	}
-
-	public String getJob() {
-		return job;
-	}
-
-	public void setJob(String job) {
-		this.job = job;
-	}
-
-	public String getQq() {
-		return qq;
-	}
-
-	public void setQq(String qq) {
-		this.qq = qq;
-	}
-
-	public String getCreaterId() {
-		return createrId;
-	}
-
-	public void setCreaterId(String createrId) {
-		this.createrId = createrId;
-	}
-
-	public String getEditorId() {
-		return editorId;
-	}
-
-	public void setEditorId(String editorId) {
-		this.editorId = editorId;
-	}
-
-	public String getDeleted() {
-		return deleted;
-	}
-
-	public void setDeleted(String deleted) {
-		this.deleted = deleted;
-	}
+	private Integer deleted;
 
 	//columns END
 	
-	/*@Transient
-	private String test;*/
+	@Transient
+	private String test;
+
+	@Override
+	public String getId() {
+		return userId;
+	}
 
 }
