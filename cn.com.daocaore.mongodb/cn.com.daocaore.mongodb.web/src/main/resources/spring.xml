@@ -9,15 +9,8 @@
             http://www.springframework.org/schema/aop   
        http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
 
-    <!--引入配置属性文件 -->
-   <!--  <context:property-placeholder location="classpath:config.properties" /> -->
-   
+	<!-- 自动扫描(自动注入) -->
+	<context:component-scan base-package="cn.com.daocaore.mongodb" />
     <!-- 导入mongodb的配置文件 -->
    <import resource="mongodb-context.xml"/>
-
-   <!--  <aop:aspectj-autoproxy /> -->
-    
-    <!--  <bean id="applicationContextUtil" class="com.junlenet.common.util.ApplicationContextUtil"></bean> -->
-    
-   
 </beans>

@@ -10,8 +10,10 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.stereotype.Repository;
 
 import qing.yun.hui.common.utils.BeanUtil;
+import qing.yun.hui.common.utils.StringUtil;
 
 /***
  ** @category 请用一句话来描述其用途...
@@ -19,6 +21,7 @@ import qing.yun.hui.common.utils.BeanUtil;
  ** @email: 280672161@qq.com
  ** @createTime: 2017年6月15日下午2:57:19
  **/
+@Repository
 public class BaseDaoImpl<MODEL extends BaseModel<KEY_TYPE>, KEY_TYPE> implements BaseDao<MODEL, KEY_TYPE>{
 
 	@Autowired
@@ -40,6 +43,7 @@ public class BaseDaoImpl<MODEL extends BaseModel<KEY_TYPE>, KEY_TYPE> implements
 		 * Query query = new Query(Criteria.where("logUuid").is(ObjectUtils.toString(args[0], "")));  
            Update update = new Update().set("exitTime", exitTime);  
 		*/
+		if(StringUtil.isEmpty(model,model.getId())) return;
 		Map<String,Object>map=BeanUtil.pojoToMap(model);
 		if(!map.isEmpty()){
 			Query  query=new Query (Criteria.where("_id").is(model.getId()));
@@ -57,37 +61,48 @@ public class BaseDaoImpl<MODEL extends BaseModel<KEY_TYPE>, KEY_TYPE> implements
 
 	@Override
 	public void updateBatch(List<MODEL> models) {
-		// TODO Auto-generated method stub
+		for(MODEL model:models){
+			update(model);
+		}
 	}
 
 	@Override
-	public void delete(KEY_TYPE id) {
-		
-		mongoTemplate.remove(id);
-
+	public void delete(MODEL model) {
+		mongoTemplate.remove(model);
 	}
 
 	@Override
-	public void deleteBatch(List<KEY_TYPE> ids) {
-		// TODO Auto-generated method stub
+	public void deleteById(KEY_TYPE id,Class<?> clz){
+		mongoTemplate.remove(new Query (Criteria.where("_id").is(id)), clz);  
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public MODEL getById(KEY_TYPE id) {
-		// TODO Auto-generated method stub
-		return null;
+	public MODEL getById(KEY_TYPE id,Class<?> clz) {
+	     return (MODEL)mongoTemplate.findById(id, clz);
 	}
 
 	@Override
 	public int queryCount(Map<String, Object> map) {
-		// TODO Auto-generated method stub
+		//TODO
 		return 0;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<MODEL> query(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<MODEL> query(Map<String, Object> map,Class<?> clz) {
+		if(map.isEmpty()) return null;
+		
+		Query  query=new Query();
+		Iterator<Entry<String, Object>> iterator= map.entrySet().iterator();
+		while(iterator.hasNext()){
+			Entry<String, Object> entry= iterator.next();
+			String key=entry.getKey();
+			Object value=entry.getValue();
+			Criteria criteria= Criteria.where(key).is(value);
+			query.addCriteria(criteria);
+		}
+		return (List<MODEL>)mongoTemplate.find(query, clz);
 	}
 
 	@Override

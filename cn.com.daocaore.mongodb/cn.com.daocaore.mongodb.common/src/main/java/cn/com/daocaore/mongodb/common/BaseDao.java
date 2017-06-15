@@ -9,7 +9,7 @@ import java.util.Map;
  ** @email: 280672161@qq.com
  ** @createTime: 2017年6月15日上午11:57:47
  **/
-public interface BaseDao<MODEL,KEY_TYPE> {
+public interface BaseDao<MODEL extends BaseModel<KEY_TYPE>,KEY_TYPE> {
 
 	/**
 	 * <p>新增</p>
@@ -40,25 +40,20 @@ public interface BaseDao<MODEL,KEY_TYPE> {
 	void updateBatch(List<MODEL> models);
 	
 	/**
-	 * <p>根据给定id删除</p>
+	 * <p>根据给定model删除，model中必须指定id</p>
 	 * @param id 
 	 * @return int 受影响的行数
 	 * */
-	void delete(KEY_TYPE id);
+	void delete(MODEL model);
 	
-	/**
-	 * <p>根据给定ids列表删除</p>
-	 * @param ids 
-	 * @return int 受影响的行数
-	 * */
-	void deleteBatch(List<KEY_TYPE> ids);
+	void deleteById(KEY_TYPE id,Class<?> clz);
 	
 	/**
 	 * <p>根据给定id查询对应model</p>
 	 * @param id
 	 * @return Model 
 	 * */
-	MODEL getById(KEY_TYPE id);
+	MODEL getById(KEY_TYPE id,Class<?> clz);
 	
 	int queryCount(Map<String,Object>map);
 	
@@ -67,7 +62,7 @@ public interface BaseDao<MODEL,KEY_TYPE> {
 	 * @param map
 	 * @return List<Model> 
 	 * */
-	List<MODEL> query(Map<String, Object> map);
+	List<MODEL> query(Map<String, Object> map,Class<?> clz);
 	
 	List<MODEL> queryPage(Map<String, Object> map);
 	

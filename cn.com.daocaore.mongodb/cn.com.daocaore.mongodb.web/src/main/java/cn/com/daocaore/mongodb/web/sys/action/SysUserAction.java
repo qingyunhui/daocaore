@@ -6,15 +6,14 @@ import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONObject;
+
 import cn.com.daocaore.mongodb.sys.entity.SysUser;
 import cn.com.daocaore.mongodb.sys.service.SysUserService;
-
-import com.alibaba.fastjson.JSONObject;
 
 /***
  ** @category 请用一句话来描述其用途...
@@ -23,9 +22,10 @@ import com.alibaba.fastjson.JSONObject;
  ** @createTime: 2017年6月14日下午5:43:36
  **/
 @Controller
-@Scope("prototype")
-@RequestMapping("sys")
+@RequestMapping(SysUserAction.ACTION_PATH)
 public class SysUserAction {
+	
+	protected static final String ACTION_PATH="/sys/sysUser";
 	
 	@Autowired
 	private SysUserService sysUserService;

@@ -44,21 +44,21 @@ public interface BaseService<MODEL,KEY_TYPE> {
 	 * @param id 
 	 * @return int 受影响的行数
 	 * */
-	int delete(KEY_TYPE id);
+	int deleteById(KEY_TYPE id,Class<?> clz);
 	
 	/**
 	 * <p>根据给定ids列表删除</p>
 	 * @param ids 
 	 * @return int 受影响的行数
 	 * */
-	int deleteBatch(List<KEY_TYPE> ids);
+	int delete(MODEL model);
 	
 	/**
 	 * <p>根据给定id查询对应model</p>
 	 * @param id
 	 * @return Model 
 	 * */
-	MODEL getById(KEY_TYPE id);
+	MODEL getById(KEY_TYPE id,Class<?> clz);
 	
 	int queryCount(Map<String,Object>map);
 	
@@ -67,7 +67,7 @@ public interface BaseService<MODEL,KEY_TYPE> {
 	 * @param map
 	 * @return List<Model> 
 	 * */
-	List<MODEL> query(Map<String, Object> map);
+	List<MODEL> query(Map<String, Object> map,Class<?> clz);
 	
 	List<MODEL> queryPage(Map<String, Object> map);
 
