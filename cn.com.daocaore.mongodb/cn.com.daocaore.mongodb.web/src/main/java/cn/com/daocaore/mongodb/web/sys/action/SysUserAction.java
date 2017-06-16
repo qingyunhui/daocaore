@@ -1,17 +1,17 @@
 package cn.com.daocaore.mongodb.web.sys.action;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.fastjson.JSONObject;
-
+import cn.com.daocaore.mongodb.common.beans.DataTableInfo;
 import cn.com.daocaore.mongodb.sys.entity.SysUser;
 import cn.com.daocaore.mongodb.sys.service.SysUserService;
 
@@ -33,68 +33,75 @@ public class SysUserAction {
 	@RequestMapping("/queryByName")
 	@ResponseBody
 	public List<SysUser> queryByName(String name) {
-		List<SysUser> sysUserList=sysUserService.queryByName(name);
-		System.out.println("查找的用户有："+sysUserList.size()+"个.");
-		return sysUserList;
-	}
-	
-	@RequestMapping("/updateById")
-	@ResponseBody
-	public List<SysUser> updateById(String id) {
-		
 		SysUser sysUser=new SysUser();
-		sysUser.setUserId("594222482b8ae233dc583d03");
-		sysUser.setEmail("aaaaaaaa@qq.com");
-		sysUser.setComments("comment..xxx");
-		sysUserService.update(sysUser);
-		
-		return null;
+		sysUser.setName(name);
+		List<SysUser> sysAccountList= sysUserService.query(sysUser);
+		return sysAccountList;
 	}
 	
-	@RequestMapping("/deleteByAccountId")
+	@RequestMapping("/getById")
 	@ResponseBody
-	public String deleteByAccountId(Integer id) {
-		sysUserService.deleteByAccountId(id);
-		return "success";
+	public SysUser getById(String id) {
+		SysUser sysUser= sysUserService.getById(id, SysUser.class);
+		return sysUser;
+	}
+	
+	@RequestMapping("/deleteById")
+	@ResponseBody
+	public void deleteById(String id) {
+		sysUserService.deleteById(id, SysUser.class);
 	}
 	
 	@RequestMapping("/save")
 	@ResponseBody
-	public  String save() {
-		SysUser user = new SysUser();
-		Random random=new Random();
-		int randomNum=random.nextInt(999999999);
-		user.setAccountId(randomNum);
-		user.setComments("www.good.com"+randomNum);
-		user.setTest("hello good.");
-		user.setWechat("good");
-		user.setAge(33);
-		user.setCtime(new Date());
-		user.setEmail("good@qq.com");
-		user.setUserId(999888777+"good");
-		sysUserService.saveOrUpdate(user);
-		return JSONObject.toJSONString(user);
+	public void save() {
+		SysUser user=new SysUser();
+		Random rd=new Random();
+		int rdnum=rd.nextInt(9999999);
+		user.setName(rdnum+"");
+		user.setComments("fuck you"+rdnum);
+		user.setEmail(rdnum+"@qq.com");
+		sysUserService.insert(user);
 	}
 	
 	@RequestMapping("/saveBatch")
 	@ResponseBody
-	public  String saveBatch() {
-		Random random=new Random();
-		List<SysUser> sysUserList=new ArrayList<SysUser>();
-		for(int i=0;i<3;i++){
-			SysUser user = new SysUser();
-			int randomNum=random.nextInt(999999999);
-			user.setAccountId(randomNum);
-			user.setComments("www.taobao.com"+randomNum);
-			user.setTest("hello taobao.");
-			user.setWechat("miss li"+i);
-			user.setAge(18+i);
-			user.setCtime(new Date());
-			user.setEmail("123456@qq.com"+i);
-			sysUserList.add(user);
+	public void saveBatch() {
+		List<SysUser> userList=new ArrayList<SysUser>();
+		for(int i=0;i<5;i++){
+			SysUser user=new SysUser();
+			Random rd=new Random();
+			int rdnum=rd.nextInt(9999999);
+			user.setName(rdnum+"");
+			user.setComments("hello word ! "+rdnum);
+			user.setEmail(rdnum+"@163.com");
+			userList.add(user);
 		}
-		sysUserService.saveBatch(sysUserList);
-		return JSONObject.toJSONString(sysUserList);
+		sysUserService.insertBatch(userList);
+	}
+	
+	@RequestMapping("/deleteByIdWithName")
+	@ResponseBody
+	public void deleteByIdWithName(String name,String id){
+		SysUser user=new SysUser();
+		user.setName(name);
+		user.setUserId(id);
+		sysUserService.delete(user);
+	}
+	
+	@RequestMapping("/queryByCount")
+	@ResponseBody
+	public long queryByCount(String name) {
+		SysUser user=new SysUser();
+		user.setName(name);
+		return sysUserService.queryCount(user);
+	}
+	
+	@RequestMapping("/queryPage")
+	@ResponseBody
+	public DataTableInfo<SysUser> queryPage(HttpServletRequest request,SysUser user) {
+		DataTableInfo<SysUser> dataTableInfo=sysUserService.queryPage(request, user);
+		return dataTableInfo;
 	}
 
 }

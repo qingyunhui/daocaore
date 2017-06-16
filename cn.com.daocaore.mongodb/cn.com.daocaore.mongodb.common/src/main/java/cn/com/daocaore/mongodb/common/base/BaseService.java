@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Service;
+
 import cn.com.daocaore.mongodb.common.beans.DataTableInfo;
 
 /***
@@ -12,6 +14,7 @@ import cn.com.daocaore.mongodb.common.beans.DataTableInfo;
  ** @email: 280672161@qq.com
  ** @createTime: 2017年6月15日下午2:51:11
  **/
+@Service
 public interface BaseService<MODEL,KEY_TYPE> {
 	
 	/**

@@ -12,7 +12,6 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
-import org.springframework.stereotype.Repository;
 
 import qing.yun.hui.common.utils.BeanUtil;
 import qing.yun.hui.common.utils.StringUtil;
@@ -27,7 +26,6 @@ import com.github.pagehelper.PageInfo;
  ** @email: 280672161@qq.com
  ** @createTime: 2017年6月15日下午2:57:19
  **/
-@Repository
 public class BaseDaoImpl<MODEL extends BaseModel<KEY_TYPE>, KEY_TYPE> implements BaseDao<MODEL, KEY_TYPE>{
 
 	@Autowired
@@ -45,10 +43,6 @@ public class BaseDaoImpl<MODEL extends BaseModel<KEY_TYPE>, KEY_TYPE> implements
 
 	@Override
 	public void update(MODEL model) {
-		/*
-		 * Query query = new Query(Criteria.where("logUuid").is(ObjectUtils.toString(args[0], "")));  
-           Update update = new Update().set("exitTime", exitTime);  
-		*/
 		if(StringUtil.isEmpty(model,model.getId())) return;
 		Map<String,Object>map=BeanUtil.pojoToMap(model);
 		if(!map.isEmpty()){

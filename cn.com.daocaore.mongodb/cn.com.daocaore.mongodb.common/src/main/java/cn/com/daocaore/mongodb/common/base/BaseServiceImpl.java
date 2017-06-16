@@ -5,7 +5,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import cn.com.daocaore.mongodb.common.beans.DataTableInfo;
 
@@ -15,7 +14,6 @@ import cn.com.daocaore.mongodb.common.beans.DataTableInfo;
  ** @email: 280672161@qq.com
  ** @createTime: 2017年6月15日下午2:52:44
  **/
-@Service
 public class BaseServiceImpl<MODEL extends BaseModel<KEY_TYPE>,KEY_TYPE> implements BaseService<MODEL, KEY_TYPE>{
 
 	@Autowired
