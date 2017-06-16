@@ -8,7 +8,7 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import cn.com.daocaore.mongodb.common.BaseModel;
+import cn.com.daocaore.mongodb.common.base.BaseModel;
 import lombok.Getter;
 import lombok.Setter;
 

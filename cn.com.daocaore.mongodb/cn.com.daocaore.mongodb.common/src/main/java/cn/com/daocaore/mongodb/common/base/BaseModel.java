@@ -1,4 +1,4 @@
-package cn.com.daocaore.mongodb.common;
+package cn.com.daocaore.mongodb.common.base;
 /***
  ** @category 请用一句话来描述其用途...
  ** @author qing.yunhui

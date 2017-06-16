@@ -1,6 +1,6 @@
 package cn.com.daocaore.mongodb.sys.service;
 
-import cn.com.daocaore.mongodb.common.BaseService;
+import cn.com.daocaore.mongodb.common.base.BaseService;
 import cn.com.daocaore.mongodb.sys.entity.SysAccount;
 
 /***

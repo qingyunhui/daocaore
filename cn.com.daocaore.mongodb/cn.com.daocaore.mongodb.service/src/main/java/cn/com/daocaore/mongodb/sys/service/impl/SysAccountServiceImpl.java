@@ -2,7 +2,7 @@ package cn.com.daocaore.mongodb.sys.service.impl;
 
 import org.springframework.stereotype.Service;
 
-import cn.com.daocaore.mongodb.common.BaseServiceImpl;
+import cn.com.daocaore.mongodb.common.base.BaseServiceImpl;
 import cn.com.daocaore.mongodb.sys.entity.SysAccount;
 import cn.com.daocaore.mongodb.sys.service.SysAccountService;
 

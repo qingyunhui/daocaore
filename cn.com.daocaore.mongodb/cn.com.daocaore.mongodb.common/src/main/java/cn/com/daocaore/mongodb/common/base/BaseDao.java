@@ -1,7 +1,10 @@
-package cn.com.daocaore.mongodb.common;
+package cn.com.daocaore.mongodb.common.base;
 
 import java.util.List;
-import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import cn.com.daocaore.mongodb.common.beans.DataTableInfo;
 
 /***
  ** @category 请用一句话来描述其用途...
@@ -55,15 +58,25 @@ public interface BaseDao<MODEL extends BaseModel<KEY_TYPE>,KEY_TYPE> {
 	 * */
 	MODEL getById(KEY_TYPE id,Class<?> clz);
 	
-	int queryCount(Map<String,Object>map);
+	/**
+	 * @param model
+	 * @param
+	 * */
+	long queryCount(MODEL model);
 	
 	/**
 	 * <p>根据给定参数查询</p>
 	 * @param map
 	 * @return List<Model> 
 	 * */
-	List<MODEL> query(Map<String, Object> map,Class<?> clz);
+	List<MODEL> query(MODEL model);
 	
-	List<MODEL> queryPage(Map<String, Object> map);
+	/**
+	 * <p>根据给定条件，分页</p>
+	 * @param request
+	 * @param model
+	 * @return DataTableInfo
+	 * */
+	DataTableInfo<MODEL> queryPage(HttpServletRequest request,MODEL model);
 	
 }

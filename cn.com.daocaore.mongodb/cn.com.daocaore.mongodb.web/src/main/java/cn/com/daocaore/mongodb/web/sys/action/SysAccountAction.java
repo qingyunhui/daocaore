@@ -2,15 +2,16 @@ package cn.com.daocaore.mongodb.web.sys.action;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import qing.yun.hui.common.utils.BeanUtil;
+import cn.com.daocaore.mongodb.common.beans.DataTableInfo;
 import cn.com.daocaore.mongodb.sys.entity.SysAccount;
 import cn.com.daocaore.mongodb.sys.service.SysAccountService;
 
@@ -34,8 +35,7 @@ public class SysAccountAction {
 	public List<SysAccount> queryByAccount(String account) {
 		SysAccount sysAccount=new SysAccount();
 		sysAccount.setAccount(account);
-		Map<String,Object> map=BeanUtil.pojoToMap(sysAccount);
-		List<SysAccount> sysAccountList= sysAccountService.query(map, SysAccount.class);
+		List<SysAccount> sysAccountList= sysAccountService.query(sysAccount);
 		return sysAccountList;
 	}
 	
@@ -87,5 +87,20 @@ public class SysAccountAction {
 		sysAccount.setAccount(account);
 		sysAccount.setAccountId(id);
 		sysAccountService.delete(sysAccount);
+	}
+	
+	@RequestMapping("/queryByCount")
+	@ResponseBody
+	public long queryByCount(String account) {
+		SysAccount sysAccount=new SysAccount();
+		sysAccount.setAccount(account);
+		return sysAccountService.queryCount(sysAccount);
+	}
+	
+	@RequestMapping("/queryPage")
+	@ResponseBody
+	public DataTableInfo<SysAccount> queryPage(HttpServletRequest request,SysAccount account) {
+		DataTableInfo<SysAccount> dataTableInfo=sysAccountService.queryPage(request, account);
+		return dataTableInfo;
 	}
 }

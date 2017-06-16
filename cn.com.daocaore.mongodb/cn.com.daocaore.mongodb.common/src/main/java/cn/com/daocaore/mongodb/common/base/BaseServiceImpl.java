@@ -1,10 +1,13 @@
-package cn.com.daocaore.mongodb.common;
+package cn.com.daocaore.mongodb.common.base;
 
 import java.util.List;
-import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import cn.com.daocaore.mongodb.common.beans.DataTableInfo;
 
 /***
  ** @category 请用一句话来描述其用途...
@@ -60,20 +63,19 @@ public class BaseServiceImpl<MODEL extends BaseModel<KEY_TYPE>,KEY_TYPE> impleme
 	}
 
 	@Override
-	public int queryCount(Map<String, Object> map) {
-	
-		return 0;
+	public long queryCount(MODEL model) {
+		return baseDao.queryCount(model);
 	}
 
 	@Override
-	public List<MODEL> query(Map<String, Object> map,Class<?> clz) {
-		return baseDao.query(map, clz);
+	public List<MODEL> query(MODEL model) {
+		return baseDao.query(model);
 	}
 
 	@Override
-	public List<MODEL> queryPage(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+	public DataTableInfo<MODEL> queryPage(HttpServletRequest request,MODEL model) {
+		DataTableInfo<MODEL> dataTableInfo= baseDao.queryPage(request, model);
+		return dataTableInfo;
 	}
 
 }

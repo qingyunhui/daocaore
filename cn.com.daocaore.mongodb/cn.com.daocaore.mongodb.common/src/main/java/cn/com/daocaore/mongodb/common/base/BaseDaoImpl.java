@@ -1,9 +1,11 @@
-package cn.com.daocaore.mongodb.common;
+package cn.com.daocaore.mongodb.common.base;
 
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -14,6 +16,10 @@ import org.springframework.stereotype.Repository;
 
 import qing.yun.hui.common.utils.BeanUtil;
 import qing.yun.hui.common.utils.StringUtil;
+import cn.com.daocaore.mongodb.common.beans.DataTableInfo;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 /***
  ** @category 请用一句话来描述其用途...
@@ -83,17 +89,29 @@ public class BaseDaoImpl<MODEL extends BaseModel<KEY_TYPE>, KEY_TYPE> implements
 	}
 
 	@Override
-	public int queryCount(Map<String, Object> map) {
-		//TODO
-		return 0;
+	public long queryCount(MODEL model) {
+		if(null==model) return 0;
+		Query query=buildQuery(model);
+		return mongoTemplate.count(query,model.getClass());
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<MODEL> query(Map<String, Object> map,Class<?> clz) {
-		if(map.isEmpty()) return null;
-		
+	public List<MODEL> query(MODEL model) {
+		if(null==model) return null;
+		Query  query=buildQuery(model);
+		return (List<MODEL>)mongoTemplate.find(query, model.getClass());
+	}
+
+	/**
+	 * <p>根据给定model构造Query查询条件</p>
+	 * @param model
+	 * @return Query
+	 * */
+	protected Query buildQuery(MODEL model){
 		Query  query=new Query();
+		if(null==model) return query;
+		Map<String,Object> map=BeanUtil.pojoToMap(model);
 		Iterator<Entry<String, Object>> iterator= map.entrySet().iterator();
 		while(iterator.hasNext()){
 			Entry<String, Object> entry= iterator.next();
@@ -102,13 +120,22 @@ public class BaseDaoImpl<MODEL extends BaseModel<KEY_TYPE>, KEY_TYPE> implements
 			Criteria criteria= Criteria.where(key).is(value);
 			query.addCriteria(criteria);
 		}
-		return (List<MODEL>)mongoTemplate.find(query, clz);
+		return query;
 	}
-
+	
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<MODEL> queryPage(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+	public DataTableInfo<MODEL> queryPage(HttpServletRequest request,MODEL model) {
+		DataTableInfo<MODEL> dataTableInfo=new DataTableInfo<MODEL>(request);
+		PageHelper.startPage(dataTableInfo.getStartRow(), dataTableInfo.getPageSize());
+		long count=queryCount(model);
+		dataTableInfo.setRecordsTotal(Integer.parseInt(count+""));
+		dataTableInfo.setRecordsFiltered(Integer.parseInt(count+""));
+		Query query=buildQuery(model);
+		query.skip((dataTableInfo.getStartRow()) * dataTableInfo.getPageSize()).limit(dataTableInfo.getPageSize());  
+		List<MODEL> list=(List<MODEL>) mongoTemplate.find(query, model.getClass());
+		PageInfo<MODEL> pageInfo=new PageInfo<MODEL>(list);
+		dataTableInfo.setData(pageInfo.getList());
+		return dataTableInfo;
 	}
-
 }
