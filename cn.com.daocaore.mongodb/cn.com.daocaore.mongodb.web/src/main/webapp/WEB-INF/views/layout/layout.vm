@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+#parse("/layout/static.vm")
+<title>权限管理系统</title>
+</head>
+<body>
+	<header>
+		#parse("/layout/header.vm")
+    </header>
+	<aside>
+		#parse("/layout/left.vm")
+	</aside>
+    <section class="pms-content">
+		$screen_content
+	</section>
+    <footer>
+		#parse("/layout/bottom.vm")
+	</footer>
+</body>
+</html>

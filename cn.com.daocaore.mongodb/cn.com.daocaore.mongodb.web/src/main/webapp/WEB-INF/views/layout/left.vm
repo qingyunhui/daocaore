@@ -1,0 +1,3 @@
+#foreach($subMenu in $subMenuList)
+	<a href="${subMenu.url}?rootModuleId=${rootModuleId}">${subMenu.moduleName}</a>
+#end

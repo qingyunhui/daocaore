@@ -1,0 +1,10 @@
+<dl class="backgroundnav">
+	<dd>$!loginUserName,欢迎</dd>
+	<dd class="helpcenter"><a href="">帮助中心</a></dd>
+	<dd class="exit"><a href="${ac.contextPath}/logout">退出系统</a></dd>
+</dl>
+<nav style="text-align: center; padding: 5px 0;">
+	#foreach($rootModule in $!rootModuleList)
+	<a href="${rootModule.url}?currentModuleName=${rootModule.moduleName}&rootModuleId=${rootModule.id}">${rootModule.moduleName}</a>
+	#end
+</nav>
