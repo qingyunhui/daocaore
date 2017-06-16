@@ -32,9 +32,7 @@ public class SysAccountAction {
 	
 	@RequestMapping("/queryByAccount")
 	@ResponseBody
-	public List<SysAccount> queryByAccount(String account) {
-		SysAccount sysAccount=new SysAccount();
-		sysAccount.setAccount(account);
+	public List<SysAccount> queryByAccount(SysAccount sysAccount) {
 		List<SysAccount> sysAccountList= sysAccountService.query(sysAccount);
 		return sysAccountList;
 	}
@@ -48,25 +46,25 @@ public class SysAccountAction {
 	
 	@RequestMapping("/deleteById")
 	@ResponseBody
-	public void deleteById(String id) {
-		sysAccountService.deleteById(id, SysAccount.class);
+	public int deleteById(String id) {
+		return sysAccountService.deleteById(id, SysAccount.class);
 	}
 	
 	@RequestMapping("/save")
 	@ResponseBody
-	public void save() {
+	public int save() {
 		SysAccount account=new SysAccount();
 		Random rd=new Random();
 		int rdnum=rd.nextInt(9999999);
 		account.setAccount(rdnum+"");
 		account.setComments("fuck you"+rdnum);
 		account.setEmail(rdnum+"@qq.com");
-		sysAccountService.insert(account);
+		return sysAccountService.insert(account);
 	}
 	
 	@RequestMapping("/saveBatch")
 	@ResponseBody
-	public void saveBatch() {
+	public List<SysAccount> saveBatch() {
 		List<SysAccount> accountList=new ArrayList<SysAccount>();
 		for(int i=0;i<5;i++){
 			SysAccount account=new SysAccount();
@@ -77,23 +75,18 @@ public class SysAccountAction {
 			account.setEmail(rdnum+"@163.com");
 			accountList.add(account);
 		}
-		sysAccountService.insertBatch(accountList);
+		return sysAccountService.insertBatch(accountList);
 	}
 	
 	@RequestMapping("/deleteByIdWithAccount")
 	@ResponseBody
-	public void deleteByIdWithAccount(String account,String id){
-		SysAccount sysAccount=new SysAccount();
-		sysAccount.setAccount(account);
-		sysAccount.setAccountId(id);
-		sysAccountService.delete(sysAccount);
+	public int deleteByIdWithAccount(SysAccount sysAccount){
+		return sysAccountService.delete(sysAccount);
 	}
 	
 	@RequestMapping("/queryByCount")
 	@ResponseBody
-	public long queryByCount(String account) {
-		SysAccount sysAccount=new SysAccount();
-		sysAccount.setAccount(account);
+	public long queryByCount(SysAccount sysAccount) {
 		return sysAccountService.queryCount(sysAccount);
 	}
 	

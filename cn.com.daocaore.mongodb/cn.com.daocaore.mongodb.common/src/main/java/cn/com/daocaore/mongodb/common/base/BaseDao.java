@@ -22,37 +22,30 @@ public interface BaseDao<MODEL extends BaseModel<KEY_TYPE>,KEY_TYPE> {
 	 * @param model待操作的对象
 	 * @return int 受影响的行数
 	 * **/
-	void insert(MODEL model);
+	int insert(MODEL model);
 	
 	/**
 	 * <p>批量新增</p>
 	 * @param models 待操作的对象集合
 	 * @return int 受影响的行数
 	 * */
-	void insertBatch(List<MODEL> models);
+	List<MODEL> insertBatch(List<MODEL> models);
 	
 	/**
 	 * <p>更新</p>
 	 * @param model 待操作的对象
 	 * @return int 受影响的行数
 	 * */
-	void update(MODEL model);
-	
-	/**
-	 * <p>批量更新</p>
-	 * @param models 待操作的对象集合
-	 * @return int 受影响的行数
-	 * */
-	void updateBatch(List<MODEL> models);
+	int update(MODEL model);
 	
 	/**
 	 * <p>根据给定model删除，model中必须指定id</p>
 	 * @param id 
 	 * @return int 受影响的行数
 	 * */
-	void delete(MODEL model);
+	int delete(MODEL model);
 	
-	void deleteById(KEY_TYPE id,Class<?> clz);
+	int deleteById(KEY_TYPE id,Class<?> clz);
 	
 	/**
 	 * <p>根据给定id查询对应model</p>

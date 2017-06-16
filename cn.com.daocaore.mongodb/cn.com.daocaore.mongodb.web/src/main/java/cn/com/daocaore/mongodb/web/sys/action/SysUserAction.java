@@ -32,9 +32,7 @@ public class SysUserAction {
 	
 	@RequestMapping("/queryByName")
 	@ResponseBody
-	public List<SysUser> queryByName(String name) {
-		SysUser sysUser=new SysUser();
-		sysUser.setName(name);
+	public List<SysUser> queryByName(SysUser sysUser) {
 		List<SysUser> sysAccountList= sysUserService.query(sysUser);
 		return sysAccountList;
 	}
@@ -48,25 +46,25 @@ public class SysUserAction {
 	
 	@RequestMapping("/deleteById")
 	@ResponseBody
-	public void deleteById(String id) {
-		sysUserService.deleteById(id, SysUser.class);
+	public int deleteById(String id) {
+		return sysUserService.deleteById(id, SysUser.class);
 	}
 	
 	@RequestMapping("/save")
 	@ResponseBody
-	public void save() {
+	public int save() {
 		SysUser user=new SysUser();
 		Random rd=new Random();
 		int rdnum=rd.nextInt(9999999);
 		user.setName(rdnum+"");
 		user.setComments("fuck you"+rdnum);
 		user.setEmail(rdnum+"@qq.com");
-		sysUserService.insert(user);
+		return sysUserService.insert(user);
 	}
 	
 	@RequestMapping("/saveBatch")
 	@ResponseBody
-	public void saveBatch() {
+	public List<SysUser> saveBatch() {
 		List<SysUser> userList=new ArrayList<SysUser>();
 		for(int i=0;i<5;i++){
 			SysUser user=new SysUser();
@@ -77,23 +75,18 @@ public class SysUserAction {
 			user.setEmail(rdnum+"@163.com");
 			userList.add(user);
 		}
-		sysUserService.insertBatch(userList);
+		return sysUserService.insertBatch(userList);
 	}
 	
 	@RequestMapping("/deleteByIdWithName")
 	@ResponseBody
-	public void deleteByIdWithName(String name,String id){
-		SysUser user=new SysUser();
-		user.setName(name);
-		user.setUserId(id);
-		sysUserService.delete(user);
+	public int deleteByIdWithName(SysUser user){
+		return sysUserService.delete(user);
 	}
 	
 	@RequestMapping("/queryByCount")
 	@ResponseBody
-	public long queryByCount(String name) {
-		SysUser user=new SysUser();
-		user.setName(name);
+	public long queryByCount(SysUser user) {
 		return sysUserService.queryCount(user);
 	}
 	

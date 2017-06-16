@@ -29,7 +29,7 @@ public interface BaseService<MODEL,KEY_TYPE> {
 	 * @param models 待操作的对象集合
 	 * @return int 受影响的行数
 	 * */
-	int insertBatch(List<MODEL> models);
+	List<MODEL> insertBatch(List<MODEL> models);
 	
 	/**
 	 * <p>更新</p>
@@ -37,13 +37,6 @@ public interface BaseService<MODEL,KEY_TYPE> {
 	 * @return int 受影响的行数
 	 * */
 	int update(MODEL model);
-	
-	/**
-	 * <p>批量更新</p>
-	 * @param models 待操作的对象集合
-	 * @return int 受影响的行数
-	 * */
-	int updateBatch(List<MODEL> models);
 	
 	/**
 	 * <p>根据给定id删除</p>

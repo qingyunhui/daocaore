@@ -21,38 +21,27 @@ public class BaseServiceImpl<MODEL extends BaseModel<KEY_TYPE>,KEY_TYPE> impleme
 	
 	@Override
 	public int insert(MODEL model) {
-		baseDao.insert(model);	//TODO
-		return 0;
+		return baseDao.insert(model);	
 	}
 
 	@Override
-	public int insertBatch(List<MODEL> models) {
-		baseDao.insertBatch(models);
-		return 0;
+	public List<MODEL> insertBatch(List<MODEL> models) {
+		return baseDao.insertBatch(models);
 	}
 
 	@Override
 	public int update(MODEL model) {
-		baseDao.update(model);
-		return 0;
-	}
-
-	@Override
-	public int updateBatch(List<MODEL> models) {
-		baseDao.updateBatch(models);
-		return 0;
+		return baseDao.update(model);
 	}
 
 	@Override
 	public int deleteById(KEY_TYPE id,Class<?> clz) {
-		baseDao.deleteById(id, clz);
-		return 0;
+		return baseDao.deleteById(id, clz);
 	}
 
 	@Override
 	public int delete(MODEL model) {
-		baseDao.delete(model);
-		return 0;
+		return baseDao.delete(model);
 	}
 
 	@Override
