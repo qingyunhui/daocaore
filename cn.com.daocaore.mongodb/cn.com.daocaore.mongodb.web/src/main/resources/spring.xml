@@ -11,6 +11,8 @@
 
 	<!-- 自动扫描(自动注入) -->
 	<context:component-scan base-package="cn.com.daocaore.mongodb" />
+	<!-- xxl-config配置 -->
+	<bean id="xxlConfPropertyPlaceholderConfigurer" class="cn.com.daocaore.mongodb.common.apply.XxlconfPropertyConfigurer" />
     <!-- 导入mongodb的配置文件 -->
    <import resource="mongodb-context.xml"/>
 </beans>

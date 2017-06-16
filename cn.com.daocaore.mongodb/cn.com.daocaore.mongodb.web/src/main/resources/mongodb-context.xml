@@ -12,7 +12,6 @@
           
     <!-- 加载mongodb的属性配置文件 -->
     <context:property-placeholder location="classpath:mongodb.properties" />
-    
     <!--  
          connections-per-host: 每个主机答应的连接数（每个主机的连接池大小），当连接池被用光时，会被阻塞住   
          max-wait-time: 被阻塞线程从连接池获取连接的最长等待时间（ms）  
@@ -21,21 +20,22 @@
          slave-ok:指明是否答应驱动从次要节点或者奴隶节点读取数据  
     -->  
     
+    
     <!-- mongo对象 -->
-    <mongo:mongo-client id="mongo" replica-set="${mongo.hostport}">
-        <mongo:client-options connections-per-host="${mongo.connectionsPerHost}" 
-        threads-allowed-to-block-for-connection-multiplier="${mongo.threadsAllowedToBlockForConnectionMultiplier}" 
-        connect-timeout="${mongo.connectTimeout}" 
-        max-wait-time="${mongo.maxWaitTime}" 
-        socket-keep-alive="${mongo.socketKeepAlive}" 
-        socket-timeout="${mongo.socketTimeout}" />
+    <mongo:mongo-client id="mongo" replica-set="${mongodb.hostport}">
+        <mongo:client-options connections-per-host="${mongodb.connections.perhost}" 
+        threads-allowed-to-block-for-connection-multiplier="${mongodb.threads.allowed.toblock.forconnection.multiplier}" 
+        connect-timeout="${mongodb.connect.timeout}" 
+        max-wait-time="${mongodb.maxwaittime}" 
+        socket-keep-alive="${mongodb.socket.keep.alive}" 
+        socket-timeout="${mongodb.socket.timeout}" />
     </mongo:mongo-client>
     
     <mongo:db-factory dbname="database" mongo-ref="mongo" />
     
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
         <constructor-arg ref="mongo" />
-        <constructor-arg name="databaseName" value="${mongo.databaseName}" />
+        <constructor-arg name="databaseName" value="${mongodb.database.name}" />
     </bean>
     
 </beans>
