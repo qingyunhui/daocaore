@@ -1,0 +1,249 @@
+#set($layout='/layout/empty.vm')
+#parse("/layout/static.vm")
+<!--搜索条件-->
+<div class="row formSearch">
+  <form id="handleForm" class="handleForm" method="POST">
+    <div class="col-xs-2">
+        <div class="input-group">
+            <span class="input-group-addon">状态</span>
+            <select class="form-control" name="status" id="status" style="width: auto;">
+                <option value="" >全部</option>
+                #foreach($status in $!enumTool.getEnumValues("com.zzjr.skyeye.enums.SkyeyeObjectsEnum$Status"))
+		           <option value="$status.code" #if($!skeyeObjects.status==$status.key) selected #end> $status.value </option>
+		       	#end
+            </select>
+        </div>
+    </div>
+    <div class="col-xs-2">
+	    <div class="input-group">
+	       	<span class="input-group-addon">动作</span>
+	        <select class="form-control" id="actionType" name="actionType" style="width: auto;">
+	            <option value="" >全部</option>
+	            #foreach($type in $!enumTool.getEnumValues("com.zzjr.skyeye.enums.SkyeyeObjectsEnum$ACTION_TYPE"))
+		           <option value="$type.code" #if($!skeyeObjects.actionType==$type.key) selected #end> $type.value </option>
+		       	#end
+	        </select>
+	    </div>
+    </div>
+    <div class="col-xs-4">
+        <div class="input-group">
+            <span class="input-group-addon">说明</span>
+            <input type="text" class="form-control" name="notes" value="$!skeyeObjects.notes" autocomplete="on" >
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <button class="btn btn-danger" id="searchBtn">搜索</button>
+    </div>
+  </form>
+</div>
+<!--搜索条件 end-->
+
+<!--table-->
+<div class="row">
+  <div class="col-xs-12">
+	<div class="box">
+	  <div class="box-header"></div>
+	  <!-- /.box-header -->
+	  <div class="box-body">
+	    <table id="tableObject" class="table table-bordered table-striped">
+	      <thead>
+		      <tr>
+		      	<th>ID</th>
+		        <th>方法名称</th>
+		        <th>说明</th>
+		        <th>状态</th>
+		        <th>动作</th>
+		        <th>详情</th>
+		        <th>操作</th>
+		      </tr>
+	      </thead>
+	    </table>
+	  </div>
+	  <!-- /.box-body -->
+	</div>
+  </div>
+</div>
+<!--table end-->
+
+<!--模态框-->
+<div class="modal fade" id="updateModal"  tabindex="-1" role="dialog"  aria-hidden="true">
+  <div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+        	<h4 class="modal-title" >更新数据</h4>
+     	</div>
+     	<div class="modal-body">
+			<form class="form-horizontal form" method="POST" role="form" id="updateForm" >
+				<input name="id" type="hidden"/>
+                <div class="form-group">
+                    <label for="firstname" class="col-sm-2 control-label">方法名</label>
+                    <div class="col-sm-10"><input type="text" class="form-control" name="methodName" placeholder="请输入方法名称" maxlength="100" readonly></div>
+                </div>
+                <div class="form-group">
+                    <label for="firstname" class="col-sm-2 control-label">描述</label>
+                    <div class="col-sm-10"><input type="text" class="form-control" name="notes" placeholder="请输入说明项" maxlength="100" readonly></div>
+                </div>
+                <div class="form-group">
+                  <label for="firstname" class="col-sm-2 control-label">状态</label>
+                  <div class="col-sm-10">
+                    <select class="form-control" name="status" id="status" style="width: auto;">
+                      <option value="" >全部</option>
+                        #foreach($status in $!enumTool.getEnumValues("com.zzjr.skyeye.enums.SkyeyeObjectsEnum$Status"))
+    		              <option value="$status.code" #if($!skeyeObjects.status==$status.key) selected #end> $status.value </option>
+    		       	    #end
+                    </select>
+    		      </div>
+                </div>
+                <div class="form-group">
+                <label for="firstname" class="col-sm-2 control-label">动作</label>
+                <div class="col-sm-10">
+                <select class="form-control" id="actionType" name="actionType" style="width: auto;">
+		            <option value="" >全部</option>
+		            #foreach($type in $!enumTool.getEnumValues("com.zzjr.skyeye.enums.SkyeyeObjectsEnum$ACTION_TYPE"))
+			           <option value="$type.code" #if($!skeyeObjects.actionType==$type.key) selected #end> $type.value </option>
+			       	#end
+		        </select>
+  		      </div>
+              </div>
+              <div class="form-group">
+                    <label for="lastname" class="col-sm-2 control-label">详情</label>
+                    <div class="col-sm-10">
+                        <textarea class="textarea" name="content" maxlength="512" placeholder="请输入详情" style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                    </div>
+                </div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary handleBtn">更新</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</form>
+     	</div>
+	</div>
+  </div>
+</div>
+<!--模态框 end-->
+<script src="${ac.contextPath}/static/plugs/datatables/jquery.dataTables.js"></script>
+<script src="${ac.contextPath}/static/plugs/datatables/dataTables.bootstrap.js"></script>
+<script src="${ac.contextPath}/static/public/js/dataTablesExt.js"></script>
+<script src="${ac.contextPath}/static/public/js/popup.js"></script>
+<script>
+$(function(){
+	var confTable = $("#tableObject").dataTable({
+		ajax: {
+			url:"${ac.contextPath}/skyeyeObjects/doList",//url:"${ac.contextPath}/skyeyeObjects/pageList",
+			type:"post",
+			data : function ( d ) {
+				return handleFormTOArray(d,".handleForm");
+			}
+		},
+		columns: [
+		    {data:  'id'},
+			{ data: 'methodName'},
+			{ data: 'notes'},
+			{ data: 'status',render:function(data, type, row){
+				return ${enumTool.getEnumToJSON("com.zzjr.skyeye.enums.SkyeyeObjectsEnum$Status")}[data];
+			}},
+			{ data: 'actionType',render:function(data, type, row){
+				return ${enumTool.getEnumToJSON("com.zzjr.skyeye.enums.SkyeyeObjectsEnum$ACTION_TYPE")}[data];
+			}},
+			{ data: 'content',render:function(data, type, row){
+				return "<div class='truncates' title='"+row.content+"'>"+row.content+"</div>";
+			}},
+			{ data: '操作' ,render: function ( data, type, row ) {
+					return function(){
+						var html = '<p id="'+ row.id +'" '+
+							' methodName="'+ row.methodName +'" '+
+							' notes="'+ row.notes +'" '+
+							' status="'+ row.status +'" '+
+							' actionType="'+ row.actionType +'" '+
+							' content="'+ row.content +'" '+
+							'>'+
+							'<button class="btn btn-warning update" type="button">编辑</button>  '+
+							'<button class="btn btn-danger delete" type="button">删除</button>  '+
+							'<button class="btn btn-info detail" type="button">详情</button>  '+
+							
+							'</p>';
+						return html;
+					};
+				}
+			}
+		]
+	});
+	
+	//查询
+	$("#searchBtn").click(function(){
+		confTable.fnDraw();
+	});
+	
+	//详情
+	$("#tableObject").on('click', '.detail',function() {
+		var curObj=this;
+		initModelData(true,curObj);
+	});
+	
+	//更新dialog model
+	$("#tableObject").on('click', '.update',function() {
+		var curObj=this;
+		initModelData(false,curObj);
+	});
+	
+	//提交更新
+	$("#updateForm").submit(function(){
+		$.post("${ac.contextPath}/skyeyeObjects/doUpdate", $("#updateModal .form").serialize(), function(data, status) {
+			if (data.code == "200") {
+				ComAlert.show(1, "更新配置成功", function(){
+					$('#updateModal').modal('hide');
+					confTable.fnDraw();
+				});
+			} else {
+				ComAlert.show(2, data.message);
+			}
+		});
+	});
+
+	// 删除
+	$("#tableObject").on('click', '.delete',function() {
+		var id=$(this).parent('p').attr("id");
+		ComConfirm.show("确定要删除该行?", function(){
+			$.post(
+				'${ac.contextPath}/skyeyeObjects/doDelete',
+				{
+					"id" : id
+				},
+				function(data, status) {
+					if (data.code == "200") {
+						ComAlert.show(1, "删除成功", function(){
+							confTable.fnDraw();
+						});
+					} else {
+						ComAlert.show(2, data.message);
+					}
+				}
+			);
+		});
+	});
+});
+  /**
+   * <p>根据给定参数，初始化model</p>
+   * @param isDetail （true:查看详情，false:更新）
+   * */
+  function initModelData(isDetail,curObj){
+	if(isDetail && isDetail==true){
+		$(".modal-title").html("详情");
+		$(".handleBtn").hide();
+	}else{
+		$(".modal-title").html("更新");
+		$(".handleBtn").show();
+		$(".handleBtn").html("更新");
+	}
+	$("#updateModal .form select[name='status']").val($(curObj).parent('p').attr("status"));
+	$("#updateModal .form select[name='actionType']").val($(curObj).parent('p').attr("actionType"));
+	$("#updateModal .form input[name='methodName']").val($(curObj).parent('p').attr("methodName"));
+	$("#updateModal .form input[name='notes']").val( $(curObj).parent('p').attr("notes") );
+	$("#updateModal .form textarea[name='content']").val($(curObj).parent('p').attr("content"));
+	$("#updateModal .form input[name='id']").val($(curObj).parent('p').attr("id"));
+	$('#updateModal').modal('show');
+ }
+
+</script>
