@@ -1,5 +1,0 @@
-#set($layout='/layout/empty.vm')
-#parse("/layout/static.vm")
-<h1>
-	hello index.vm
-</h1>

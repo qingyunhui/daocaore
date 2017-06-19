@@ -44,7 +44,7 @@
 		</property>
 	</bean>
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
-		<property name="cache" value="false" /><!-- -TODO 上线时，请把其设置为:true -->
+		<property name="cache" value="true" />
 		<property name="prefix" value="" />
 		<property name="suffix" value=".vm" />
 		<property name="contentType" value="text/html;charset=utf-8"></property>

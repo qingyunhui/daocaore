@@ -1,15 +1,16 @@
 //Sliding Effect Control
-head.js("../static/js/skin-select/jquery.cookie.js");
-head.js("../static/js/skin-select/skin-select.js");
+var path=getPath();
+head.js(path+"/static/js/skin-select/jquery.cookie.js");
+head.js(path+"/static/js/skin-select/skin-select.js");
 
 //Showing Date
-head.js("../static/js/clock/date.js");
+head.js(path+"/static/js/clock/date.js");
 
 //Bootstrap
-//head.js("../static/js/bootstrap.js");
+//head.js(path+"/static/js/bootstrap.js");
 
 //NEWS STICKER
-head.js("../static/js/newsticker/jquery.newsTicker.js", function() {
+head.js(path+"/static/js/newsticker/jquery.newsTicker.js", function() {
 
     var nt_title = $('#nt-title').newsTicker({
         row_height: 18,
@@ -26,20 +27,20 @@ head.js("../static/js/newsticker/jquery.newsTicker.js", function() {
 
 ////Acordion and Sliding menu
 
-head.js("../static/js/custom/scriptbreaker-multiple-accordion-1.js", function() {
+head.js(path+"/static/js/custom/scriptbreaker-multiple-accordion-1.js", function() {
 
     $(".topnav").accordionze({
         accordionze: true,
         speed: 500,
-        closedSign: '<img src="../static/images/plus.png">',
-        openedSign: '<img src="../static/images/minus.png">'
+        closedSign: '<img src=path+"/static/images/plus.png">',
+        openedSign: '<img src=path+"/static/images/minus.png">'
     });
 
 });
 
 ////Right Sliding menu
 
-head.js("../static/js/slidebars/slidebars.min.js", "http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js", function() {
+head.js(path+"/static/js/slidebars/slidebars.min.js", "http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js", function() {
 
     $(document).ready(function() {
         var mySlidebars = new $.slidebars();
@@ -53,7 +54,7 @@ head.js("../static/js/slidebars/slidebars.min.js", "http://cdnjs.cloudflare.com/
 //-------------------------------------------------------------
 
 //SEARCH MENU
-head.js("../static/js/search/jquery.quicksearch.js", function() {
+head.js(path+"/static/js/search/jquery.quicksearch.js", function() {
 
     $('input.id_search').quicksearch('#menu-showhide li, .menu-left-nest li');
    
@@ -65,7 +66,7 @@ head.js("../static/js/search/jquery.quicksearch.js", function() {
 
 
 //EASY PIE CHART
-head.js("../static/js/gage/jquery.easypiechart.min.js", function() {
+head.js(path+"/static/js/gage/jquery.easypiechart.min.js", function() {
 
     $(function() {
 
@@ -117,7 +118,7 @@ head.js("../static/js/gage/jquery.easypiechart.min.js", function() {
 
 //TOOL TIP
 
-head.js("../static/js/tip/jquery.tooltipster.js", function() {
+head.js(path+"/static/js/tip/jquery.tooltipster.js", function() {
 
     $('.tooltip-tip-x').tooltipster({
         position: 'right'
@@ -172,7 +173,7 @@ head.js("../static/js/tip/jquery.tooltipster.js", function() {
 
 //NICE SCROLL
 
-head.js("../static/js/nano/jquery.nanoscroller.js", function() {
+head.js(path+"/static/js/nano/jquery.nanoscroller.js", function() {
 
     $(".nano").nanoScroller({
         //stop: true 
@@ -194,7 +195,7 @@ head.js("../static/js/nano/jquery.nanoscroller.js", function() {
 
 //------------------------------------------------------------- 
 //PAGE LOADER
-head.js("../static/js/pace/pace.js", function() {
+head.js(path+"/static/js/pace/pace.js", function() {
 
     paceOptions = {
         ajax: false, // disabled
@@ -210,7 +211,7 @@ head.js("../static/js/pace/pace.js", function() {
 //------------------------------------------------------------- 
 
 //SPARKLINE CHART
-head.js("../static/js/chart/jquery.sparkline.js", function() {
+head.js(path+"/static/js/chart/jquery.sparkline.js", function() {
 
     $(function() {
         $('.inlinebar').sparkline('html', {
@@ -275,7 +276,7 @@ head.js("../static/js/chart/jquery.sparkline.js", function() {
 //------------------------------------------------------------- 
 
 //DIGITAL CLOCK
-head.js("../static/js/clock/jquery.clock.js", function() {
+head.js(path+"/static/js/clock/jquery.clock.js", function() {
 
     //clock
     $('#digital-clock').clock({
@@ -289,7 +290,7 @@ head.js("../static/js/clock/jquery.clock.js", function() {
 
 //------------------------------------------------------------- 
 
-head.js("../static/js/gage/raphael.2.1.0.min.js", "../static/js/gage/justgage.js", function() {
+head.js(path+"/static/js/gage/raphael.2.1.0.min.js", path+"/static/js/gage/justgage.js", function() {
 
 
 
