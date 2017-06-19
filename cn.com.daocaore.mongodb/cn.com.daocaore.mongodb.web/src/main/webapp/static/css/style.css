@@ -19,7 +19,7 @@ body {
     min-height: 100%;
     z-index: -2;
     margin: 0px !important;
-    background: url('../img/bg.jpg') no-repeat top center fixed;
+    background: url('../images//bg.jpg') no-repeat top center fixed;
     -moz-background-size: cover;
     -webkit-background-size: cover;
     -o-background-size: cover;
@@ -44,7 +44,7 @@ body {
     /* change if the mask should have another color then white */
     z-index: 2000;
     /* makes sure it stays on top */
-    /*   background-image: url("../img/overlays/06.png");
+    /*   background-image: url("../images/overlays/06.png");
   background-repeat: repeat; */
 }
 #mapContainer {
@@ -501,7 +501,7 @@ input:-webkit-autofill, textarea:-webkit-autofill {
     float: left;
 }
 #button-bg {
-    background: url("../img/small-bg5.jpg") repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
+    background: url("../images/small-bg5.jpg") repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
     border: 4px solid #FFFFFF;
     border-radius: 50%;
     height: 25px;
@@ -517,7 +517,7 @@ input:-webkit-autofill, textarea:-webkit-autofill {
     cursor: pointer;
 }
 #button-bg3 {
-    background: url("../img/small-bg.jpg") repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
+    background: url("${ac.contextPath}/static/img/small-bg.jpg") repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
     border: 4px solid #FFFFFF;
     border-radius: 50%;
     height: 25px;
@@ -525,7 +525,7 @@ input:-webkit-autofill, textarea:-webkit-autofill {
     cursor: pointer;
 }
 #button-bg5 {
-    background: url("../img/giftly.png") repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
+    background: url("${ac.contextPath}/static/img/giftly.png") repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
     border: 4px solid #FFFFFF;
     border-radius: 50%;
     height: 25px;
@@ -549,7 +549,7 @@ input:-webkit-autofill, textarea:-webkit-autofill {
     cursor: pointer;
 }
 #button-bg7 {
-    background: url("../img/bg3.png") repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
+    background: url("${ac.contextPath}/static/img/bg3.png") repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
     border: 4px solid #FFFFFF;
     border-radius: 50%;
     height: 25px;
@@ -557,7 +557,7 @@ input:-webkit-autofill, textarea:-webkit-autofill {
     cursor: pointer;
 }
 #button-bg8 {
-    background: url("../img/small-bg8.jpg") repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
+    background: url("${ac.contextPath}/static/img/small-bg8.jpg") repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
     border: 4px solid #FFFFFF;
     border-radius: 50%;
     height: 25px;
@@ -573,7 +573,7 @@ input:-webkit-autofill, textarea:-webkit-autofill {
     cursor: pointer;
 }
 #button-bg10 {
-    background: url("../img/small-bg10.jpg") repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
+    background: url("${ac.contextPath}/static/img/small-bg10.jpg") repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
     border: 4px solid #FFFFFF;
     border-radius: 50%;
     height: 25px;
@@ -581,7 +581,7 @@ input:-webkit-autofill, textarea:-webkit-autofill {
     cursor: pointer;
 }
 #button-bg11 {
-    background: url("../img/small-bg11.jpg") repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
+    background: url("${ac.contextPath}/static/img/small-bg11.jpg") repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
     border: 4px solid #FFFFFF;
     border-radius: 50%;
     height: 25px;
@@ -589,7 +589,7 @@ input:-webkit-autofill, textarea:-webkit-autofill {
     cursor: pointer;
 }
 #button-bg12 {
-    background: url("../img/small-bg12.jpg") repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
+    background: url("${ac.contextPath}/static/img/small-bg12.jpg") repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
     border: 4px solid #FFFFFF;
     border-radius: 50%;
     height: 25px;
@@ -597,7 +597,7 @@ input:-webkit-autofill, textarea:-webkit-autofill {
     cursor: pointer;
 }
 #button-bg13 {
-    background: url("../img/small-bg13.jpg") repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
+    background: url("${ac.contextPath}/static/img/small-bg13.jpg") repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
     border: 4px solid #FFFFFF;
     border-radius: 50%;
     height: 25px;
@@ -762,7 +762,7 @@ img.ikon {
     float: right;
 }
 #search input[type="text"] {
-    background: url("../img/search-dark.png") no-repeat scroll 14px 10px #FFFFFF;
+    background: url("${ac.contextPath}/static/img/search-dark.png") no-repeat scroll 14px 10px #FFFFFF;
     border: 0 none;
     color: #9EA7B3 !important;
     width: 150px;
@@ -792,7 +792,7 @@ input[type=text] {
     margin: 0 10px;
 }
 .dark {
-    background: url("../img/search-white.png") no-repeat scroll 36px 12px;
+    background: url("../images/search-white.png") no-repeat scroll 36px 12px;
     margin-top: -18px;
     padding: 0 10px;
     border-radius: 4px;
@@ -811,7 +811,7 @@ input[type="search"] {
     font-size: 100%;
 }
 input[type="search"] {
-    background: url("images/search-icon.png") no-repeat scroll 9px center #EDEDED;
+    background: url("../images/search-icon.png") no-repeat scroll 9px center #EDEDED;
     border: 1px solid #CCCCCC;
     border-radius: 10em 10em 10em 10em;
     padding: 9px 10px 9px 32px;
@@ -865,7 +865,7 @@ input::-webkit-search-decoration, input::-webkit-search-cancel-button {
     display: none;
 }
 input[type=search] {
-    background: url("../img/search-white.png") no-repeat scroll 18px center rgba(0, 0, 0, 0.3);
+    background: url("../images/search-white.png") no-repeat scroll 18px center rgba(0, 0, 0, 0.3);
     border: 0px solid #DDDDDD;
     padding: 9px 10px 14px 32px;
     -webkit-border-radius: 0;
@@ -909,7 +909,7 @@ input::-webkit-input-placeholder {
     cursor: auto;
     border: 1px solid #ddd;
     box-shadow: none!important;
-    background: url("../img/search-dark.png") no-repeat scroll 18px center #ffffff;
+    background: url("../images/search-dark.png") no-repeat scroll 18px center #ffffff;
 }
 #demo-2 input:-moz-placeholder {
     color: transparent;
