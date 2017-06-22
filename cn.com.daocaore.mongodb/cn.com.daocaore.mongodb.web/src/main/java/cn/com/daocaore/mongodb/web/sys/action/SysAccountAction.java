@@ -1,12 +1,15 @@
 package cn.com.daocaore.mongodb.web.sys.action;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,6 +37,14 @@ public class SysAccountAction {
 	@ResponseBody
 	public List<SysAccount> queryByAccount(SysAccount sysAccount) {
 		List<SysAccount> sysAccountList= sysAccountService.query(sysAccount);
+		return sysAccountList;
+	}
+	
+	@RequestMapping("/queryByAccountWithSort")
+	@ResponseBody
+	public List<SysAccount> queryByAccountWithSort(SysAccount sysAccount) {
+		List<Order> list=Arrays.asList(new Order(Direction.ASC,"account"),new Order(Direction.DESC,"comments"));
+		List<SysAccount> sysAccountList= sysAccountService.query(sysAccount, list.toArray(new Order[list.size()]));
 		return sysAccountList;
 	}
 	

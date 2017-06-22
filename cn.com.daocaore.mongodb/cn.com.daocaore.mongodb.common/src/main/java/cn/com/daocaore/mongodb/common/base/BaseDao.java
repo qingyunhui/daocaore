@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Repository;
 
 import cn.com.daocaore.mongodb.common.beans.DataTableInfo;
@@ -50,6 +51,7 @@ public interface BaseDao<MODEL extends BaseModel<KEY_TYPE>,KEY_TYPE> {
 	/**
 	 * <p>根据给定id查询对应model</p>
 	 * @param id
+	 * @param clz
 	 * @return Model 
 	 * */
 	MODEL getById(KEY_TYPE id,Class<?> clz);
@@ -62,10 +64,18 @@ public interface BaseDao<MODEL extends BaseModel<KEY_TYPE>,KEY_TYPE> {
 	
 	/**
 	 * <p>根据给定参数查询</p>
-	 * @param map
+	 * @param model
 	 * @return List<Model> 
 	 * */
 	List<MODEL> query(MODEL model);
+	
+	/**
+	 * <p>根据给定参数查询</p>
+	 * @param model
+	 * @param order
+	 * @return List<Model> 
+	 * */
+	List<MODEL> query(MODEL model,Order ...orders);
 	
 	/**
 	 * <p>根据给定条件，分页</p>

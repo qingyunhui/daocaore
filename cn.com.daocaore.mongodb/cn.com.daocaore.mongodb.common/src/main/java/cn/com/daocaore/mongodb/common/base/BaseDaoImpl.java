@@ -8,6 +8,8 @@ import java.util.Map.Entry;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -28,12 +30,12 @@ import com.github.pagehelper.PageInfo;
  **/
 public class BaseDaoImpl<MODEL extends BaseModel<KEY_TYPE>, KEY_TYPE> implements BaseDao<MODEL, KEY_TYPE>{
 
-/*	   
- *                            排序
- * 	   Sort ：sort () 已过时，现在是用query.with(sort)，with参数是sort类
+	/*	   
+	 *                            排序
+	 * Sort ：sort () 已过时，现在是用query.with(sort)，with参数是sort类
 	   Sort提供了几种构造函数
 	   (1)一个字段的排序
-          	例如onumber字段升序
+        	例如onumber字段升序
         	query.with(new Sort(Direction.ASC,"onumber"));
        (2)如果是多个字段时同时升序或者降序时
         query.with(new Sort(Direction.ASC,"a","b","c"))
@@ -110,6 +112,15 @@ public class BaseDaoImpl<MODEL extends BaseModel<KEY_TYPE>, KEY_TYPE> implements
 		Query  query=buildQuery(model);
 		return (List<MODEL>)mongoTemplate.find(query, model.getClass());
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<MODEL> query(MODEL model, Order ...orders) {
+		if(null==model) return null;
+		Query  query=buildQuery(model);
+		if(null!=orders && orders.length>0) query.with(new Sort(orders));
+		return (List<MODEL>)mongoTemplate.find(query, model.getClass());
+	}
 
 	/**
 	 * <p>根据给定model构造Query查询条件</p>
@@ -146,4 +157,5 @@ public class BaseDaoImpl<MODEL extends BaseModel<KEY_TYPE>, KEY_TYPE> implements
 		dataTableInfo.setData(pageInfo.getList());
 		return dataTableInfo;
 	}
+
 }

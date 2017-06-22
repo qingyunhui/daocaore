@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Service;
 
 import cn.com.daocaore.mongodb.common.beans.DataTableInfo;
@@ -67,6 +68,13 @@ public interface BaseService<MODEL,KEY_TYPE> {
 	 * @return List<Model> 
 	 * */
 	List<MODEL> query(MODEL model);
+	
+	/**
+	 * <p>根据给定参数查询</p>
+	 * @param map
+	 * @return List<Model> 
+	 * */
+	List<MODEL> query(MODEL model,Order ...orders);
 	
 	DataTableInfo<MODEL> queryPage(HttpServletRequest request,MODEL model);
 

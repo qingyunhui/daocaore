@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort.Order;
 
 import cn.com.daocaore.mongodb.common.beans.DataTableInfo;
 
@@ -57,6 +58,11 @@ public class BaseServiceImpl<MODEL extends BaseModel<KEY_TYPE>,KEY_TYPE> impleme
 	@Override
 	public List<MODEL> query(MODEL model) {
 		return baseDao.query(model);
+	}
+	
+	@Override
+	public List<MODEL> query(MODEL model, Order ...orders) {
+		return baseDao.query(model, orders);
 	}
 
 	@Override
