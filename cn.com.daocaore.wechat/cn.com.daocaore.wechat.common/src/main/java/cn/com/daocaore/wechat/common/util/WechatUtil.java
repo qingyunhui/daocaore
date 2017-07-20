@@ -36,6 +36,7 @@ public class WechatUtil {
     
     // 菜单创建（POST） 限100（次/天）
     public static String menu_create_url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
+//    										https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN
 
     /**
      * 创建菜单
