@@ -1,5 +1,8 @@
 package cn.com.yuzhushui.schedule.job.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum JobStatus {
 	EXECUTING(0, "正在执行"), FINISHED(1, "已完成"), UNKNOW(2, "未知状态");
 
@@ -10,21 +13,4 @@ public enum JobStatus {
 		this.code = code;
 		this.desc = desc;
 	}
-
-	public int getCode() {
-		return code;
-	}
-
-	public void setCode(int code) {
-		this.code = code;
-	}
-
-	public String getDesc() {
-		return desc;
-	}
-
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
-
 }

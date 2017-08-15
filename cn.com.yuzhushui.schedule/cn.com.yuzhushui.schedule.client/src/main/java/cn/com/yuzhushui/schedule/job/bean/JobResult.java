@@ -2,10 +2,14 @@ package cn.com.yuzhushui.schedule.job.bean;
 
 import java.io.Serializable;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * 封装了job执行结果等相关信息，通过Response返回给server端
- * @author ding.xin
  */
+@Getter
+@Setter
 public class JobResult implements Serializable {
 
 	private static final long serialVersionUID = 1530198121024793393L;
@@ -32,37 +36,5 @@ public class JobResult implements Serializable {
 	 * </p>
 	 */
 	private String result;
-
-	public long getJobDetailId() {
-		return jobDetailId;
-	}
-
-	public void setJobDetailId(long jobDetailId) {
-		this.jobDetailId = jobDetailId;
-	}
-
-	public boolean isSuccess() {
-		return isSuccess;
-	}
-
-	public void setSuccess(boolean isSuccess) {
-		this.isSuccess = isSuccess;
-	}
-
-	public long getTimeConsume() {
-		return timeConsume;
-	}
-
-	public void setTimeConsume(long timeConsume) {
-		this.timeConsume = timeConsume;
-	}
-
-	public String getResult() {
-		return result;
-	}
-
-	public void setResult(String result) {
-		this.result = result;
-	}
 
 }

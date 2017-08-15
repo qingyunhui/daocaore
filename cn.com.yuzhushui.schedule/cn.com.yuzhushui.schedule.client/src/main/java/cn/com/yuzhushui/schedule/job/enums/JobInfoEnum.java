@@ -31,7 +31,8 @@ public class JobInfoEnum {
 	}
 	
 	public enum TYPE{
-		ONCE, REPEAT;
+		ONCE,// 一次性job
+		REPEAT;//重复执行
 	}
 	
 	public enum INVOKE_POLICY{
