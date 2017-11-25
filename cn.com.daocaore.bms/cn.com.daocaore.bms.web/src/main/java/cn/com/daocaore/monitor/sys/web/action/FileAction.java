@@ -89,7 +89,7 @@ public class FileAction {
 					sysAttachment.setOriginName(originFileName);
 					physicalPath=physicalPath+fileName;
 					sysAttachment.setPhysicalPath(physicalPath);//文件落地所在的绝对路径
-					sysAttachment.setSourceFilePath(physicalPath);//源文件所在路径 ，暂时与physicalPath 保持一致.
+//					sysAttachment.setSourceFilePath(physicalPath);//源文件所在路径 ，暂时与physicalPath 保持一致.
 					sysAttachment.setSize(multipartFile.getSize());
 					sysAttachment.setSuffix(suffix);
 					sysAttachment.setAttachmentType(multipartFile.getContentType());

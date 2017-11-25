@@ -8,8 +8,8 @@ import lombok.Setter;
 
 /**
  * @author qing.yunhui 
- * @Since 2011-2016
- * @create 2016-11-20 15:49:55
+ * @Since 2011-2017
+ * @create 2017-11-25 23:03:18
  * @history
  */
 @Getter
@@ -41,13 +41,13 @@ public class SysAttachment extends BaseModel<String>{
 	private String targetId;
 	
 	/**
-	 * @Fields attachmentType:附件类型
+	 * @Fields attachmentType:附件类型(附件类型:(text/html,image/jpeg等)
 	 */
 	private String attachmentType;
 	
 	/**
-	 * @Fileds handleType 处理类型(缩略处理/截取处理/无处理)
-	 * */
+	 * @Fields handleType:处理类型(缩略处理/截取处理/无处理)
+	 */
 	private Integer handleType;
 	
 	/**
@@ -56,24 +56,9 @@ public class SysAttachment extends BaseModel<String>{
 	private Integer classify;
 	
 	/**
-	 * @Fields isSystem 是否系统内置(0:系统,1:用户)
-	 * */
-	private Integer isSystem; 
-	
-	/**
 	 * @Fields url:访问的相对或绝对路径url
 	 */
 	private String url;
-	
-	/**
-	 * @Fields 源文件所在磁盘上绝对路径(处理前文件的所在位置)
-	 * */
-	private String sourceFilePath;
-	
-	/**
-	 * @Fields comments:描述
-	 */
-	private String comments;
 	
 	/**
 	 * @Fields physicalPath:文件在磁盘上所在的绝对路径
@@ -101,34 +86,19 @@ public class SysAttachment extends BaseModel<String>{
 	private byte[] data;
 	
 	/**
+	 * @Fields comments:描述
+	 */
+	private String comments;
+	
+	/**
 	 * @Fields ctime:创建时间
 	 */
 	private Date ctime;
 	
 	/**
-	 * @Fields creater:创建人
-	 */
-	private String creater;
-	
-	/**
-	 * @Fields createrId:创建人ID
-	 */
-	private Integer createrId;
-	
-	/**
 	 * @Fields etime:修改时间
 	 */
 	private Date etime;
-	
-	/**
-	 * @Fields editor:修改人
-	 */
-	private String editor;
-	
-	/**
-	 * @Fields editorId:修改人ID
-	 */
-	private Integer editorId;
 	
 	/**
 	 * @Fields deleted:删除标识

@@ -60,7 +60,7 @@ public class SysAttachmentServiceImpl extends BaseServiceImpl<SysAttachment,Stri
 		byte[] bytes=multipartFile.getBytes();
 		
 		try {
-			sysAttachment.setSourceFilePath(saveFilePath);
+//			sysAttachment.setSourceFilePath(saveFilePath);
 			sysAttachment.setPhysicalPath(saveFilePath);
 			sysAttachment.setHandleType(extras.getHandleType());
 //			byte[] data=inputStreamByte(multipartFile.getInputStream());

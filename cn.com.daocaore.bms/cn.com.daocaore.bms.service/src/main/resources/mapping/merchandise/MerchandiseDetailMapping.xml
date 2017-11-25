@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.daocaore.monitor.merchandise.biz.dao.MerchandiseDetailDao">
+	<resultMap type="cn.com.daocaore.monitor.merchandise.biz.entity.MerchandiseDetail" id="BaseResultMap">
+        <result property="id" column="id" javaType="Long"/>
+        <result property="merchandiseId" column="merchandise_id" javaType="Long"/>
+        <result property="color" column="color" javaType="String"/>
+        <result property="imgPath" column="img_path" javaType="String"/>
+        <result property="unitPrice" column="unit_price" javaType="Long"/>
+        <result property="unit" column="unit" javaType="Integer"/>
+        <result property="status" column="status" javaType="Integer"/>
+        <result property="ctime" column="ctime" javaType="Date"/>
+        <result property="etime" column="etime" javaType="Date"/>
+        <result property="remarks" column="remarks" javaType="String"/>
+        <result property="deleted" column="deleted" javaType="Integer"/>
+	</resultMap>
+	
+	<sql id="full-columns" >
+        t.id,
+        t.merchandise_id,
+        t.color,
+        t.img_path,
+        t.unit_price,
+        t.unit,
+        t.status,
+        t.ctime,
+        t.etime,
+        t.remarks,
+        t.deleted
+	</sql>
+	
+	<!-- 查询条件 -->
+	<sql id="queryCriteria">
+		 <if test="@OGNL@isNotEmpty(id)">
+            AND t.id = #{id}
+         </if>
+		 <if test="@OGNL@isNotEmpty(merchandiseId)">
+            AND t.merchandise_id = #{merchandiseId}
+         </if>
+		 <if test="@OGNL@isNotEmpty(color)">
+            AND t.color = #{color}
+         </if>
+		 <if test="@OGNL@isNotEmpty(imgPath)">
+            AND t.img_path = #{imgPath}
+         </if>
+		 <if test="@OGNL@isNotEmpty(unitPrice)">
+            AND t.unit_price = #{unitPrice}
+         </if>
+		 <if test="@OGNL@isNotEmpty(unit)">
+            AND t.unit = #{unit}
+         </if>
+		 <if test="@OGNL@isNotEmpty(status)">
+            AND t.status = #{status}
+         </if>
+		 <if test="@OGNL@isNotEmpty(ctime)">
+            AND t.ctime = #{ctime}
+         </if>
+		 <if test="@OGNL@isNotEmpty(etime)">
+            AND t.etime = #{etime}
+         </if>
+		 <if test="@OGNL@isNotEmpty(remarks)">
+            AND t.remarks = #{remarks}
+         </if>
+		 <if test="@OGNL@isNotEmpty(deleted)">
+            AND t.deleted = #{deleted}
+         </if>
+	</sql>
+
+	<insert id="insert" parameterType="cn.com.daocaore.monitor.merchandise.biz.entity.MerchandiseDetail" >
+		<![CDATA[
+	        INSERT INTO merchandise_detail (
+	            merchandise_id ,
+	            color ,
+	            img_path ,
+	            unit_price ,
+	            unit ,
+	            status ,
+	            ctime ,
+	            etime ,
+	            remarks ,
+	            deleted 
+	        ) VALUES (
+	        	#{merchandiseId},
+	        	#{color},
+	        	#{imgPath},
+	        	#{unitPrice},
+	        	#{unit},
+	        	#{status},
+	        	now(),
+	        	#{etime},
+	        	#{remarks},
+	        	0
+	        )
+	    ]]>
+    	<selectKey resultType="java.lang.Long" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+	</insert>
+	
+	<insert id="insertBatch" parameterType="java.util.List" >
+		<![CDATA[
+	        INSERT INTO merchandise_detail (
+	            merchandise_id ,
+	            color ,
+	            img_path ,
+	            unit_price ,
+	            unit ,
+	            status ,
+	            ctime ,
+	            etime ,
+	            remarks ,
+	            deleted 
+	        ) VALUES 
+	        <foreach collection="list" item="item" index="index" separator=",">
+	        (
+	        	#{merchandiseId},
+	        	#{color},
+	        	#{imgPath},
+	        	#{unitPrice},
+	        	#{unit},
+	        	#{status},
+	        	now(),
+	        	#{etime},
+	        	#{remarks},
+	        	0
+	        )
+	        </foreach>
+	    ]]>
+	</insert>
+	
+	<update id="delete" parameterType="java.lang.Long">
+        UPDATE merchandise_detail SET deleted=1 
+        WHERE deleted=0 AND
+        	id = #{value}
+	</update>
+	<update id="deleteBatch" parameterType="list" >
+        UPDATE merchandise_detail SET deleted=1 
+        WHERE deleted=0 AND
+        	id IN 
+        <foreach collection="list" item = "id" open="(" separator="," close=")">
+        	#{id}
+		</foreach>
+	</update>
+	
+	<update id="update" parameterType="cn.com.daocaore.monitor.merchandise.biz.entity.MerchandiseDetail">
+        UPDATE merchandise_detail 
+        <set>
+        	<if test="@OGNL@isNotEmpty(merchandiseId)">
+	            merchandise_id = #{merchandiseId},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(color)">
+	            color = #{color},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(imgPath)">
+	            img_path = #{imgPath},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(unitPrice)">
+	            unit_price = #{unitPrice},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(unit)">
+	            unit = #{unit},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(status)">
+	            status = #{status},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(ctime)">
+	            ctime = #{ctime},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(etime)">
+	            etime = #{etime},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(remarks)">
+	            remarks = #{remarks},
+	        </if>
+        	<if test="@OGNL@isNotEmpty(deleted)">
+	            deleted = #{deleted},
+	        </if>
+        </set>
+        WHERE deleted=0
+        	AND id = #{id}
+	</update>
+	
+	<select id="getById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+	   	SELECT <include refid="full-columns" />
+       	<![CDATA[
+       	FROM merchandise_detail t
+       	WHERE t.id = #{value}
+		]]>
+    </select>
+	
+	<select id="query" parameterType="map" resultMap="BaseResultMap">
+		SELECT <include refid="full-columns" />
+	    FROM merchandise_detail t
+		<where> <include refid="queryCriteria"/>  </where>
+		<if test="@OGNL@isNotEmpty(orderColumn) ">
+        ORDER BY t.${orderColumn} <if test="@OGNL@isNotEmpty(orderDirection) ">${orderDirection}</if>
+        </if>
+	</select>
+	
+	<select id="queryPage" parameterType="map" resultMap="BaseResultMap">
+		SELECT 
+        <include refid="full-columns" />
+            FROM merchandise_detail t
+		<where> <include refid="queryCriteria"/>  </where>
+		<if test="@OGNL@isNotEmpty(orderColumn) ">
+        ORDER BY t.${orderColumn} <if test="@OGNL@isNotEmpty(orderDirection) ">${orderDirection}</if>
+        </if>
+        LIMIT #{start}, #{pageSize}
+	</select>
+
+	<select id="queryCount" parameterType="map" resultType="java.lang.Integer">
+		select count(id) FROM merchandise_detail 
+        <where> <include refid="queryCriteria"/>  </where>
+	</select>
+</mapper>

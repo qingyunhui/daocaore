@@ -9,7 +9,6 @@
         <result property="attachmentType" column="attachment_type" javaType="String"/>
         <result property="handleType" column="handle_type" javaType="Integer"/>
         <result property="classify" column="classify" javaType="Integer"/>
-        <result property="isSystem" column="is_system" javaType="Integer"/>
         <result property="url" column="url" javaType="String"/>
         <result property="sourceFilePath" column="source_file_path" javaType="String"/>
         <result property="comments" column="comments" javaType="String"/>
@@ -19,11 +18,7 @@
         <result property="size" column="size" javaType="Long"/>
         <!-- <result property="data" column="data" javaType="byte[]"/> -->
         <result property="ctime" column="ctime" javaType="Date"/>
-        <result property="creater" column="creater" javaType="String"/>
-        <result property="createrId" column="creater_id" javaType="Integer"/>
         <result property="etime" column="etime" javaType="Date"/>
-        <result property="editor" column="editor" javaType="String"/>
-        <result property="editorId" column="editor_id" javaType="Integer"/>
         <result property="deleted" column="deleted" javaType="Integer"/>
 	</resultMap>
 	
@@ -35,7 +30,6 @@
         t.attachment_type,
         t.handle_type,
         t.classify,
-        t.is_system,
         t.url,
         t.source_file_path,
         t.comments,
@@ -45,11 +39,7 @@
         t.size,
         t.data,
         t.ctime,
-        t.creater,
-        t.creater_id,
         t.etime,
-        t.editor,
-        t.editor_id,
         t.deleted
 	</sql>
 	
@@ -76,9 +66,6 @@
 		 <if test="@OGNL@isNotEmpty(classify)">
             AND t.classify = #{classify}
          </if>
-         <if test="@OGNL@isNotEmpty(isSystem)">
-            AND t.is_system = #{isSystem}
-         </if>
 		 <if test="@OGNL@isNotEmpty(url)">
             AND t.url = #{url}
          </if>
@@ -103,20 +90,8 @@
 		 <if test="@OGNL@isNotEmpty(ctime)">
             AND t.ctime = #{ctime}
          </if>
-		 <if test="@OGNL@isNotEmpty(creater)">
-            AND t.creater = #{creater}
-         </if>
-		 <if test="@OGNL@isNotEmpty(createrId)">
-            AND t.creater_id = #{createrId}
-         </if>
 		 <if test="@OGNL@isNotEmpty(etime)">
             AND t.etime = #{etime}
-         </if>
-		 <if test="@OGNL@isNotEmpty(editor)">
-            AND t.editor = #{editor}
-         </if>
-		 <if test="@OGNL@isNotEmpty(editorId)">
-            AND t.editor_id = #{editorId}
          </if>
 		 <if test="@OGNL@isNotEmpty(deleted)">
             AND t.deleted = #{deleted}
@@ -133,7 +108,6 @@
 	            attachment_type ,
 	            handle_type ,
 	            classify ,
-	            is_system ,
 	            url ,
 	            source_file_path ,
 	            comments ,
@@ -143,11 +117,7 @@
 	            size ,
 	            data ,
 	            ctime ,
-	            creater ,
-	            creater_id ,
 	            etime ,
-	            editor ,
-	            editor_id ,
 	            deleted 
 	        ) VALUES (
 	        	#{id},
@@ -157,7 +127,6 @@
 	        	#{attachmentType},
 	        	#{handleType},
 	        	#{classify},
-	        	#{isSystem},
 	        	#{url},
 	        	#{sourceFilePath},
 	        	#{comments},
@@ -167,11 +136,7 @@
 	        	#{size},
 	        	#{data},
 	        	now(),
-	        	#{creater},
-	        	#{createrId},
 	        	#{etime},
-	        	#{editor},
-	        	#{editorId},
 	        	0
 	        )
 	    ]]>
@@ -190,7 +155,6 @@
 	            attachment_type ,
 	            handle_type ,
 	            classify ,
-	            is_system ,
 	            url ,
 	            source_file_path ,
 	            comments ,
@@ -200,11 +164,7 @@
 	            size ,
 	            data ,
 	            ctime ,
-	            creater ,
-	            creater_id ,
 	            etime ,
-	            editor ,
-	            editor_id ,
 	            deleted 
 	        ) VALUES 
 	        <foreach collection="list" item="item" index="index" separator=",">
@@ -216,7 +176,6 @@
 	        	#{attachmentType},
 	        	#{handleType},
 	        	#{classify},
-	        	#{isSystem},
 	        	#{url},
 	        	#{sourceFilePath},
 	        	#{comments},
@@ -226,11 +185,7 @@
 	        	#{size},
 	        	#{data},
 	        	now(),
-	        	#{creater},
-	        	#{createrId},
 	        	#{etime},
-	        	#{editor},
-	        	#{editorId},
 	        	0
 	        )
 	        </foreach>
@@ -272,9 +227,6 @@
         	<if test="@OGNL@isNotEmpty(classify)">
 	            classify = #{classify},
 	        </if>
-	        <if test="@OGNL@isNotEmpty(isSystem)">
-            	is_system = #{isSystem},
-         	</if>
         	<if test="@OGNL@isNotEmpty(url)">
 	            url = #{url},
 	        </if>
@@ -302,20 +254,8 @@
         	<if test="@OGNL@isNotEmpty(ctime)">
 	            ctime = #{ctime},
 	        </if>
-        	<if test="@OGNL@isNotEmpty(creater)">
-	            creater = #{creater},
-	        </if>
-        	<if test="@OGNL@isNotEmpty(createrId)">
-	            creater_id = #{createrId},
-	        </if>
         	<if test="@OGNL@isNotEmpty(etime)">
 	            etime = #{etime},
-	        </if>
-        	<if test="@OGNL@isNotEmpty(editor)">
-	            editor = #{editor},
-	        </if>
-        	<if test="@OGNL@isNotEmpty(editorId)">
-	            editor_id = #{editorId},
 	        </if>
         	<if test="@OGNL@isNotEmpty(deleted)">
 	            deleted = #{deleted},
