@@ -6,10 +6,10 @@
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd"
 	>
 	
-	<context:component-scan base-package="cn.com.daocaore.bms" />
+	<context:component-scan base-package="cn.com.daocaore.monitor" />
 	<aop:aspectj-autoproxy />
 	<!-- <bean id="xxlConfPropertyPlaceholderConfigurer" class="com.xxl.conf.core.spring.XxlConfPropertyPlaceholderConfigurer" /> -->
-	<bean id="xxlConfPropertyPlaceholderConfigurer" class="cn.com.daocaore.bms.apply.XxlconfPropertyConfigurer" />
+	<bean id="xxlConfPropertyPlaceholderConfigurer" class="cn.com.daocaore.monitor.apply.XxlconfPropertyConfigurer" />
 	
 	<!-- 定义环境变量 --> <!--记得改路径-->
 	<import resource="classpath:/spring-mybatis.xml" />

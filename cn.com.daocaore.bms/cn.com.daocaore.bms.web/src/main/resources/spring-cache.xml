@@ -90,7 +90,7 @@
         </constructor-arg>
     </bean>
 
-    <bean id="shardedJedisCached" class="cn.com.daocaore.bms.common.cache.ShardedJedisCached">
+    <bean id="shardedJedisCached" class="cn.com.daocaore.monitor.common.cache.ShardedJedisCached">
         <property name="jedisPool" ref="shardedJedisPool"/>
     </bean>
 </beans>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.com.daocaore.bms.sys.biz.dao.SysWarningDao">
-	<resultMap type="cn.com.daocaore.bms.sys.biz.entity.SysWarning" id="BaseResultMap">
+<mapper namespace="cn.com.daocaore.monitor.sys.biz.dao.SysWarningDao">
+	<resultMap type="cn.com.daocaore.monitor.sys.biz.entity.SysWarning" id="BaseResultMap">
         <result property="id" column="id" javaType="Integer"/>
         <result property="warningDate" column="warning_date" javaType="Date"/>
         <result property="action" column="action" javaType="String"/>
@@ -96,7 +96,7 @@
          </if>
 	</sql>
 
-	<insert id="insert" parameterType="cn.com.daocaore.bms.sys.biz.entity.SysWarning" >
+	<insert id="insert" parameterType="cn.com.daocaore.monitor.sys.biz.entity.SysWarning" >
 		<![CDATA[
 	        INSERT INTO sys_warning (
 	            warning_date ,
@@ -196,7 +196,7 @@
 		</foreach>
 	</update>
 	
-	<update id="update" parameterType="cn.com.daocaore.bms.sys.biz.entity.SysWarning">
+	<update id="update" parameterType="cn.com.daocaore.monitor.sys.biz.entity.SysWarning">
         UPDATE sys_warning 
         <set>
         	<if test="@OGNL@isNotEmpty(warningDate)">

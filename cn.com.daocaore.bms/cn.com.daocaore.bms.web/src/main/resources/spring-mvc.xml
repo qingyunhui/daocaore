@@ -20,7 +20,7 @@ http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
 	<mvc:resources mapping="/fonts/**" location="/fonts/" cache-period="31556926" />
 	<mvc:resources mapping="/plugs/**" location="/plugs/" cache-period="31556926" />
 	<!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
-	<context:component-scan base-package="cn.com.daocaore.bms" />
+	<context:component-scan base-package="cn.com.daocaore.monitor" />
 	<aop:aspectj-autoproxy proxy-target-class="true" />  
 	
 	
@@ -30,7 +30,7 @@ http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
 			mvc:mapping 拦截器路径配置
 			<mvc:mapping path="/**"/>
 			mvc:exclude-mapping 拦截器不需要拦截的路径
-			<bean class="cn.com.daocaore.bms.common.interceptor.SessionInterceptor">
+			<bean class="cn.com.daocaore.monitor.common.interceptor.SessionInterceptor">
 				<property name="noInterceptors" value=""/>不须要拦截的URL多个URL以逗号隔开。	
 				<property name="registers" value="" />须要注册的URL
 				<property name="logins" value=""/>须要登陆的URL

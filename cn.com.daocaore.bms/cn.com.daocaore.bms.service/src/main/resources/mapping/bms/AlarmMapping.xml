@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.com.daocaore.bms.sys.biz.dao.AlarmDao">
-	<resultMap type="cn.com.daocaore.bms.sys.biz.entity.Alarm" id="BaseResultMap">
+<mapper namespace="cn.com.daocaore.monitor.sys.biz.dao.AlarmDao">
+	<resultMap type="cn.com.daocaore.monitor.sys.biz.entity.Alarm" id="BaseResultMap">
         <result property="level" column="level" javaType="Integer"/>
         <result property="total" column="total" javaType="Long"/>
 	</resultMap>
@@ -21,7 +21,7 @@
          </if>
 	</sql>
 
-	<insert id="insert" parameterType="cn.com.daocaore.bms.sys.biz.entity.Alarm" >
+	<insert id="insert" parameterType="cn.com.daocaore.monitor.sys.biz.entity.Alarm" >
 		<![CDATA[
 	        INSERT INTO alarm (
 	            level ,

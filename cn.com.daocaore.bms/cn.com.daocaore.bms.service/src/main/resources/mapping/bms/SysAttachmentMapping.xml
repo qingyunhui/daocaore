@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.com.daocaore.bms.sys.biz.dao.SysAttachmentDao">
-	<resultMap type="cn.com.daocaore.bms.sys.biz.entity.SysAttachment" id="BaseResultMap">
+<mapper namespace="cn.com.daocaore.monitor.sys.biz.dao.SysAttachmentDao">
+	<resultMap type="cn.com.daocaore.monitor.sys.biz.entity.SysAttachment" id="BaseResultMap">
         <result property="id" column="id" javaType="String"/>
         <result property="targetTable" column="target_table" javaType="String"/>
         <result property="targetField" column="target_field" javaType="String"/>
@@ -123,7 +123,7 @@
          </if>
 	</sql>
 
-	<insert id="insert" parameterType="cn.com.daocaore.bms.sys.biz.entity.SysAttachment" >
+	<insert id="insert" parameterType="cn.com.daocaore.monitor.sys.biz.entity.SysAttachment" >
 		<![CDATA[
 	        INSERT INTO sys_attachment (
 	        	id,
@@ -251,7 +251,7 @@
 		</foreach>
 	</update>
 	
-	<update id="update" parameterType="cn.com.daocaore.bms.sys.biz.entity.SysAttachment">
+	<update id="update" parameterType="cn.com.daocaore.monitor.sys.biz.entity.SysAttachment">
         UPDATE sys_attachment 
         <set>
         	<if test="@OGNL@isNotEmpty(targetTable)">

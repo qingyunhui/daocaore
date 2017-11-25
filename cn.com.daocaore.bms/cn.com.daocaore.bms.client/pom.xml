@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>cn.com.daocaore.bms</groupId>
-    <artifactId>cn.com.daocaore.bms</artifactId>
+    <groupId>cn.com.daocaore.monitor</groupId>
+    <artifactId>cn.com.daocaore.monitor</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>cn.com.daocaore.bms.client</groupId>
-  <artifactId>cn.com.daocaore.bms.client</artifactId>
+  <groupId>cn.com.daocaore.monitor.client</groupId>
+  <artifactId>cn.com.daocaore.monitor.client</artifactId>
 </project>

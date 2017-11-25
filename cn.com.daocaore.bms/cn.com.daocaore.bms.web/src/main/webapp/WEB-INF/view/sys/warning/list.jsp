@@ -16,7 +16,7 @@
             <span class="input-group-addon">状态</span>
             <select class="form-control" name="status" id="status" style="width: auto;">
                 <option value="" >全部</option>
-                <c:forEach var="result" items="${tld:getEnumValues('cn.com.daocaore.bms.enums.SysWarningEnum$Status')}" >
+                <c:forEach var="result" items="${tld:getEnumValues('cn.com.daocaore.monitor.enums.SysWarningEnum$Status')}" >
                 	<option value="${result.value}" <c:if test="${entity.status == result.value}">selected</c:if>> ${result.name}</option>
                 </c:forEach>
             </select>
@@ -86,7 +86,7 @@
                   <div class="col-sm-10">
                     <select class="form-control" name="status" id="status" style="width: auto;">
 		                <option value="" >全部</option>
-		                <c:forEach var="result" items="${tld:getEnumValues('cn.com.daocaore.bms.enums.SysWarningEnum$Status')}" >
+		                <c:forEach var="result" items="${tld:getEnumValues('cn.com.daocaore.monitor.enums.SysWarningEnum$Status')}" >
 		                	<option value="${result.value}" <c:if test="${entity.status == result.value}">selected</c:if>> ${result.name}</option>
 		                </c:forEach>
 		            </select>
@@ -135,7 +135,7 @@ $(function () {
 				return "<div class='truncates' title='"+data+"'>"+data+"</div>";
 			}},
 			{ data: 'status',render:function(data, type, row){
-				return ${tld:getEnumMapToJSON("cn.com.daocaore.bms.enums.SysWarningEnum$Status")}[data];
+				return ${tld:getEnumMapToJSON("cn.com.daocaore.monitor.enums.SysWarningEnum$Status")}[data];
 			}},
 			{data:'gmtCreate',render:function(data,type,row){
 				return formatDate(data,'yyyy-MM-dd HH:mm:ss');
